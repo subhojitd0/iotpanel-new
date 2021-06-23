@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import {Router} from '@angular/router';
-import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_PARTY, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
+import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
 
 @Component({
   selector: 'app-sidenav',
@@ -29,7 +29,7 @@ export class SideNavComponent implements OnInit {
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.dashboardurl = "/" + ROUTE_DASHBOARD;
-    this.ownerurl = "/" + ROUTE_PARTY;
+    this.ownerurl = "/" + ROUTE_DATA_VIEW;
     this.userrole = localStorage.getItem("loggedinuser");
     if(!this.loggedin)
     {

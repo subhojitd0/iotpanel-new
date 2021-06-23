@@ -21,7 +21,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {MatTableModule} from '@angular/material/table';
-import { PartyComponent } from './features/data-view/data-view.component'; 
+import { DataViewComponent } from './features/data-view/data-view.component'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
@@ -32,6 +32,7 @@ import { UserRightComponent } from './features/user-rights/user-right.component'
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { UserComponent } from './features/create-user/user.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DataAddComponent } from './features/data-add/data-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +40,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     DashboardComponent,
     SideNavComponent,
     HeaderComponent,
-    PartyComponent,
+    DataViewComponent,
     UserComponent,
     UserRightComponent,
+    DataAddComponent
   ],
   imports: [
     BrowserModule,

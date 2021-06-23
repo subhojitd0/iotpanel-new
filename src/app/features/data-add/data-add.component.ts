@@ -19,11 +19,11 @@ export interface PartyHead {
 }
 
 @Component({
-  selector: 'app-data-view',
-  templateUrl: './data-view.component.html',
-  styleUrls: ['./data-view.component.css']
+  selector: 'app-data-add',
+  templateUrl: './data-add.component.html',
+  styleUrls: ['./data-add.component.css']
 })
-export class DataViewComponent implements OnInit {
+export class DataAddComponent implements OnInit {
 
   isPack:boolean=true;
   isSlab:boolean=false;

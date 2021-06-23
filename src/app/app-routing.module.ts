@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_PARTY, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
+import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
 import { UserComponent } from './features/create-user/user.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LoginComponent } from './features/login/login.component';
-import { PartyComponent } from './features/data-view/data-view.component';
+import { DataViewComponent } from './features/data-view/data-view.component';
 import { UserRightComponent } from './features/user-rights/user-right.component';
+import { DataAddComponent } from './features/data-add/data-add.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,8 @@ const routes: Routes = [
     component:DashboardComponent
   },
   {
-    path: ROUTE_PARTY,
-    component:PartyComponent
+    path: ROUTE_DATA_VIEW,
+    component:DataViewComponent
   },
   {
     path: ROUTE_NEW_USER,
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: ROUTE_USER_RIGHTS,
     component:UserRightComponent
+  },
+  {
+    path: ROUTE_DATA_ADD,
+    component: DataAddComponent
   }
 ];
 
