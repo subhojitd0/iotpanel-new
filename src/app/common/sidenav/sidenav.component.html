@@ -1,0 +1,53 @@
+
+<mat-toolbar *ngIf="pagerefresh == '1'" color="primary" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">IOT Web</h1>
+
+	<span fxFlex></span>
+ 	<button mat-icon-button *ngIf="pagerefresh == '1'" [matMenuTriggerFor]="dropdownMenu">
+  	  <mat-icon>more_vert</mat-icon>
+  	</button>
+
+</mat-toolbar>
+<mat-sidenav-container [ngClass]="pagerefresh == '1' ? 'example-container-loggedin' : 'example-container'" autosize  style="cursor: pointer !important;">
+	<mat-sidenav *ngIf="pagerefresh == '1'" #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item >
+				<span class="full-width" *ngIf="isExpanded || isShowing"><a routerLink={{dashboardurl}}> Add Sensor Data </a></span>
+				<mat-icon mat-list-icon>home</mat-icon>
+			</mat-list-item>
+			<mat-list-item >
+				<span class="full-width" *ngIf="isExpanded || isShowing"><a routerLink={{ownerurl}}> View Data </a></span>
+				<mat-icon mat-list-icon>supervisor_account</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+
+    
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
+
+
+<mat-menu #dropdownMenu x-position="before">
+	<a mat-menu-item href="" (click)="onLogout()">
+	  <mat-icon>exit_to_app</mat-icon>
+	  <span>Logout</span>
+	</a>
+	<a *ngIf="userrole === 'ibcabs'" mat-menu-item (click)="createuser()">
+		<mat-icon>person_add</mat-icon>
+		<span>Create New User</span>
+	  </a>
+	  <a *ngIf="userrole === 'ibcabs'" mat-menu-item (click)="userrights()">
+		<mat-icon>settings_applications</mat-icon>
+		<span>Give User RIghts</span>
+	  </a>
+	<a mat-menu-item href="" routerLink="/">
+	  <mat-icon>info_outline</mat-icon>
+	  <span>About</span>
+	</a>
+  </mat-menu>
