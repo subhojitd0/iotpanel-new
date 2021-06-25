@@ -40,6 +40,7 @@ export class DataViewComponent implements OnInit {
   sensors: any[] =[];
   loading: boolean;
   user: string;
+  selectedzone: string;
   constructor(private router: Router,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
     
    }
@@ -56,6 +57,7 @@ export class DataViewComponent implements OnInit {
       "zone": index
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
+      this.selectedzone = index;
       this.hubs = res;
       this.loading = false;
       debugger;
@@ -68,7 +70,8 @@ export class DataViewComponent implements OnInit {
     {
       "mode": 6,
       "username": this.user,
-      "hub": index
+      "hub": index,
+      "zone": this.selectedzone
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
       this.sensors = res;
@@ -79,10 +82,6 @@ export class DataViewComponent implements OnInit {
 
    ngOnInit() : void {
      this.user = localStorage.getItem("loggedinusername");
-    /* this.partyrole = localStorage.getItem("enterparty");
-    this.approve = localStorage.getItem("approve");
-    this.delete = localStorage.getItem("delete");
-    this.userRole = localStorage.getItem("userrole"); */
     var json = 
     {
       "mode": 4,

@@ -2,6 +2,20 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import {Router} from '@angular/router';
 import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
+import { SENSOR_API } from 'src/shared/services/api.url-helper';
+import { ApiService } from 'src/shared/services/service';
+
+class Sensor{
+  sensor: string;
+}
+class Hub{
+  hub: string;
+  sensors: Sensor[] = [];
+}
+class Zone{
+  zone: string;
+  hubs: Hub[] = [];
+}
 
 @Component({
   selector: 'app-sidenav',
@@ -9,55 +23,101 @@ import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_US
   styleUrls: ['./sidenav.component.css']
 })
 export class SideNavComponent implements OnInit {
-  dashboardurl = "";
-  partyurl = "";
-  ownerurl = "";
-  driverurl = "";
-  addddrurl = "";
-  viewddrurl = "";
-  addwalkingurl = "";
-  generatebillurl = "";
+  @ViewChild('sidenav') sidenav: MatSidenav;
   loggedin : any;
   pagerefresh : any;
   reportto: string;
   userrole: string;
-  matadorurl: string = "";
-  constructor(private router: Router) { }
+  zones: any[] =[];
+  hubs: any[] =[];
+  sensors: any[] =[];
+  loading: boolean;
+  user: string;
+  selectedzone: string;
+  step = 0;
+
+  isExpanded = true;
+  showZoneMenu: boolean[] = [];
+  showHubmenu: boolean[] = [];
+  showSensormenu: boolean[] = [];
+  isShowing = true;
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    debugger;
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
-    this.dashboardurl = "/" + ROUTE_DASHBOARD;
-    this.ownerurl = "/" + ROUTE_DATA_VIEW;
-    this.userrole = localStorage.getItem("loggedinuser");
-    if(!this.loggedin)
+    debugger;
+    this.user = localStorage.getItem("loggedinusername");
+    var json = 
     {
-      this.router.navigateByUrl('/' + ROUTE_BASIC);
-    }
+      "mode": 4,
+      "username": this.user
+    };
+    this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
+      res.forEach(element =>{
+        let z = new Zone();
+        z.zone = element.zone;
+        var json = 
+        {
+          "mode": 5,
+          "username": this.user,
+          "zone": element.zone
+        };
+        this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
+          //z.hubs = res;
+          this.hubs = res;
+          this.hubs.forEach(hub =>{
+            var json = 
+            {
+              "mode": 6,
+              "username": this.user,
+              "hub": hub.hub,
+              "zone": element.zone
+            };
+            let h = new Hub();
+            h.hub = hub.hub;
+            this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
+              h.sensors = res;
+              z.hubs.push(h);
+            });
+          });
+          this.zones.push(z);
+        });
+      });
+    });
   }
-  @ViewChild('sidenav') sidenav: MatSidenav;
-  isExpanded = false;
-  showSubmenu: boolean = false;
-  isShowing = false;
-  showSubSubMenu: boolean = false;
+  openzone(name: any){
+    this.showZoneMenu.forEach((elem: any) =>{
+      if(elem === name){
+        this.showZoneMenu[elem] = true;
+      }
+    });
+  }
+  openhub(name: any){
+    this.showHubmenu.forEach((elem: any) =>{
+      if(elem === name){
+        this.showHubmenu[elem] = true;
+      }
+    });
+  }
+   getSensorDetail(index: any){
 
-  mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
+   }
+  getHubs(index: any) {
+    this.loading = true;
+    
   }
 
-  mouseleave() {
-    if (!this.isExpanded) {
-      this.isShowing = false;
-    }
+  getSensors(index: any) {
+    this.loading = true;
+    
   }
-  createuser(){
-    this.router.navigateByUrl('/' + ROUTE_NEW_USER);
-  }
-  userrights(){
-    this.router.navigateByUrl('/' + ROUTE_USER_RIGHTS);
+
+ 
+
+  close(){
+    this.isExpanded = !this.isExpanded;
+    this.isShowing = !this.isShowing;
   }
   onLogout(){
     localStorage.clear();

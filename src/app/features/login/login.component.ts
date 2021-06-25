@@ -13,6 +13,7 @@ import { ROUTE_BASIC, ROUTE_DASHBOARD } from 'src/shared/constants/constant';
 export class LoginComponent implements OnInit {
   username: any;
   password: any;
+  isAdmin: any;
   constructor(private router: Router,private apiService: ApiService, private toastr: ToastrService) {
     debugger;
     let isLoggedIn = localStorage.getItem('loggedin'); 

@@ -1,31 +1,43 @@
 
 <mat-toolbar *ngIf="pagerefresh == '1'" color="primary" class="example-toolbar">
-	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<button mat-icon-button (click)="close()"><mat-icon>menu</mat-icon></button>
 	<h1 class="example-app-name">IOT Web</h1>
 
 	<span fxFlex></span>
+	<span (click)="addnew()" style="cursor: pointer;font-size: 15px"><img height="30" src="../../../assets/img/add.png"/>&nbsp;Add</span>
  	<button mat-icon-button *ngIf="pagerefresh == '1'" [matMenuTriggerFor]="dropdownMenu">
   	  <mat-icon>more_vert</mat-icon>
   	</button>
 
 </mat-toolbar>
 <mat-sidenav-container [ngClass]="pagerefresh == '1' ? 'example-container-loggedin' : 'example-container'" autosize  style="cursor: pointer !important;">
-	<mat-sidenav *ngIf="pagerefresh == '1'" #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+	 <mat-sidenav *ngIf="pagerefresh == '1'" #sidenav class="example-sidenav" mode="side" opened="true" >
+		<!-- <div class="loading-screen-wrapper" *ngIf="loading">
+			<div class="loading-screen-icon">
+			  Loading...
+			</div>
+		  </div> -->
 		<mat-nav-list>
-			<mat-list-item >
-				<span class="full-width" *ngIf="isExpanded || isShowing"><a routerLink={{dashboardurl}}> Add Sensor Data </a></span>
-				<mat-icon mat-list-icon>home</mat-icon>
-			</mat-list-item>
-			<mat-list-item >
-				<span class="full-width" *ngIf="isExpanded || isShowing"><a routerLink={{ownerurl}}> View Data </a></span>
-				<mat-icon mat-list-icon>supervisor_account</mat-icon>
-			</mat-list-item>
+			<!-- <div *ngFor="let row of zones">
+				<mat-list-item (click)="openzone(row.zone)" class="parent">
+					<span class="full-width" *ngIf="isExpanded || isShowing"> Daily Duty - Rental Details &nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp; </span>
+					<mat-icon mat-list-icon>work_outline</mat-icon>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+					<a mat-list-item routerLink={{addddrurl}}>Add New Office Duty</a>
+					<a mat-list-item routerLink={{addwalkingurl}}>Add New Walkin Duty</a>
+					<a mat-list-item routerLink={{viewddrurl}}>View / Edit Duty</a>
+				</div>
+			</div> -->
+
 		</mat-nav-list>
 
     
-	</mat-sidenav>
+	</mat-sidenav> 
 
-	<div class="example-sidenav-content">
+	<div [ngClass]="pagerefresh == '1' ? 'example-sidenav-content' : 'example-sidenav-content-anonymous'">
     <router-outlet></router-outlet>
   </div>
 
