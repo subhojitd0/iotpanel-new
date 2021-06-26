@@ -20,7 +20,7 @@
 		<mat-nav-list *ngIf="isAvailable">
 			 <div *ngFor="let row of zones">
 				<mat-list-item (click)="openzone(row.id)" class="parent">
-					<span class="full-width" > {{row.zone}} &nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="full-width" *ngIf="isExpanded || isShowing"> {{row.zone}} &nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp; </span>
 					<mat-icon mat-list-icon>explore</mat-icon>
 					<mat-icon class="menu-button" [ngClass]="{'rotated' : showZoneMenu[row.id]}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
@@ -35,7 +35,7 @@
 						</mat-list-item>
 						<div *ngIf="showHubMenu[rowhub.id]">
 							<div class="submenu" [ngClass]="{'expanded' : showHubMenu[rowhub.id]}" *ngFor="let rowSensor of rowhub.sensors">
-								<a mat-list-item> <mat-icon mat-list-icon>devices_other</mat-icon> {{rowSensor}}</a>
+								<a mat-list-item *ngIf="isExpanded || isShowing"> <mat-icon mat-list-icon>devices_other</mat-icon> {{rowSensor}}</a>
 							</div>
 						</div>
 					</div>
