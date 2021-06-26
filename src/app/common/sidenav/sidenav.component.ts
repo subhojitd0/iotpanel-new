@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import {Router} from '@angular/router';
+import { DataAddComponent } from 'src/app/features/data-add/data-add.component';
 import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
 import { SENSOR_API } from 'src/shared/services/api.url-helper';
 import { ApiService } from 'src/shared/services/service';
@@ -44,8 +46,8 @@ export class SideNavComponent implements OnInit {
   showSensormenu: boolean[] = [];
   isShowing = true;
   data: any[] = [];
-  isAvailable: boolean;
-  constructor(private apiService: ApiService, private router: Router) { }
+  isAvailable: boolean = true;
+  constructor(private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
@@ -100,6 +102,16 @@ export class SideNavComponent implements OnInit {
         })
       }
       
+    });
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(DataAddComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed`);
+    });
+    this.router.events.subscribe(() => {
+      dialogRef.close();
     });
   }
   openzone(name: any){

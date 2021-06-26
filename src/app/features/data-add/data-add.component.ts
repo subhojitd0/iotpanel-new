@@ -7,7 +7,10 @@ import {SENSOR_API} from '../../../shared/services/api.url-helper';
 import {MatDialog} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { ROUTE_DATA_VIEW } from 'src/shared/constants/constant';
+import { ROUTE_DASHBOARD, ROUTE_DATA_VIEW } from 'src/shared/constants/constant';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 export interface PartyHead {
   name: string;
@@ -40,49 +43,42 @@ export class DataAddComponent implements OnInit {
   sensors: any[] =[];
   loading: boolean;
   user: string;
-  constructor(private router: Router,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
+  onlyzones: any[] = [];
+  HubControl: FormControl;
+  ZoneControl: FormControl;
+  SensorControl: FormControl;
+  filteredOptionsZone: Observable<string[]>;
+  filteredOptionsHub: Observable<string[]>;
+  filteredOptionsSensor: Observable<string[]>;
+  adzone: any;
+  adhub: any;
+  adsensor: any;
+  onlyhubs: any[] = [];
+  firstFormGroup: FormGroup;
+  constructor(private router: Router, private _formBuilder: FormBuilder,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
     
    }
    step = 0;
    getSensorDetail(index: any){
 
    }
-  getHubs(index: any) {
-    this.loading = true;
-    var json = 
-    {
-      "mode": 5,
-      "username": this.user,
-      "zone": index
-    };
-    this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-      this.hubs = res;
-      this.loading = false;
-      debugger;
-    });
-  }
-
-  getSensors(index: any) {
-    this.loading = true;
-    var json = 
-    {
-      "mode": 6,
-      "username": this.user,
-      "hub": index
-    };
-    this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-      this.sensors = res;
-      this.loading = false;
-      debugger;
-    });
+   searchhub() {
+    this.onlyhubs = [...new Set(this.zones.filter(z=>z.zone === this.adzone).map(z=>z.hub))];
+    this.filteredOptionsHub = this.firstFormGroup.get('HubControl').valueChanges.pipe(startWith(''),map(value => this._filterHub(value)));
   }
 
    ngOnInit() : void {
+
      this.user = localStorage.getItem("loggedinusername");
-    /* this.partyrole = localStorage.getItem("enterparty");
-    this.approve = localStorage.getItem("approve");
-    this.delete = localStorage.getItem("delete");
-    this.userRole = localStorage.getItem("userrole"); */
+     this.ZoneControl = new FormControl();
+     this.HubControl = new FormControl();
+     this.SensorControl = new FormControl();
+     this.firstFormGroup = this._formBuilder.group({
+      ZoneControl: [],
+      HubControl: [],
+      SensorControl: []
+     });
+    
     var json = 
     {
       "mode": 4,
@@ -90,8 +86,40 @@ export class DataAddComponent implements OnInit {
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
       this.zones = res;
-      debugger;
+      this.onlyzones = [...new Set(this.zones.map(z=>z.zone))];
+      this.filteredOptionsZone = this.firstFormGroup.get('ZoneControl').valueChanges.pipe(startWith(''),map(value => this._filterZone(value)));
     });
    }
-  
+   public _filterZone(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.onlyzones.filter(client => client.toLowerCase().includes(filterValue));
+  }
+  public _filterHub(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.onlyhubs.filter(client => client.toLowerCase().includes(filterValue));
+  }
+  save(){
+    if(this.adzone && this.adhub && this.adsensor){
+      var json = {
+        zone: this.adzone,
+        hub: this.adhub,
+        sensor: this.adsensor,
+        username: this.user,
+        mode: 1
+      };
+      this.apiService.post(SENSOR_API, json).then((res: any)=>{
+        if(res.status === "Success"){
+          this.toastr.success("Your data was successfully added");
+          location.reload();
+        }
+        else{
+          this.toastr.error(res.status);
+        }
+      });
+    }
+    else{
+      this.toastr.error("Please add all the fields before adding the sensor data");
+    }
+    
+  }
 }
