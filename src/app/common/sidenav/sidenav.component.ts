@@ -9,10 +9,12 @@ class Sensor{
   sensor: string;
 }
 class Hub{
+  id: number;
   hub: string;
   sensors: Sensor[] = [];
 }
 class Zone{
+  id: number;
   zone: string;
   hubs: Hub[] = [];
 }
@@ -38,9 +40,11 @@ export class SideNavComponent implements OnInit {
 
   isExpanded = true;
   showZoneMenu: boolean[] = [];
-  showHubmenu: boolean[] = [];
+  showHubMenu: boolean[] = [];
   showSensormenu: boolean[] = [];
   isShowing = true;
+  data: any[] = [];
+  isAvailable: boolean;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
@@ -54,51 +58,55 @@ export class SideNavComponent implements OnInit {
       "username": this.user
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-      res.forEach(element =>{
-        let z = new Zone();
-        z.zone = element.zone;
-        var json = 
-        {
-          "mode": 5,
-          "username": this.user,
-          "zone": element.zone
-        };
-        this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-          //z.hubs = res;
-          this.hubs = res;
-          this.hubs.forEach(hub =>{
-            var json = 
-            {
-              "mode": 6,
-              "username": this.user,
-              "hub": hub.hub,
-              "zone": element.zone
-            };
-            let h = new Hub();
-            h.hub = hub.hub;
-            this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-              h.sensors = res;
-              z.hubs.push(h);
+      if(res.zone){
+        this.isAvailable = false;
+      }
+      else{
+        this.isAvailable = true;
+        debugger;
+        let zonecounter = 0;
+        let hubcounter = 0;
+        this.data = res;
+        let allZones = this.data.map(x=>x.zone);
+        let distinctZones = [...new Set(allZones)];
+        this.showZoneMenu = [res.length];
+        this.showHubMenu = [res.length];
+        distinctZones.forEach((z: any)=>{
+          let zone = new Zone();
+          zone.zone = z;
+          zone.id = zonecounter+1;
+          let allHubs = this.data.filter(x=>x.zone === z).map(y=>y.hub);
+          let distinctHubs = [...new Set(allHubs)];
+          distinctHubs.forEach((h: any)=>{
+            let hub = new Hub();
+            hub.hub = h;
+            hub.id = hubcounter + 1;
+            let allSensors = this.data.filter(x=>x.zone === z && x.hub === h).map(y=>y.sensor);
+            let distinctSensors = [...new Set(allSensors)];
+            distinctSensors.forEach(s=>{
+              hub.sensors.push(s);
             });
+            zone.hubs.push(hub);
+            hubcounter = hubcounter + 1;
           });
-          this.zones.push(z);
+          this.zones.push(zone);
+          zonecounter = zonecounter + 1;
         });
-      });
+        this.zones.forEach((val: any)=>{
+          this.showZoneMenu[val.id] = false;
+          val.hubs.forEach(element => {
+            this.showHubMenu[element.id] = false;
+          });
+        })
+      }
+      
     });
   }
   openzone(name: any){
-    this.showZoneMenu.forEach((elem: any) =>{
-      if(elem === name){
-        this.showZoneMenu[elem] = true;
-      }
-    });
+    this.showZoneMenu[name] = !this.showZoneMenu[name];
   }
   openhub(name: any){
-    this.showHubmenu.forEach((elem: any) =>{
-      if(elem === name){
-        this.showHubmenu[elem] = true;
-      }
-    });
+    this.showHubMenu[name] = !this.showHubMenu[name];
   }
    getSensorDetail(index: any){
 
