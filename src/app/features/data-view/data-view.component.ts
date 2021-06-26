@@ -60,7 +60,7 @@ export class DataViewComponent implements OnInit {
       this.selectedzone = index;
       this.hubs = res;
       this.loading = false;
-      debugger;
+      
     });
   }
 
@@ -76,7 +76,7 @@ export class DataViewComponent implements OnInit {
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
       this.sensors = res;
       this.loading = false;
-      debugger;
+      
     });
   }
 
@@ -89,7 +89,7 @@ export class DataViewComponent implements OnInit {
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
       this.zones = res;
-      debugger;
+      
     });
    }
   

@@ -52,7 +52,7 @@ export class SideNavComponent implements OnInit {
   ngOnInit(): void {
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
-    debugger;
+    
     this.user = localStorage.getItem("loggedinusername");
     var json = 
     {
@@ -65,7 +65,7 @@ export class SideNavComponent implements OnInit {
       }
       else{
         this.isAvailable = true;
-        debugger;
+        
         let zonecounter = 0;
         let hubcounter = 0;
         this.data = res;
