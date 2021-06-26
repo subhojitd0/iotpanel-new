@@ -39,14 +39,14 @@ export class UserComponent implements OnInit {
   }
    ngOnInit() : void {
      this.userrole = localStorage.getItem("loggedinuser");
-     debugger;
+     
      this.role = "2";
      let json ={
        "user": "ALL"
      };
      
      /* this.apiService.post(ALL_USER_API, json).then((res: any)=>{ 
-      debugger;
+      
       const users: User[] = res.result;
       let i = 0;
       users.forEach((data: any)=>{
@@ -64,7 +64,7 @@ export class UserComponent implements OnInit {
         "ownercode": this.ownerid 
       };
       this.apiService.post(CAR_API, json).then((res: any)=>{ 
-        debugger;
+        
         const cars: Car[] = res.result;
         let i = 0;
         this.dataSource = new MatTableDataSource(cars);
@@ -74,7 +74,7 @@ export class UserComponent implements OnInit {
    deleteUser(name: any){
     var r = confirm("Are you sure that you want to delete this record ?");
     if (r == true) {
-      debugger;
+      
       var json = 
       {
         "username": name
@@ -93,7 +93,7 @@ export class UserComponent implements OnInit {
        "name": this.name
      }
      /* this.apiService.post(NEW_USER_API, json).then((res: any)=>{ 
-      debugger;
+      
       if(res.status === "success"){
         this.toastr.success("User creation was successful");
         this.username = "";
@@ -118,7 +118,7 @@ export class UserComponent implements OnInit {
   /* deleteCar(id: any){
     var r = confirm("Are you sure that you want to delete this record ?");
     if (r == true) {
-      debugger;
+      
       var json = 
       {
         "mode":3,

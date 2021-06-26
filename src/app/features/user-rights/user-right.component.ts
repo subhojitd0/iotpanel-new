@@ -61,7 +61,7 @@ export class UserRightComponent implements OnInit {
       
     };
     /* this.apiService.post(ALL_USER_API, json).then((res: any)=>{ 
-      debugger;
+      
       this.userList = res.result;
       this.users = this.userList.filter(y=>y.username !== "ibcabs").map(x=>x.username);
       this.userddr = this.userselect.valueChanges.pipe(startWith(''),map(value => this._filterUser(value)));
@@ -103,7 +103,7 @@ export class UserRightComponent implements OnInit {
     this.updateUser.ownerpay = val;
    }
   updateUserInfo(){
-    debugger;
+    
     /* this.apiService.post(UPDATE_USER_API, this.updateUser).then((res: any)=>{ 
       this.toastr.success("Your data was successfully updated",'Success');
       location.reload();

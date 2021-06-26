@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    debugger;
+    
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
   }
   @ViewChild('sidenav') sidenav: MatSidenav;

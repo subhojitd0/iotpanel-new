@@ -18,58 +18,33 @@
               </mat-form-field> -->
               <!--  -->
         <div class="row" style="width: 100%">
-          <div class="col-xs-4" style="margin: 0px 10px 0px 10px;
-          width: 25%;
-          border: 1px solid grey;
-          border-radius: 10px;">
-            <div>
-              <p class="tab-header">Click on each Zone to see the details</p>
-              <mat-accordion class="example-headers-align" *ngFor="let row of zones">
-                <mat-expansion-panel [expanded]="step === 1" (opened)="getHubs(row.zone)" hideToggle  style="margin-bottom: 10px">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      {{row.zone}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      <!-- Type your name and age -->
-                     <!--  <mat-icon>account_circle</mat-icon> -->
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <mat-accordion class="example-headers-align">
-                    <mat-expansion-panel *ngFor="let rowhub of hubs" [expanded]="step === 1" (opened)="getSensors(rowhub.hub)" hideToggle style="margin-bottom: 10px">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          {{rowhub.hub}}
-                        </mat-panel-title>
-                        <mat-panel-description>
-                          <!-- Type your name and age -->
-                         <!--  <mat-icon>account_circle</mat-icon> -->
-                        </mat-panel-description>
-                        
-                      </mat-expansion-panel-header>
-                      <mat-accordion class="example-headers-align">
-                        <mat-expansion-panel *ngFor="let rowsensor of sensors" [expanded]="step === 1" (opened)="getSensorDetail(rowsensor.sensor)" hideToggle style="margin-bottom: 10px">
-                          <mat-expansion-panel-header>
-                            <mat-panel-title>
-                              {{rowsensor.sensor}}
-                            </mat-panel-title>
-                            <mat-panel-description>
-                              <!-- Type your name and age -->
-                             <!--  <mat-icon>account_circle</mat-icon> -->
-                            </mat-panel-description>
-                          </mat-expansion-panel-header>
-                        </mat-expansion-panel>
-                      </mat-accordion>
-                    </mat-expansion-panel>
-                  </mat-accordion>
-                </mat-expansion-panel>
-              
-              </mat-accordion>
-            </div>
-          </div>
-          <div class="col-xs-8" style="margin: 0px 10px 0px 10px; width: 70%; border: 1px solid; min-height: 550px">
-            <p>World</p>
-          </div>
+          <form [formGroup]="firstFormGroup">
+          <mat-form-field style="width: 25%; margin-right: 10px;">
+            <mat-label>Select from the list or type in to add a new zone</mat-label>
+            <input matInput placeholder="Enter the zone here" [matAutocomplete]="autoreport" [(ngModel)]="adzone" formControlName="ZoneControl">
+            <mat-autocomplete #autoreport="matAutocomplete" (optionSelected)="searchhub()">
+              <mat-option *ngFor="let option of filteredOptionsZone | async" [value]="option" >
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> 
+
+          <mat-form-field *ngIf="adzone" style="width: 25%; margin-right: 10px;">
+            <mat-label>Select from the list or type in to add a new hub</mat-label>
+            <input matInput placeholder="Enter the hub here" [matAutocomplete]="autohub" [(ngModel)]="adhub" formControlName="HubControl">
+            <mat-autocomplete #autohub="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptionsHub | async" [value]="option" >
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> 
+
+          <mat-form-field *ngIf="adzone && adhub" style="width: 25%; margin-right: 10px;">
+            <mat-label>Add Sensor</mat-label>
+            <input formControlName="SensorControl" matInput placeholder="Enter the sensor here" [(ngModel)]="adsensor">
+          </mat-form-field> 
+          <button class="btn-first"  mat-button (click)="save()">Add Sensor Data</button>
+          </form>
         </div>
 
         </div>

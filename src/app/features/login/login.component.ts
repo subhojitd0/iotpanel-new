@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   password: any;
   isAdmin: any;
   constructor(private router: Router,private apiService: ApiService, private toastr: ToastrService) {
-    debugger;
+    
     let isLoggedIn = localStorage.getItem('loggedin'); 
     if(isLoggedIn && isLoggedIn == "1"){
       this.router.navigateByUrl('/' + ROUTE_DASHBOARD);
@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
+    
     localStorage.setItem('pagerefresh', "0");
   }
 
   login(){
-    debugger;
+    
     
     this.toastr.info("Please wait while we validate your credentials",'Information');
     var json = 
