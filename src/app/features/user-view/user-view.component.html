@@ -1,0 +1,78 @@
+
+        <div class="container">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="avatar-image-partyhead"></div>
+            <mat-card-title>User Details</mat-card-title>
+            <mat-card-subtitle>Add users, Add Update & Delete Sensors Here.</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+            <button style="margin-right: 20px" mat-stroked-button>Create New User</button>
+
+            <mat-form-field class="mid">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search User">
+              </mat-form-field>
+              <mat-table [dataSource]="dataSource" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="username">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> UserName  </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="hub">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Hub </mat-header-cell>
+                  <mat-cell  *matCellDef="let row"><p *ngIf="!row.hub"><button mat-stroked-button>Add Hub</button> </p><span *ngIf="row.hub" > {{row.hub}} </span> </mat-cell>
+                </ng-container>
+            
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor1">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 1 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"><p *ngIf="!row.sensor1"><button mat-stroked-button>Add Sensor</button></p>  <span *ngIf="row.sensor1 && row.hub" >{{row.sensor1}}</span>  </mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor2">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 2 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> <p *ngIf="!row.sensor2" ><button mat-stroked-button>Add Sensor</button> </p><span *ngIf="row.sensor2 && row.hub"> {{row.sensor2}} </span></mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor3">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 3 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"><p *ngIf="!row.sensor3"> <button mat-stroked-button>Add Sensor</button> </p><span *ngIf="row.sensor3 && row.hub"> {{row.sensor3}} </span></mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor4">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 4 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"><p *ngIf="!row.sensor4"> <button mat-stroked-button>Add Sensor</button> </p><span  *ngIf="row.sensor4 && row.hub"> {{row.sensor4}} </span></mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor5">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 5 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"><p *ngIf="!row.sensor5" > <button mat-stroked-button>Add Sensor</button> </p><span *ngIf="row.sensor5 && row.hub"> {{row.sensor5}} </span></mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="sensor6">
+                  
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Sensor 6 </mat-header-cell>
+                  <mat-cell *matCellDef="let row"><p *ngIf="!row.sensor6"> <button mat-stroked-button>Add Sensor</button> </p><span *ngIf="row.sensor6 && row.hub"> {{row.sensor6}} </span></mat-cell>
+                  <mat-cell *matCellDef="let row"></mat-cell>               </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+              </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+        </div>

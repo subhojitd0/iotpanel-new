@@ -7,6 +7,7 @@ import { LoginComponent } from './features/login/login.component';
 import { DataViewComponent } from './features/data-view/data-view.component';
 import { UserRightComponent } from './features/user-rights/user-right.component';
 import { DataAddComponent } from './features/data-add/data-add.component';
+import { UserViewComponent } from './features/user-view/user-view.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: ROUTE_DATA_ADD,
-    component: DataAddComponent
+    component: UserViewComponent
   }
 ];
 

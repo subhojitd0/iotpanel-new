@@ -33,6 +33,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { UserComponent } from './features/create-user/user.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { DataAddComponent } from './features/data-add/data-add.component';
+import { UserViewComponent } from './features/user-view/user-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { DataAddComponent } from './features/data-add/data-add.component';
     DataViewComponent,
     UserComponent,
     UserRightComponent,
-    DataAddComponent
+    DataAddComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,
