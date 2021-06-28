@@ -4,7 +4,7 @@
 	<h1 class="example-app-name">IOT Web</h1>
 
 	<span fxFlex></span>
-	<span (click)="openDialog()" style="cursor: pointer;font-size: 15px"><img height="30" src="../../../assets/img/add.png"/></span>
+	<span (click)="openDialog()" style="cursor: pointer;font-size: 15px"><img height="30" src="http://ibcabs.com/bills/x_iot/assets/img/add.png"/></span>
  	<button mat-icon-button *ngIf="pagerefresh == '1'" [matMenuTriggerFor]="dropdownMenu">
   	  <mat-icon>more_vert</mat-icon>
   	</button>
@@ -20,8 +20,7 @@
 		<mat-nav-list *ngIf="isAvailable">
 			 <div *ngFor="let row of zones">
 				<mat-list-item (click)="openzone(row.id)" class="parent">
-					<span class="full-width" *ngIf="isExpanded || isShowing"> {{row.zone}} &nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp; </span>
+					<span class="full-width" style="margin-right:100px;" *ngIf="isExpanded || isShowing"> {{row.zone}}  </span>
 					<mat-icon mat-list-icon>explore</mat-icon>
 					<mat-icon class="menu-button" [ngClass]="{'rotated' : showZoneMenu[row.id]}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 				</mat-list-item>
@@ -44,7 +43,7 @@
 
 		</mat-nav-list>
 		<div  *ngIf="!isAvailable">
-			<span (click)="openDialog()" style="cursor: pointer;font-size: 15px"><img height="30" src="../../../assets/img/add.png"/>&nbsp; Add Zone</span>
+			<span (click)="openDialog()" style="cursor: pointer;font-size: 15px"><img height="30" src="http://ibcabs.com/bills/x_iot/assets/img/add.png"/>&nbsp; Add Zone</span>
 		</div>
     
 	</mat-sidenav> 
