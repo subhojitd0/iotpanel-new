@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { ROUTE_DASHBOARD } from 'src/shared/constants/constant';
 import { SENSOR_API } from 'src/shared/services/api.url-helper';
 import { User } from '../create-user/user.component';
+import { DataAddComponent } from '../data-add/data-add.component';
+import { UserAddComponent } from '../user-add/user-add.component';
 
 export interface UserTable {
   username: string;
@@ -43,22 +45,18 @@ export class UserViewComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[] = ['username', 'hub', 'sensor1', 'sensor2', 'sensor3', 'sensor4', 'sensor5', 'sensor6'];
   dataSource: MatTableDataSource<UserTable>;
+  pagerefrsh2: any;
+  pagerefrsh: any;
   constructor(private router: Router,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
-    /* const party: PartyHead[] =[
-      {position: 1, name: 'Hydrogen', rate: "Package", option: 'H'},
-      {position: 2, name: 'Helium', rate: "Package", option: 'He'},
-      {position: 3, name: 'Lithium', rate: "Package", option: 'Li'},
-      {position: 4, name: 'Beryllium', rate: "-", option: 'Be'},
-      {position: 5, name: 'Boron', rate: "Package", option: 'B'},
-      {position: 6, name: 'Carbon', rate: "-", option: 'C'},
-      {position: 7, name: 'Nitrogen', rate: "Package", option: 'N'},
-      {position: 8, name: 'Oxygen', rate: "Slab", option: 'O'},
-      {position: 9, name: 'Fluorine', rate: "Slab", option: 'F'},
-      {position: 10, name: 'Neon', rate: "Package", option: 'Ne'},
-    ];
-    this.dataSource = new MatTableDataSource(party); */
+    
    }
    ngOnInit() : void {
+    this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
+    this.pagerefrsh2 = JSON.parse(localStorage.getItem('pagerefresh2'));
+     if(this.pagerefrsh2 == "0"){
+        localStorage.setItem('pagerefresh2', "1");
+        location.reload();
+      }
     var json = 
     {
       "mode": 4,
@@ -118,6 +116,72 @@ export class UserViewComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+  adduser(){
+    const dialogRef = this.dialog.open(UserAddComponent, {
+      width: "800px",
+      height: "250px"
+    });
+  }
+  addhub(){
+    const dialogRef = this.dialog.open(DataAddComponent, {
+      data: {
+        user: "NA",
+        hub: "NA",
+        sensor: "NA",
+        type: 0
+      }
+    });
+  }
+  adduserhub(row: any){
+    const dialogRef = this.dialog.open(DataAddComponent, {
+      data: {
+        user: row.username,
+        hub: "NA",
+        sensor: "NA",
+        type: 1
+      }
+    });
+  }
+  addusersensor(row: any){
+    const dialogRef = this.dialog.open(DataAddComponent, {
+      data: {
+        user: row.username,
+        hub: row.hub,
+        sensor: "NA",
+        type: 2
+      }
+    });
+  }
+  editusersensor(row: any, sensor: any){
+    const dialogRef = this.dialog.open(DataAddComponent, {
+      data: {
+        user: row.username,
+        hub: row.hub,
+        sensor: sensor,
+        type: 3
+      }
+    });
+  }
+  deleteusersensor(row: any, sensor: any){
+    var r = confirm("Are you sure that you want to delete this sensor ?");
+    if (r == true) {
+      debugger;
+      var json = 
+      {
+        "mode":2,
+        "choice": 3,
+        "hub": row.hub,
+        "sensor": sensor,
+        "username": row.username
+      }
+      this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
+        if(res.status === "Success"){
+          this.toastr.success("Your data was successfully deleted",'Success');
+          location.reload();
+        }
+      }); 
+    }
   }
   /* openEditSensorDialog(id: any) {
     const dialogRef = this.dialog.open(GenerateOTComponent);

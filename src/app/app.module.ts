@@ -34,6 +34,7 @@ import { UserComponent } from './features/create-user/user.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { DataAddComponent } from './features/data-add/data-add.component';
 import { UserViewComponent } from './features/user-view/user-view.component';
+import { UserAddComponent } from './features/user-add/user-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { UserViewComponent } from './features/user-view/user-view.component';
     UserComponent,
     UserRightComponent,
     DataAddComponent,
-    UserViewComponent
+    UserViewComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

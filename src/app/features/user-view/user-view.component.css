@@ -1,36 +1,45 @@
-.container{
-    width:100%;
+.container {
+    width: 100%;
 }
 
-.mat-stroked-button{
+.mat-stroked-button {
     margin-top: 40px;
     margin-bottom: 10px;
 }
 
-.mat-card{
-    margin-top:20px;
-    margin-bottom:20px;
+.mat-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .avatar-image-partyhead {
     background-image: url('https://images.unsplash.com/photo-1587377838658-e7d21b152a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=802&q=80');
     background-size: cover;
-  }
-
-.row{
-    padding:10px;
 }
 
-.full{
-    width:100%;
+.row {
+    padding: 10px;
 }
 
-.mid{
-     width:65%;
-    padding-left:40%; 
+.full {
+    width: 100%;
+}
+
+.mid {
+    width: 65%;
+    padding-left: 40%;
 }
 
 table {
     width: 100%;
-  }
+}
 
+.add-new {
+    margin: 12px 0 12px 0px !important;
+}
+
+.value-class {
+    background: #92f192;
+    padding: 10px 0px 10px 5px;
+    border: 1px dotted;
+}

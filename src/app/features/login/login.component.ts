@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       "mode": "5"
     };
     this.apiService.post(LOGIN_API, json).then((res: any)=>{ 
-      if(res.hasOwnProperty('error')){
+      if(res.status === "Login Failed"){
         this.toastr.error("You have entered wrong credentials",'Error');
       }
       else{
@@ -55,8 +55,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('loggedinuser', res.username);
           this.router.navigateByUrl('/' + ROUTE_BASIC); 
         } */
+        debugger;
+        localStorage.setItem("isAdmin", res.isAdmin);
         localStorage.setItem("loggedinusername", this.username);
         localStorage.setItem('loggedin', "1");
+        localStorage.setItem('pagerefresh2', "0");
         window.location.reload();
       }
     });
