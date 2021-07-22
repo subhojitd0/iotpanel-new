@@ -105,6 +105,20 @@ export class DashboardComponent implements OnInit {
           }
           case 'save': {
             localStorage.setItem("dirty", "0");
+            var json = 
+            {
+              "mode": 0,
+              "hub": this.selectedHub
+            };
+            this.apiService.post(SWITCH_API, json).then((res: any)=>{ 
+              this.switchData = res.result;
+              let i=0;
+              this.switchData.forEach((el: any)=>{
+                el.name = "S"+(i+1);
+                el.statusbool = el.status.toString() === "1" ? true: false;
+                i=i+1;
+              });
+            });
             break;
           }
           default: {
