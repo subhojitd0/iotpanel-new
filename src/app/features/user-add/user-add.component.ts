@@ -42,6 +42,7 @@ export class UserAddComponent implements OnInit {
         name: this.name,
         username: this.user,
         password: this.password,
+        isAdmin: "0",
         mode: 1
       };
       this.apiService.post(LOGIN_API, json).then((res: any)=>{

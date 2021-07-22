@@ -1,0 +1,32 @@
+<div class="container row" style="min-width: 650px !important;">
+    <p style="width: 100%;
+    /* background: blue; */
+    margin-right: 30px;
+    padding: 15px;
+    margin-left: 8px;
+    font-weight: 700;
+    font-size: 20px;"> Assign a new function </p> <br/> <br/>
+    <div class="row" style="width: 100%">
+        <mat-form-field style="margin-right: 40px; margin-left: 30px;">
+            <mat-label>Select Function</mat-label>
+            <mat-select [(ngModel)]="selectedfunction">
+                <mat-option *ngFor="let option of staticFunctions" [(value)]="option.functionid">
+                    {{option.functionname}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="margin-right: 40px;">
+            <mat-label>Enter Low Value</mat-label>
+            <input matInput placeholder="Enter the low value here" [(ngModel)]="text1">
+        </mat-form-field>
+
+        <mat-form-field style=" margin-right: 40px;">
+            <mat-label>Enter High Value</mat-label>
+            <input placeholder="Enter the high value here" matInput [(ngModel)]="text2">
+        </mat-form-field>
+
+        <br><br>
+        <button class="btn-first" mat-button (click)="save()">Assign Function</button>
+    </div>
+
+</div>

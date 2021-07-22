@@ -35,6 +35,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { DataAddComponent } from './features/data-add/data-add.component';
 import { UserViewComponent } from './features/user-view/user-view.component';
 import { UserAddComponent } from './features/user-add/user-add.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FunctionComponent } from './features/function-modal/function.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,10 +49,12 @@ import { UserAddComponent } from './features/user-add/user-add.component';
     UserRightComponent,
     DataAddComponent,
     UserViewComponent,
-    UserAddComponent
+    UserAddComponent,
+    FunctionComponent
   ],
   imports: [
     BrowserModule,
+    MatSlideToggleModule,
     AppRoutingModule,
     FlexLayoutModule,
     BrowserAnimationsModule,

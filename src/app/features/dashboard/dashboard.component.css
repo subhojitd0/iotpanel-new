@@ -1,0 +1,11 @@
+.switch-p {
+    width: 6%;
+    font-size: 17px;
+    font-weight: 500;
+    background: #e0e0c3;
+    padding: 20px;
+    height: 30%;
+    margin: 23px;
+    border: 1px dotted;
+    border-radius: 10px;
+}

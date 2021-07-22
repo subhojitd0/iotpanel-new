@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DataAddComponent } from 'src/app/features/data-add/data-add.component';
 import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
 import { SENSOR_API } from 'src/shared/services/api.url-helper';
+import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
 
 class Sensor{
@@ -51,7 +52,7 @@ export class SideNavComponent implements OnInit {
   isAdmin: string;
   count: any;
   selectedhub: any;
-  constructor(private toastr: ToastrService, private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
+  constructor(private globalSrv: GlobalService, private toastr: ToastrService, private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem("isAdmin");
@@ -127,6 +128,9 @@ export class SideNavComponent implements OnInit {
   }
   selecthub(hub: any){
     this.selectedhub = hub;
+    this.globalSrv.theItem = hub;
+    localStorage.setItem("selectedhub", hub);
+    
   }
   unassign(){
     this.toastr.info("Please wait while we are unassigning the hub");
