@@ -2,10 +2,10 @@
     width: 6%;
     font-size: 17px;
     font-weight: 500;
-    background: #e0e0c3;
+    background: #91ccff;
     padding: 20px;
     height: 30%;
     margin: 23px;
-    border: 1px dotted;
+    border: 2px solid black;
     border-radius: 10px;
 }
