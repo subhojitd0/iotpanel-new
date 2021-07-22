@@ -7,7 +7,7 @@
 <div class="row" style="height: 300px;padding: 20px;">
     <p class="switch-p" *ngFor="let switch of switchData">
         {{switch.name}}
-        <mat-slide-toggle [(ngModel)]="switch.status" class="example-margin" [color]="color" (change)="changed(switch)">
+        <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
         </mat-slide-toggle>
     </p>
 

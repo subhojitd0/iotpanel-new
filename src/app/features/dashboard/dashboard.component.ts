@@ -13,7 +13,8 @@ export interface iSwitch{
   highval: string;
   lowval: string;
   hub: string;
-  status: boolean;
+  status: string;
+  statusbool: boolean;
   name: string;
 }
 export class Switch implements iSwitch{
@@ -22,8 +23,9 @@ export class Switch implements iSwitch{
   highval: string;
   lowval: string;
   hub: string;
-  status: boolean = false;
+  status: string;
   name: string;
+  statusbool: boolean = false;
 }
 @Component({
   selector: 'app-dashboard',
@@ -55,19 +57,24 @@ export class DashboardComponent implements OnInit {
   constructor(private dialog: MatDialog, private router: Router, private apiService: ApiService,private globalSrv: GlobalService) { 
     globalSrv.itemValue.subscribe((nextValue) => {
       this.selectedHub = nextValue;
-      var json = 
+      if(nextValue){
+        var json = 
       {
         "mode": 0,
         "hub": nextValue
       };
       this.apiService.post(SWITCH_API, json).then((res: any)=>{ 
         this.switchData = res.result;
+        let i=0;
+        this.switchData.forEach((el: any)=>{
+          el.name = "S"+(i+1);
+          el.statusbool = el.status.toString() === "1" ? true: false;
+          i=i+1;
+        });
       });
-      let i=0;
-      this.switchData.forEach((el: any)=>{
-        el.name = "S"+(i+1);
-        i=i+1;
-      })
+      
+      }
+      
        //alert(nextValue);  // this will happen on every change
        //API call to refresh page with selected hub data
 
@@ -79,9 +86,9 @@ export class DashboardComponent implements OnInit {
         data: {
           hub: this.selectedHub,
           switch: row.switchid,
-          text1: row.text1,
-          text2: row.text2,
-          function: row.functionid
+          text1: row.lowval,
+          text2: row.highval,
+          function: row.func
         }
       });
 

@@ -51,10 +51,10 @@ export class FunctionComponent implements OnInit {
   save(){
     if(this.selectedfunction && this.text1 && this.text2){
       var json = {
-        switchid: this.name,
+        switchid: this.switch,
         hub: this.hub,
-        status: 1,
-        mode: 1,
+        status: "1",
+        mode: 2,
         func: this.selectedfunction,
         highval: this.text2,
         lowval: this.text1

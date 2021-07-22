@@ -55,6 +55,7 @@ export class SideNavComponent implements OnInit {
   constructor(private globalSrv: GlobalService, private toastr: ToastrService, private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.globalSrv.theItem = "";
     this.isAdmin = localStorage.getItem("isAdmin");
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
