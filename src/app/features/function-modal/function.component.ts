@@ -63,7 +63,6 @@ export class FunctionComponent implements OnInit {
         if(res.status === "Success"){
           this.toastr.success("Your function was successfully assigned");
           this.dialogRef.close('save');
-          location.reload();
         }
         else{
           this.toastr.error(res.status);

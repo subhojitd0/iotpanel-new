@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
 import { SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
@@ -54,7 +55,7 @@ export class DashboardComponent implements OnInit {
     { switchame: "S12",status : false, switchid: "8", functionid: "4", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub }
   ] */
   
-  constructor(private dialog: MatDialog, private router: Router, private apiService: ApiService,private globalSrv: GlobalService) { 
+  constructor(private toastr: ToastrService, private dialog: MatDialog, private router: Router, private apiService: ApiService,private globalSrv: GlobalService) { 
     globalSrv.itemValue.subscribe((nextValue) => {
       this.selectedHub = nextValue;
       if(nextValue){
@@ -81,7 +82,7 @@ export class DashboardComponent implements OnInit {
     })
   }
   changed(row: any){
-    if(row.status){
+    if(row.statusbool){
       const dialogRef = this.dialog.open(FunctionComponent, {
         data: {
           hub: this.selectedHub,
@@ -118,7 +119,20 @@ export class DashboardComponent implements OnInit {
       })
     }
     else{
-      //alert("Turned Off");
+      var json = {
+        switchid: row.switchid,
+        hub: this.selectedHub,
+        status: "0",
+        mode: 2,
+        func: row.func,
+        highval: row.highval,
+        lowval: row.lowval
+      };
+      this.apiService.post(SWITCH_API, json).then((res: any)=>{
+        if(res.status === "Success"){
+          this.toastr.info("The switch has been turned off");
+        }
+      });
     }
   }
   
