@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
           default: {
             let dirty = localStorage.getItem("dirty");
             if(dirty === "1"){
-              row.status = false;
+              row.statusbool = false;
               localStorage.setItem("dirty", "0");
             }
             break;
