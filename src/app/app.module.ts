@@ -37,6 +37,12 @@ import { UserViewComponent } from './features/user-view/user-view.component';
 import { UserAddComponent } from './features/user-add/user-add.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FunctionComponent } from './features/function-modal/function.component';
+/* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: '54.251.21.255',
+  port: 1883,
+  path: ''
+} */
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +85,7 @@ import { FunctionComponent } from './features/function-modal/function.component'
     MatStepperModule,
     MatTableExporterModule,
     MatExpansionModule,
+    //MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     ToastrModule.forRoot() 
   ],
   providers: [MatDialog],
