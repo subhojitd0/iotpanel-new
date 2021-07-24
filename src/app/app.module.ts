@@ -81,7 +81,7 @@ import { FunctionComponent } from './features/function-modal/function.component'
     MatExpansionModule,
     ToastrModule.forRoot() 
   ],
-  providers: [MatDialog],
+  providers: [MatDialog,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

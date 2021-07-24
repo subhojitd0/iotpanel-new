@@ -25,6 +25,7 @@ export class FunctionComponent implements OnInit {
   text2: any;
   name: any;
   staticFunctions = [
+    { functionid: "0", functionname: "No Function"},
     { functionid: "1", functionname: "Function 1" },
     { functionid: "2", functionname: "Function 2" },
     { functionid: "3", functionname: "Function 3" },
