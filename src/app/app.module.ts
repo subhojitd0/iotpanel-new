@@ -88,7 +88,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     //MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     ToastrModule.forRoot() 
   ],
-  providers: [MatDialog],
+  providers: [MatDialog,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <div class="row" style="height: 400px;padding: 20px;">
-    <div class="sensor-box row">
+    <div class="sensor-box row" *ngIf="selectedHub">
         <p class="sensor-p">
             SENSOR 1
         </p>
@@ -19,7 +19,7 @@
             SENSOR 6
         </p>
     </div>
-    <div style="width: 60%; border : 1px solid; margin-left: 10px">
+    <div style="width: 60%; border : 1px solid; margin-left: 10px" *ngIf="selectedHub">
     </div>
 </div>
 <div class="row" style="height: 200px;padding: 20px; padding-top: 0px !important;">
@@ -31,3 +31,4 @@
 
 
 </div>
+
