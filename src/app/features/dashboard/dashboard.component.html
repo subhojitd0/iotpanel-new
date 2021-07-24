@@ -1,10 +1,28 @@
-<div class="row" style="height: 300px;padding: 20px;">
-    <div class="col-xs-8">
+<div class="row" style="height: 400px;padding: 20px;">
+    <div class="sensor-box row">
+        <p class="sensor-p">
+            SENSOR 1
+        </p>
+        <p class="sensor-p">
+            SENSOR 2
+        </p>
+        <p class="sensor-p">
+            SENSOR 3
+        </p>
+        <p class="sensor-p">
+            SENSOR 4
+        </p>
+        <p class="sensor-p">
+            SENSOR 5
+        </p>
+        <p class="sensor-p">
+            SENSOR 6
+        </p>
     </div>
-    <div class="col-xs-4">
+    <div style="width: 60%; border : 1px solid; margin-left: 10px">
     </div>
 </div>
-<div class="row" style="height: 300px;padding: 20px;">
+<div class="row" style="height: 200px;padding: 20px; padding-top: 0px !important;">
     <p class="switch-p" *ngFor="let switch of switchData">
         {{switch.name}}
         <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">

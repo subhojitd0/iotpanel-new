@@ -1,6 +1,6 @@
 .switch-p {
     width: 6%;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
     background: #91ccff;
     padding: 20px;
@@ -8,4 +8,27 @@
     margin: 23px;
     border: 2px solid black;
     border-radius: 10px;
+    padding-top: 4px !important;
+    text-align: center;
+}
+
+.sensor-p {
+    width: 22%;
+    font-size: 14px;
+    font-weight: 500;
+    background: #91ccff;
+    padding: 20px;
+    height: 30%;
+    margin: 23px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 30px !important;
+    text-align: center;
+}
+
+.sensor-box {
+    background: #f1f1c2;
+    width: 35%;
+    border: 2px solid #f1f1c2;
+    margin-right: 10px;
 }
