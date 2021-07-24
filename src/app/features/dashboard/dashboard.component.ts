@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
-import { SWITCH_API } from 'src/shared/services/api.url-helper';
+import { SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
 import { FunctionComponent } from '../function-modal/function.component';
@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
   color = 'blue';
   selectedHub: string = "";
   checked = false;
+  sensors: any;
   /* staticData = [
     { switchame: "S1",status : false, switchid: "1", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
     { switchame: "S2",status : false, switchid: "2", functionid: "2", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
@@ -72,6 +73,7 @@ export class DashboardComponent implements OnInit {
           el.statusbool = el.status.toString() === "1" ? true: false;
           i=i+1;
         });
+        this.calldata(); 
       });
       
       }
@@ -149,8 +151,20 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-  
+  calldata(){
+    let json = {
+      hub: this.selectedHub 
+    }
+    this.apiService.post(SENSOR_READ_API, json).then((res: any)=>{
+      this.sensors = res;
+    });
+  }
   ngOnInit(): void {
+    let timervariale = 15000;
+    
+    setInterval(() => {
+      this.calldata(); 
+    }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
     if(this.isAdmin == "1"){

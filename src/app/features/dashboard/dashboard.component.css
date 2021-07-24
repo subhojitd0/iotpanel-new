@@ -1,10 +1,8 @@
 .switch-p {
-    width: 6%;
     font-size: 14px;
     font-weight: 500;
     background: #91ccff;
     padding: 20px;
-    height: 30%;
     margin: 23px;
     border: 2px solid black;
     border-radius: 10px;
@@ -13,7 +11,6 @@
 }
 
 .sensor-p {
-    width: 22%;
     font-size: 14px;
     font-weight: 500;
     background: #91ccff;
@@ -31,4 +28,11 @@
     width: 35%;
     border: 2px solid #f1f1c2;
     margin-right: 10px;
+}
+
+.card-title {
+    background: white;
+    padding: 10px;
+    color: #323f58 !important;
+    font-weight: 700;
 }

@@ -1,34 +1,153 @@
-<div class="row" style="height: 400px;padding: 20px;">
-    <div class="sensor-box row" *ngIf="selectedHub">
-        <p class="sensor-p">
+<!-- <div class="row" style="height: 400px;padding: 20px;">
+    <div class="sensor-box col-sm-5 row" *ngIf="selectedHub">
+        <p class="sensor-p col-sm-4">
             SENSOR 1
         </p>
-        <p class="sensor-p">
-            SENSOR 2
-        </p>
-        <p class="sensor-p">
-            SENSOR 3
-        </p>
-        <p class="sensor-p">
-            SENSOR 4
-        </p>
-        <p class="sensor-p">
-            SENSOR 5
-        </p>
-        <p class="sensor-p">
-            SENSOR 6
-        </p>
     </div>
-    <div style="width: 60%; border : 1px solid; margin-left: 10px" *ngIf="selectedHub">
+    <div style="border : 1px solid;" class="col-sm-6" *ngIf="selectedHub">
     </div>
 </div>
 <div class="row" style="height: 200px;padding: 20px; padding-top: 0px !important;">
     <p class="switch-p" *ngFor="let switch of switchData">
         {{switch.name}}
-        <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
-        </mat-slide-toggle>
+        <input type="checkbox" [(ngModel)]="switch.statusbool" (change)="changed(switch)" data-toggle="toggle" data-size="sm">
     </p>
 
 
-</div>
+</div> -->
 
+<div class="container-fluid page-body-wrapper">
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="home-tab">
+                        <div class="tab-content tab-content-basic">
+                            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                                <div class="row">
+                                    <div class="col-lg-5 d-flex flex-column">
+                                        <div class="col-md-12" *ngFor="let se of sensors">
+                                            <div class="row flex-grow">
+                                                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                        <div class="card-body pb-0" style="padding: 5px !important">
+                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                                                <div class="col-sm-4">
+                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                    font-family: cursive;
+                                                                    color: white;">Temparature</p>
+                                                                    <h2 style="    font-size: 24px !IMPORTANT;
+                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- device_thermostat -->arrow_upward
+                                                                        </span></h2>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                    font-family: cursive;
+                                                                    color: white;">Humidity</p>
+                                                                    <h2 style="    font-size: 24px !IMPORTANT;
+                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        filter_drama
+                                                                        </span></h2>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                    font-family: cursive;
+                                                                    color: white;">CO2</p>
+                                                                    <h2 style="    font-size: 24px !IMPORTANT;
+                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        local_gas_station
+                                                                        </span></h2>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
+                                                                        <div class="circle-progress-width">
+                                                                            <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="text-small mb-2">Total Visitors</p>
+                                                                            <h4 class="mb-0 fw-bold">26.80%</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <div class="circle-progress-width">
+                                                                            <div id="visitperday" class="progressbar-js-circle pr-2"></div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="text-small mb-2">Visits per day</p>
+                                                                            <h4 class="mb-0 fw-bold">9065</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-lg-7 d-flex flex-column" *ngIf="selectedHub">
+                                        <div class="row flex-grow">
+                                            <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                <div class="card card-rounded">
+                                                    <div class="card-body">
+                                                        <div class="d-sm-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h4 class="card-title card-title-dash">Sensor Data Chart</h4>
+                                                                <h5 class="card-subtitle card-subtitle-dash">Placeholder for graphs based on sensor data</h5>
+                                                            </div>
+                                                            <div id="performance-line-legend"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <p class="col-sm-1 d-flex flex-column switch-p" *ngFor="let switch of switchData">
+                                            {{switch.name}}
+                                            <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
+                                            </mat-slide-toggle>
+                                        </p>
+                                        <!-- <p class="col-sm-1 d-flex flex-column" *ngFor="let switch of switchData">
+                                            {{switch.name}}
+                                            <input type="checkbox" [(ngModel)]="switch.statusbool" (change)="changed(switch)" data-toggle="toggle" data-size="sm">
+                                        </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <!-- <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
+            </div>
+        </footer> -->
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+</div>
