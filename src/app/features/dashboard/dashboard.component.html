@@ -121,7 +121,7 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="row">
+                                    <div class="row" style="margin: 20px;">
                                         <p class="col-sm-1 d-flex flex-column switch-p" *ngFor="let switch of switchData">
                                             {{switch.name}}
                                             <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
