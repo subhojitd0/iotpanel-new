@@ -32,7 +32,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -102,7 +103,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -151,7 +153,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -228,7 +231,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -277,7 +281,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -347,7 +352,8 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;

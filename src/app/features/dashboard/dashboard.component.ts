@@ -162,17 +162,17 @@ export class DashboardComponent implements OnInit {
       hub: this.selectedHub 
     }
     this.apiService.post(SENSOR_READ_API, json).then((res: any)=>{
-      if(res[0].hasOwnProperty("error")){
+      /* if(res[0].hasOwnProperty("error")){
 
       }
-      else{
+      else{ */
         this.sensors1 = res;
         this.sensors2 = res;
         this.sensors3 = res;
         this.sensors4 = res;
         this.sensors5 = res;
         this.sensors6 = res;
-      }
+      /* } */
       
     });
   }
