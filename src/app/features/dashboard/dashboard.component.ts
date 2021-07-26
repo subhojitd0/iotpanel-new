@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
-import { SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
+import { GRAPH_API, SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
 import { FunctionComponent } from '../function-modal/function.component';
@@ -46,41 +46,47 @@ export class DashboardComponent implements OnInit {
   sensors4:  any[]=[];
   sensors5:  any[]=[];
   sensors6:  any[]=[];
-  /* staticData = [
-    { switchame: "S1",status : false, switchid: "1", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S2",status : false, switchid: "2", functionid: "2", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S3",status : false, switchid: "3", functionid: "3", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S4",status : false, switchid: "4", functionid: "4", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S5",status : false, switchid: "5", functionid: "2", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S6",status : false, switchid: "6", functionid: "3", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S7",status : false, switchid: "7", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S8",status : false, switchid: "8", functionid: "4", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S9",status : false, switchid: "7", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S10",status : false, switchid: "8", functionid: "4", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S11",status : false, switchid: "7", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
-    { switchame: "S12",status : false, switchid: "8", functionid: "4", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub }
-  ] */
+  view: any[] = [700, 300];
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Day';
+  yAxisLabel: string = 'Value';
+  timeline: boolean = true;
+  selectedfilter: any;
+  selectedsensor: any;
+  multi: any[] = [];
   
+  colorScheme = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  };
+  temps: any;
+  humidity: any;
+  co2: any;
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
   constructor(private toastr: ToastrService, private dialog: MatDialog, private router: Router, private apiService: ApiService,private globalSrv: GlobalService) { 
+    //Object.assign(this, { multi });
     globalSrv.itemValue.subscribe((nextValue) => {
       this.selectedHub = nextValue;
       if(nextValue){
-        var json = 
-      {
-        "mode": 0,
-        "hub": nextValue
-      };
-      this.apiService.post(SWITCH_API, json).then((res: any)=>{ 
-        this.switchData = res.result;
-        let i=0;
-        this.switchData.forEach((el: any)=>{
-          el.name = "S"+(i+1);
-          el.statusbool = el.status.toString() === "1" ? true: false;
-          i=i+1;
-        });
         this.calldata(); 
-      });
-      
       }
       
        //alert(nextValue);  // this will happen on every change
@@ -158,26 +164,76 @@ export class DashboardComponent implements OnInit {
     }
   }
   calldata(){
-    let json = {
-      hub: this.selectedHub 
-    }
-    this.apiService.post(SENSOR_READ_API, json).then((res: any)=>{
-      /* if(res[0].hasOwnProperty("error")){
-
+    var json = 
+    {
+      "mode": 0,
+      "hub": this.selectedHub
+    };
+    this.apiService.post(SWITCH_API, json).then((res: any)=>{ 
+      this.switchData = res.result;
+      let i=0;
+      this.switchData.forEach((el: any)=>{
+        if(!el.name)
+          el.name = "S"+(i+1);
+        el.statusbool = el.status.toString() === "1" ? true: false;
+        i=i+1;
+      });
+      let json2 = {
+        hub: this.selectedHub 
       }
-      else{ */
-        this.sensors1 = res;
-        this.sensors2 = res;
-        this.sensors3 = res;
-        this.sensors4 = res;
-        this.sensors5 = res;
-        this.sensors6 = res;
-      /* } */
-      
+      this.apiService.post(SENSOR_READ_API, json2).then((res: any)=>{
+        /* if(res[0].hasOwnProperty("error")){
+  
+        }
+        else{ */
+          this.sensors1 = res;
+          this.sensors2 = res;
+          this.sensors3 = res;
+          this.sensors4 = res;
+          this.sensors5 = res;
+          this.sensors6 = res;
+          this.selectedsensor = "S001";
+          this.selectedfilter = "weekly";
+        /* } */
+          let json3 = {
+            sensor: this.selectedsensor,
+          }
+          this.apiService.post(GRAPH_API, json3).then((res: any)=>{
+            this.temps = res.temp;
+            this.humidity = res.humidity;
+            this.co2 = res.co2;
+            this.multi = [];
+            this.multi.push({
+              name: "Temparature",
+              series: this.temps
+            });
+            this.multi.push({
+              name: "Humidity",
+              series: this.humidity
+            });
+            this.multi.push({
+              name: "CO2",
+              series: this.co2
+            });
+          });
+      }); 
     });
+    
   }
   saveswitchname(data: any){
-    alert("New name is : "  + data.name);
+    debugger;
+    //alert("New name is : "  + data.name);
+    var json = {
+      switchid: data.switchid,
+      hub: this.selectedHub,
+      name: data.name,
+      mode: "3"
+    }
+    this.apiService.post(SWITCH_API, json).then((res: any)=>{
+      if(res.status === "Success"){
+        this.toastr.info("The switch has been renamed");
+      }
+    });
   }
   ngOnInit(): void {
     let timervariale = 15000;

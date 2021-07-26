@@ -41,7 +41,7 @@
                                                                     color: white;">Temparature</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
                                                                     color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->thermostat
+                                                                        <!-- thermostat -->thermostat
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -68,36 +68,6 @@
 
 
                                                 </div>
-                                                <!-- <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                                                        <div class="circle-progress-width">
-                                                                            <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <p class="text-small mb-2">Total Visitors</p>
-                                                                            <h4 class="mb-0 fw-bold">26.80%</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <div class="circle-progress-width">
-                                                                            <div id="visitperday" class="progressbar-js-circle pr-2"></div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <p class="text-small mb-2">Visits per day</p>
-                                                                            <h4 class="mb-0 fw-bold">9065</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors2">
@@ -105,43 +75,43 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Temparature</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- thermostat -->arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Humidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">CO2</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Pressure</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                             </div>
@@ -155,42 +125,42 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">PH</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- thermostat -->arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">EC</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Temparature</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Turbidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         arrow_upward
                                                                         </span></h2>
                                                                 </div>
@@ -206,16 +176,32 @@
                                         <div class="row flex-grow">
                                             <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                                                 <div class="card card-rounded" style="height: 430px !important;">
-                                                    <div class="card-body">
-                                                        <div class="d-sm-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <h4 class="card-title card-title-dash">Sensor Data Chart</h4>
-                                                                <h5 class="card-subtitle card-subtitle-dash">Placeholder for graphs based on sensor data</h5>
-                                                            </div>
-                                                            <div id="performance-line-legend">
-                                                                Graph Here
-                                                            </div>
-                                                        </div>
+                                                    <p style="padding-left: 20px; padding-top: 20px;">
+                                                        Filter Graph by :
+                                                        <mat-form-field style="margin-left: 20px;">
+                                                            <mat-label>Date Filters : </mat-label>
+                                                            <mat-select [(ngModel)]="selectedfilter">
+                                                                <mat-option value="weekly">
+                                                                    Weekly
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                        <mat-form-field style="margin-left: 20px;">
+                                                            <mat-label>Sensor Filters : </mat-label>
+                                                            <mat-select [(ngModel)]="selectedsensor">
+                                                                <mat-option value="S001">
+                                                                    S001
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </p>
+                                                    <div class="card-body" style="font-size: 20px;
+                                                    padding-top: 30px !important;
+                                                    padding-left: 5px !important;">
+
+                                                        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)"
+                                                            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                                        </ngx-charts-line-chart>
 
                                                     </div>
                                                 </div>
@@ -233,43 +219,44 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
+                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Moisture</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- thermostat -->arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
-                                                                    color: white;">Temparature 1</p>
+                                                                    font-family: Arial, Helvetica, sans-serif;;
+                                                                    color: white;">Temp 1</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
-                                                                    color: white;">Temparature 2</p>
+                                                                    font-family: Arial, Helvetica, sans-serif;;
+                                                                    color: white;">Temp 2</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Humidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                             </div>
@@ -283,34 +270,34 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Voltage</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- thermostat -->arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Current</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Counter</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                             </div>
@@ -354,43 +341,43 @@
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Temparature</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        <!-- thermostat -->arrow_upward
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Humidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">CO2</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0.00<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">GPS</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                    color: white !important;" class="text-info">0<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                             </div>
@@ -401,16 +388,16 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-lg-7 flex-column" *ngIf="selectedHub">
+                                    <div class="col-lg-7 flex-column" style="margin-top: -80px" *ngIf="selectedHub">
                                         <div class="row" style="margin: 20px;">
                                             <p class="col-sm-2 d-flex flex-column switch-p" *ngFor="let switch of switchData">
-                                                <span style="margin-left: 25px;background: #01ff01;
+                                                <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 25px;background: #01ff01;
                                                     width: 10px;height: 10px;">&nbsp;</span>
-                                                <span style="margin-left: 25px;background:red;
+                                                <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 25px;background:red;
                                                         width: 10px;height: 10px;">&nbsp;</span>
                                                 <input type="text" style="background: none;
                                                 border: none;
-                                                text-align: center;" [(ngModel)]="switch.name" (keyup)="saveswitchname(switch)" />
+                                                text-align: center;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
                                                 <mat-slide-toggle style="margin-left: 10px;" [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
                                                 </mat-slide-toggle>
                                                 <!-- <input type="checkbox" checked data-toggle="toggle"> -->

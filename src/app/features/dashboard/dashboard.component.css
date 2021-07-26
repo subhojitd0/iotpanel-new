@@ -3,7 +3,7 @@
     font-weight: 500;
     background: #798caf;
     padding: 20px;
-    margin: 23px;
+    margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
     padding-top: 10px !important;
@@ -24,7 +24,7 @@
     border: 2px solid black;
     border-radius: 10px;
     padding-top: 30px !important;
-    align-items:  center;
+    align-items: center;
 }
 
 .sensor-box {

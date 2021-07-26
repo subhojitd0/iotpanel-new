@@ -37,6 +37,7 @@ import { UserViewComponent } from './features/user-view/user-view.component';
 import { UserAddComponent } from './features/user-add/user-add.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FunctionComponent } from './features/function-modal/function.component';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
@@ -65,6 +66,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     FlexLayoutModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    NgxChartsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
