@@ -31,21 +31,21 @@
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card bg-primary card-rounded" style="background: #323f58 !important">
-                                                        <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                        <div class="card-body pb-0" style="padding: 5px !important;">
+                                                            <h4 class="card-title card-title-dash text-white mb-4">Dashboard Pane for {{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Temparature</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
                                                                     color: white !important;" class="text-info">{{se.da}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        <!-- device_thermostat -->arrow_upward
+                                                                        <!-- device_thermostat -->thermostat
                                                                         </span></h2>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">Humidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
                                                                     color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
@@ -54,16 +54,18 @@
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: cursive;
+                                                                    font-family: Arial, Helvetica, sans-serif;;
                                                                     color: white;">CO2</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
                                                                     color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
-                                                                        local_gas_station
+                                                                        ac_unit
                                                                         </span></h2>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                                 <!-- <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                     <div class="card card-rounded">
@@ -98,7 +100,7 @@
                                             </div>
                                         </div>
 
-
+                                                    
                                     </div>
                                     <div class="col-lg-7 d-flex flex-column" *ngIf="selectedHub">
                                         <div class="row flex-grow">
@@ -120,9 +122,11 @@
                                     </div>
 
                                 </div>
+                                
+                                
                                 <div class="row">
                                     <div class="row" style="margin: 20px;">
-                                        <p class="col-sm-1 d-flex flex-column switch-p" *ngFor="let switch of switchData">
+                                        <p class="col-sm-1 d-flex flex-column switch-p"  *ngFor="let switch of switchData">
                                             {{switch.name}}
                                             <mat-slide-toggle [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
                                             </mat-slide-toggle>
@@ -133,6 +137,11 @@
                                         </p> -->
                                     </div>
                                 </div>
+
+
+                               
+
+
                             </div>
                         </div>
                     </div>

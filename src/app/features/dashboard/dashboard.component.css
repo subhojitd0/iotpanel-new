@@ -20,7 +20,7 @@
     border: 2px solid black;
     border-radius: 10px;
     padding-top: 30px !important;
-    text-align: center;
+    align-items:  center;
 }
 
 .sensor-box {
