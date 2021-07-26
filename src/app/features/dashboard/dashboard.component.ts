@@ -40,7 +40,12 @@ export class DashboardComponent implements OnInit {
   color = 'blue';
   selectedHub: string = "";
   checked = false;
-  sensors: any;
+  sensors1: any[]=[];
+  sensors2:  any[]=[];
+  sensors3:  any[]=[];
+  sensors4:  any[]=[];
+  sensors5:  any[]=[];
+  sensors6:  any[]=[];
   /* staticData = [
     { switchame: "S1",status : false, switchid: "1", functionid: "1", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
     { switchame: "S2",status : false, switchid: "2", functionid: "2", text1: "Text 1", text2: "Text 2", hubid: this.selectedHub },
@@ -86,6 +91,7 @@ export class DashboardComponent implements OnInit {
   changed(row: any){
     if(row.statusbool){
       const dialogRef = this.dialog.open(FunctionComponent, {
+        panelClass: 'custom-dialog-container',
         data: {
           hub: this.selectedHub,
           switch: row.switchid,
@@ -156,8 +162,22 @@ export class DashboardComponent implements OnInit {
       hub: this.selectedHub 
     }
     this.apiService.post(SENSOR_READ_API, json).then((res: any)=>{
-      this.sensors = res;
+      if(res[0].hasOwnProperty("error")){
+
+      }
+      else{
+        this.sensors1 = res;
+        this.sensors2 = res;
+        this.sensors3 = res;
+        this.sensors4 = res;
+        this.sensors5 = res;
+        this.sensors6 = res;
+      }
+      
     });
+  }
+  saveswitchname(data: any){
+    alert("New name is : "  + data.name);
   }
   ngOnInit(): void {
     let timervariale = 15000;
