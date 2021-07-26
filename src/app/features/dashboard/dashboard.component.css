@@ -10,6 +10,10 @@
     text-align: center;
 }
 
+.custom-dialog-container .mat-dialog-container {
+    width: 70% !important;
+}
+
 .sensor-p {
     font-size: 14px;
     font-weight: 500;
