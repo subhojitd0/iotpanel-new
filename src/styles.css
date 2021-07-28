@@ -2,7 +2,6 @@
 
 @import '~ngx-toastr/toastr.css';
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~bootstrap4-toggle/css/bootstrap4-toggle.min.css";
 html,
 body {
     height: 100%;
