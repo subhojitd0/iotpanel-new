@@ -30,10 +30,10 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors1">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4>
+                                                            <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4>
+                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}}</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -47,7 +47,7 @@
                                                                 <div class="col-sm-4">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
                                                                     font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">Humidity</p>
+                                                                    color: white;" >Humidity</p>
                                                                     <h2 style="    font-size: 24px !IMPORTANT;
                                                                     color: white !important;" class="text-info">{{se.db}}<span style="font-size: 17px !important; margin-left: 10px;" class="material-icons">
                                                                         filter_drama
@@ -73,9 +73,9 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors2">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4>
                                                             <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
@@ -123,9 +123,9 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors3">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4>
                                                             <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
@@ -175,7 +175,7 @@
                                     <div class="col-lg-7 flex-column" *ngIf="selectedHub">
                                         <div class="row flex-grow">
                                             <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                                                <div class="card card-rounded" style="height: 430px !important;">
+                                                <div class="card card-rounded" style="height: 430px !important; border-radius: 10px;">
                                                     <p style="padding-left: 20px; padding-top: 20px;">
                                                         Filter Graph by :
                                                         <mat-form-field style="margin-left: 20px;">
@@ -217,11 +217,11 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors4">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
                                                             <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
                                                             <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
-                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4>
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
                                                                     <p class="status-summary-ight-white mb-1" style="font-size: 12px;
@@ -268,9 +268,9 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors5">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4>
                                                             <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-4">
@@ -339,9 +339,9 @@
                                         <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of sensors6">
                                             <div class="row flex-grow">
                                                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important">
+                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
                                                         <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <h4 class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px; ">No Data Available</h4>
                                                             <!-- <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
                                                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                                                 <div class="col-sm-3">
@@ -397,7 +397,7 @@
                                                         width: 10px;height: 10px;">&nbsp;</span>
                                                 <input type="text" style="background: none;
                                                 border: none;
-                                                text-align: center;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
+                                                text-align: center;color:white;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
                                                 <mat-slide-toggle style="margin-left: 10px;" [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
                                                 </mat-slide-toggle>
                                                 <!-- <input type="checkbox" checked data-toggle="toggle"> -->
