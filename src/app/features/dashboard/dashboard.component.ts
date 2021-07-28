@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
   selectedsensor: any;
   multi: any[] = [];
   defaultSensor = {
-    sensor: "No Data Available",
+    sensor: "Sensor Unavailable",
     da: "0.00",
     db: "0.00",
     dc: "0.00",
