@@ -62,13 +62,23 @@ export class DashboardComponent implements OnInit {
   selectedfilter: any;
   selectedsensor: any;
   multi: any[] = [];
-  
+  defaultSensor = {
+    sensor: "No Data Available",
+    da: "0.00",
+    db: "0.00",
+    dc: "0.00",
+    dd: "0.00",
+    type: "1"
+  }
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
   temps: any;
   humidity: any;
   co2: any;
+  allSensors: any[] = [];
+  topSensors: any[] = [];
+  bottomSensors: any[] = [];
 
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -186,12 +196,96 @@ export class DashboardComponent implements OnInit {
   
         }
         else{ */
-          this.sensors1 = res;
-          this.sensors2 = res;
-          this.sensors3 = res;
-          this.sensors4 = res;
-          this.sensors5 = res;
-          this.sensors6 = res;
+          this.allSensors = res;
+          let remct = 6 - res.length;
+          for(let j=0; j<remct; j++){
+            this.allSensors.push(this.defaultSensor);
+          }
+          this.allSensors.forEach(x=>{
+            if(x.hasOwnProperty('error')){
+              x.sensor= "No Data Available";
+              x.da= "0.00";
+              x.db= "0.00";
+              x.dc= "0.00";
+              x.dd= "0.00";
+              x.type= "1";
+            }
+            if(x.type === "1"){
+              x.datext = "Temparature";
+              x.dbtext = "Humidity";
+              x.dctext = "CO2";
+              x.ddtext = "None";
+              x.dd = "-";
+              x.daicon = "thermostat";
+              x.dbicon = "filter_drama";
+              x.dcicon = "ac_unit";
+              x.ddicon = "filter_drama";
+            }
+            if(x.type === "2"){
+              x.datext = "Temparature";
+              x.dbtext = "Humidity";
+              x.dctext = "CO2";
+              x.ddtext = "Pressure";
+              x.dd = "-";
+              x.daicon = "thermostat";
+              x.dbicon = "filter_drama";
+              x.dcicon = "ac_unit";
+              x.ddicon = "compress";
+            }
+            if(x.type === "3"){
+              x.datext = "PH";
+              x.dbtext = "EC";
+              x.dctext = "Temparature";
+              x.ddtext = "Turidity";
+              x.dd = "-";
+              x.daicon = "ac_unit";
+              x.dbicon = "filter_drama";
+              x.dcicon = "thermostat";
+              x.ddicon = "ac_unit";
+            }
+            if(x.type === "4"){
+              x.datext = "Moisture";
+              x.dbtext = "Temp 1";
+              x.dctext = "Temp 2";
+              x.ddtext = "Humidity";
+              x.dd = "-";
+              x.daicon = "arrow_upward";
+              x.dbicon = "thermostat";
+              x.dcicon = "thermostat";
+              x.ddicon = "filter_drama";
+            }
+            if(x.type === "5"){
+              x.datext = "Voltage";
+              x.dbtext = "Current";
+              x.dctext = "Counter";
+              x.ddtext = "None";
+              x.dd = "-";
+              x.daicon = "electrical_services";
+              x.dbicon = "bolt";
+              x.dcicon = "countertops";
+              x.ddicon = "filter_drama";
+            }
+            if(x.type === "6"){
+              x.datext = "Temparature";
+              x.dbtext = "Humidity";
+              x.dctext = "CO2";
+              x.ddtext = "GPS";
+              x.dd = "-";
+              x.daicon = "thermostat";
+              x.dbicon = "filter_drama";
+              x.dcicon = "ac_unit";
+              x.ddicon = "share_location";
+            }
+          })
+          this.topSensors = this.allSensors.slice(0,3);
+          this.bottomSensors = this.allSensors.slice(3,6);
+          /* this.sensors1 = res.filter(x=>x.type === "1");
+          this.sensors2 = res.filter(x=>x.type === "2");
+          this.sensors3 = res.filter(x=>x.type === "3");
+          this.sensors4 = res.filter(x=>x.type === "4");
+          this.sensors5 = res.filter(x=>x.type === "5");
+          this.sensors6 = res.filter(x=>x.type === "6"); */
+
           this.selectedsensor = "S001";
           this.selectedfilter = "weekly";
         /* } */
@@ -212,7 +306,7 @@ export class DashboardComponent implements OnInit {
               series: this.humidity
             });
             this.multi.push({
-              name: "CO2",
+              name: "CO2 / 10",
               series: this.co2
             });
           });
@@ -239,7 +333,7 @@ export class DashboardComponent implements OnInit {
     let timervariale = 15000;
     
     setInterval(() => {
-      this.calldata(); 
+     // this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
