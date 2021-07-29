@@ -61,7 +61,7 @@
     overflow: hidden;
     cursor: pointer;
     border: 2px solid #999999;
-    border-radius: 0px;
+    border-radius: 20px;
 }
 
 .onoffswitch-inner {
@@ -88,9 +88,10 @@
 
 .onoffswitch-inner:before {
     content: "ON";
-    padding-left: 10px;
-    background-color: #34A7C1;
+    padding-left: 0px;
+    background-color: #1ef10b;
     color: #FFFFFF;
+    border-radius: 20px;
 }
 
 .onoffswitch-inner:after {
@@ -99,19 +100,22 @@
     background-color: #EEEEEE;
     color: #999999;
     text-align: right;
+    border-radius: 20px;
 }
 
 .onoffswitch-switch {
     display: block;
-    width: 18px;
+    width: 30px;
     margin: 6px;
+    margin-right: 0px !important;
     background: #FFFFFF;
     position: absolute;
-    top: -9px;
+    top: -7px;
     bottom: 0;
-    right: 56px;
+    right: 60px;
+    height: 35px;
+    border-radius: 20px;
     border: 2px solid #999999;
-    border-radius: 0px;
     transition: all 0.3s ease-in 0s;
 }
 
