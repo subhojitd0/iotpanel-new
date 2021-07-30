@@ -69,7 +69,14 @@ export class DashboardComponent implements OnInit {
     dc: "0.00",
     dd: "0.00",
     type: "1"
-  }
+  };
+  staticFunctions = [
+    { functionid: "0", functionname: "No Function"},
+    { functionid: "1", functionname: "Function 1" },
+    { functionid: "2", functionname: "Function 2" },
+    { functionid: "3", functionname: "Function 3" },
+    { functionid: "4", functionname: "Function 4" }
+  ]
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
@@ -79,6 +86,7 @@ export class DashboardComponent implements OnInit {
   allSensors: any[] = [];
   topSensors: any[] = [];
   bottomSensors: any[] = [];
+  sensornames: any[];
 
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -186,6 +194,7 @@ export class DashboardComponent implements OnInit {
         if(!el.name)
           el.name = "S"+(i+1);
         el.statusbool = el.status.toString() === "1" ? true: false;
+        el.functionname = this.staticFunctions.filter(x=>x.functionid === el.func)[0].functionname;
         i=i+1;
       });
       let json2 = {
@@ -197,6 +206,8 @@ export class DashboardComponent implements OnInit {
         }
         else{ */
           this.allSensors = res;
+          debugger;
+          this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
             this.allSensors.push(this.defaultSensor);
@@ -286,13 +297,15 @@ export class DashboardComponent implements OnInit {
           this.sensors5 = res.filter(x=>x.type === "5");
           this.sensors6 = res.filter(x=>x.type === "6"); */
 
-          this.selectedsensor = "S001";
-          this.selectedfilter = "weekly";
+          /* this.selectedsensor = "S001";
+          this.selectedfilter = "weekly"; */
         /* } */
           let json3 = {
-            sensor: this.selectedsensor,
+            sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
+            day: this.selectedfilter ? this.selectedfilter : "0"
           }
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
+            debugger;
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
@@ -327,6 +340,31 @@ export class DashboardComponent implements OnInit {
       if(res.status === "Success"){
         this.toastr.info("The switch has been renamed");
       }
+    });
+  }
+  callgraph(){
+    let json3 = {
+      sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
+      day: this.selectedfilter ? this.selectedfilter : "0"
+    }
+    this.apiService.post(GRAPH_API, json3).then((res: any)=>{
+      debugger;
+      this.temps = res.temp;
+      this.humidity = res.humidity;
+      this.co2 = res.co2;
+      this.multi = [];
+      this.multi.push({
+        name: "Temparature",
+        series: this.temps
+      });
+      this.multi.push({
+        name: "Humidity",
+        series: this.humidity
+      });
+      this.multi.push({
+        name: "CO2 / 10",
+        series: this.co2
+      });
     });
   }
   ngOnInit(): void {

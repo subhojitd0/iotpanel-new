@@ -26,147 +26,109 @@
                         <div class="tab-content tab-content-basic">
                             <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                                 <div class="row">
-                                    <div class="col-lg-5 flex-column">
-                                        <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of topSensors">
-                                            <div class="row flex-grow">
-                                                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
-                                                        <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4> -->
-                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}}</h4>
-                                                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.datext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        <!-- thermostat -->{{se.daicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.dbtext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.dbicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.dctext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.dcicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.ddtext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.ddicon}}
-                                                                        </span></h2>
+                                    <div class="col-lg-5">
+                                        <div class="col-lg-12 flex-column">
+                                            <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of topSensors">
+                                                <div class="row flex-grow">
+                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
+                                                            <div class="card-body pb-0" style="padding: 5px !important">
+                                                                <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4> -->
+                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}}</h4>
+                                                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.datext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            <!-- thermostat -->{{se.daicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.dbtext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dbicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.dctext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dcicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.ddtext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.ddicon}}
+                                                                            </span></h2>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-lg-7 flex-column" *ngIf="selectedHub">
-                                        <div class="row flex-grow">
-                                            <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                                                <div class="card card-rounded" style="height: 430px !important; border-radius: 10px;">
-                                                    <p style="padding-left: 20px; padding-top: 20px;">
-                                                        Filter Graph by :
-                                                        <mat-form-field style="margin-left: 20px;">
-                                                            <mat-label>Date Filters : </mat-label>
-                                                            <mat-select [(ngModel)]="selectedfilter">
-                                                                <mat-option value="weekly">
-                                                                    Weekly
-                                                                </mat-option>
-                                                            </mat-select>
-                                                        </mat-form-field>
-                                                        <mat-form-field style="margin-left: 20px;">
-                                                            <mat-label>Sensor Filters : </mat-label>
-                                                            <mat-select [(ngModel)]="selectedsensor">
-                                                                <mat-option value="S001">
-                                                                    S001
-                                                                </mat-option>
-                                                            </mat-select>
-                                                        </mat-form-field>
-                                                    </p>
-                                                    <div class="card-body" style="font-size: 20px;
-                                                    padding-top: 30px !important;
-                                                    padding-left: 5px !important;">
-
-                                                        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)"
-                                                            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-                                                        </ngx-charts-line-chart>
 
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                    </div>
+                                        <div class="col-lg-12 flex-column">
 
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-5 flex-column">
-
-                                        <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of bottomSensors">
-                                            <div class="row flex-grow">
-                                                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
-                                                        <div class="card-body pb-0" style="padding: 5px !important">
-                                                            <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
-                                                            <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
-                                                            <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}}</h4>
-                                                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.datext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        <!-- thermostat -->{{se.daicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.dbtext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.dbicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.dctext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.dcicon}}
-                                                                        </span></h2>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                    font-family: Arial, Helvetica, sans-serif;;
-                                                                    color: white;">{{se.ddtext}}</p>
-                                                                    <h2 style="    font-size: 14px !IMPORTANT;
-                                                                    color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                        {{se.ddicon}}
-                                                                        </span></h2>
+                                            <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of bottomSensors">
+                                                <div class="row flex-grow">
+                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
+                                                            <div class="card-body pb-0" style="padding: 5px !important">
+                                                                <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                                <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
+                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}}</h4>
+                                                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.datext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            <!-- thermostat -->{{se.daicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.dbtext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dbicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.dctext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dcicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;;
+                                                                        color: white;">{{se.ddtext}}</p>
+                                                                        <h2 style="    font-size: 14px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.ddicon}}
+                                                                            </span></h2>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -175,51 +137,79 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7 flex-column" style="margin-top: -80px" *ngIf="selectedHub">
-                                        <div class="row" style="margin: 20px;">
-                                            <div class="col-sm-2 d-flex flex-column switch-p" *ngFor="let switch of switchData">
-                                                <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 40px;background: #01ff01;
-                                                    width: 10px;height: 10px;">&nbsp;</span>
-                                                <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 40px;background:red;
-                                                        width: 10px;height: 10px;">&nbsp;</span>
-                                                <input type="text" style="background: none;
-                                                border: none;
-                                                text-align: center;
-                                                color: white;
-                                                font-family: cursive;
-                                                margin-bottom: 10px;
-                                                margin-top: 10px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                <div class="onoffswitch">
+                                    <div class="col-lg-7">
+                                        <div class="col-lg-12 flex-column" *ngIf="selectedHub">
+                                            <div class="row flex-grow">
+                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded" style="height: 430px !important; border-radius: 10px;">
+                                                        <p style="padding-left: 20px; padding-top: 20px;">
+                                                            Filter Graph by :
+                                                            <mat-form-field style="margin-left: 20px;">
+                                                                <mat-label>Date Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [value]="selectedfilter">
+                                                                    <mat-option value="0">
+                                                                        Daily
+                                                                    </mat-option>
+                                                                    <mat-option value="7">
+                                                                        Weekly
+                                                                    </mat-option>
+                                                                    <mat-option value="30">
+                                                                        Monthly
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                            <mat-form-field style="margin-left: 20px;">
+                                                                <mat-label>Sensor Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [value]="selectedsensor">
+                                                                    <mat-option *ngFor="let row of sensornames" [value]="row">
+                                                                        {{row}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </p>
+                                                        <div class="card-body" style="font-size: 20px;
+                                                        padding-top: 30px !important;
+                                                        padding-left: 5px !important;">
 
-                                                    <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
-                                                    <label class="onoffswitch-label" [attr.for]="switch.switchid">
-                                                        <span class="onoffswitch-inner"></span>
-                                                        <span class="onoffswitch-switch"></span>
-                                                    </label>
+                                                            <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)"
+                                                                (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                                            </ngx-charts-line-chart>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <!-- <p class="col-sm-2 d-flex flex-column switch-p" *ngFor="let switch of switchData">
-                                                <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 25px;background: #01ff01;
-                                                    width: 10px;height: 10px;">&nbsp;</span>
-                                                <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 25px;background:red;
+                                        </div>
+                                        <div class="col-lg-12 flex-column" *ngIf="selectedHub">
+                                            <div class="row" style="margin: 20px;">
+                                                <div class="col-sm-2 d-flex flex-column switch-p" *ngFor="let switch of switchData">
+                                                    <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 40px;background: #01ff01;
                                                         width: 10px;height: 10px;">&nbsp;</span>
-                                                <input type="text" style="background: none;
-                                                border: none;
-                                                text-align: center;color:white;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                <mat-slide-toggle style="margin-left: 10px;" [(ngModel)]="switch.statusbool" class="example-margin" [color]="color" (change)="changed(switch)">
-                                                </mat-slide-toggle> 
-                                            </p> -->
+                                                    <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 40px;background:red;
+                                                            width: 10px;height: 10px;">&nbsp;</span>
+                                                    <input type="text" style="background: none;
+                                                    border: none;
+                                                    text-align: center;
+                                                    color: white;
+                                                    font-family: cursive;
+                                                    margin-bottom: 10px;
+                                                    margin-top: 10px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
+                                                    <div class="onoffswitch">
 
+                                                        <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
+                                                        <label class="onoffswitch-label" [attr.for]="switch.switchid">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                    <span style="background: #d3d6c8;
+                                                    border-radius: 10px;
+                                                    color: black;">{{switch.functionname}}</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
-
-
-
-
-
                             </div>
                         </div>
                     </div>
