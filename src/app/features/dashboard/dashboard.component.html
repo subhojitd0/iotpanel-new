@@ -146,7 +146,7 @@
                                                             Filter Graph by :
                                                             <mat-form-field style="margin-left: 20px;">
                                                                 <mat-label>Date Filters : </mat-label>
-                                                                <mat-select (selectionChange)="callgraph()" [value]="selectedfilter">
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
                                                                     <mat-option value="0">
                                                                         Daily
                                                                     </mat-option>
@@ -160,7 +160,7 @@
                                                             </mat-form-field>
                                                             <mat-form-field style="margin-left: 20px;">
                                                                 <mat-label>Sensor Filters : </mat-label>
-                                                                <mat-select (selectionChange)="callgraph()" [value]="selectedsensor">
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
                                                                     <mat-option *ngFor="let row of sensornames" [value]="row">
                                                                         {{row}}
                                                                     </mat-option>

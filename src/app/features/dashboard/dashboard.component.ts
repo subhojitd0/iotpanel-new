@@ -302,7 +302,7 @@ export class DashboardComponent implements OnInit {
         /* } */
           let json3 = {
             sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
-            day: this.selectedfilter ? this.selectedfilter : "0"
+            day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
           }
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
             debugger;
@@ -345,7 +345,7 @@ export class DashboardComponent implements OnInit {
   callgraph(){
     let json3 = {
       sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
-      day: this.selectedfilter ? this.selectedfilter : "0"
+      day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
     }
     this.apiService.post(GRAPH_API, json3).then((res: any)=>{
       debugger;
@@ -371,7 +371,7 @@ export class DashboardComponent implements OnInit {
     let timervariale = 15000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
