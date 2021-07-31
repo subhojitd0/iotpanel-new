@@ -68,7 +68,8 @@ export class DashboardComponent implements OnInit {
     db: "0.00",
     dc: "0.00",
     dd: "0.00",
-    type: "1"
+    type: "1",
+    status: "NA"
   };
   staticFunctions = [
     { functionid: "0", functionname: "No Function"},
@@ -206,6 +207,9 @@ export class DashboardComponent implements OnInit {
         }
         else{ */
           this.allSensors = res;
+          this.allSensors.forEach(x=>{
+            x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
+          })
           debugger;
           this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
@@ -304,6 +308,8 @@ export class DashboardComponent implements OnInit {
             sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
             day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
           }
+          this.selectedsensor = this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "";
+          this.selectedfilter = this.selectedfilter ? this.selectedfilter : "0";
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
             debugger;
             this.temps = res.temp;
@@ -368,7 +374,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    let timervariale = 15000;
+    let timervariale = 7000;
     
     setInterval(() => {
       //this.calldata(); 
