@@ -21,13 +21,13 @@
         <div class="col-sm-4">
             <mat-form-field>
                 <mat-label>Enter Low Value</mat-label>
-                <input matInput placeholder="Enter the low value here" [(ngModel)]="text1">
+                <input type="number" step="1" matInput placeholder="Enter the low value here" [(ngModel)]="text1">
             </mat-form-field>
         </div>
         <div class="col-sm-4">
             <mat-form-field>
                 <mat-label>Enter High Value</mat-label>
-                <input placeholder="Enter the high value here" matInput [(ngModel)]="text2">
+                <input type="number" step="1" placeholder="Enter the high value here" matInput [(ngModel)]="text2">
             </mat-form-field>
         </div>
     </div>
