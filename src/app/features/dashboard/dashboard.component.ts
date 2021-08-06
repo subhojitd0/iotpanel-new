@@ -60,6 +60,7 @@ export class DashboardComponent implements OnInit {
   yAxisLabel: string = 'Value';
   timeline: boolean = true;
   selectedfilter: any;
+  selecteddata: any;
   selectedsensor: any;
   multi: any[] = [];
   defaultSensor = {
@@ -88,7 +89,7 @@ export class DashboardComponent implements OnInit {
   topSensors: any[] = [];
   bottomSensors: any[] = [];
   sensornames: any[];
-
+  visible: any[] = [true, true, true, true, true, true, true];
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
@@ -112,6 +113,9 @@ export class DashboardComponent implements OnInit {
        //API call to refresh page with selected hub data
 
     })
+  }
+  changevisible(index){
+    this.visible[index] = !this.visible[index];
   }
   changed(row: any){
     if(row.statusbool){
@@ -214,9 +218,20 @@ export class DashboardComponent implements OnInit {
           this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
-            this.allSensors.push(this.defaultSensor);
+            this.allSensors.push({
+              sensor: "Sensor Unavailable",
+              da: "0.00",
+              db: "0.00",
+              dc: "0.00",
+              dd: "0.00",
+              type: "1",
+              status: "NA"
+            });
           }
+          let i = 0;
+
           this.allSensors.forEach(x=>{
+            debugger;
             if(x.hasOwnProperty('error')){
               x.sensor= "No Data Available";
               x.da= "0.00";
@@ -235,6 +250,7 @@ export class DashboardComponent implements OnInit {
               x.dbicon = "filter_drama";
               x.dcicon = "ac_unit";
               x.ddicon = "filter_drama";
+              
             }
             if(x.type === "2"){
               x.datext = "Temparature";
@@ -291,6 +307,8 @@ export class DashboardComponent implements OnInit {
               x.dcicon = "ac_unit";
               x.ddicon = "share_location";
             }
+            x.sl = i+1;
+            i = i + 1;
           })
           this.topSensors = this.allSensors.slice(0,3);
           this.bottomSensors = this.allSensors.slice(3,6);
@@ -359,25 +377,46 @@ export class DashboardComponent implements OnInit {
       this.humidity = res.humidity;
       this.co2 = res.co2;
       this.multi = [];
-      this.multi.push({
-        name: "Temparature",
-        series: this.temps
-      });
-      this.multi.push({
-        name: "Humidity",
-        series: this.humidity
-      });
-      this.multi.push({
-        name: "CO2 / 10",
-        series: this.co2
-      });
+      if(this.selecteddata === "All"){
+        this.multi.push({
+          name: "Temparature",
+          series: this.temps
+        });
+        this.multi.push({
+          name: "Humidity",
+          series: this.humidity
+        });
+        this.multi.push({
+          name: "CO2 / 10",
+          series: this.co2
+        });
+      }
+      if(this.selecteddata === "Temparature"){
+        this.multi.push({
+          name: "Temparature",
+          series: this.temps
+        });
+      }
+      if(this.selecteddata === "CO2"){
+        this.multi.push({
+          name: "CO2 / 10",
+          series: this.co2
+        });
+      }
+      if(this.selecteddata === "Humidity"){
+        this.multi.push({
+          name: "Humidity",
+          series: this.humidity
+        });
+      }
+      
     });
   }
   ngOnInit(): void {
     let timervariale = 7000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");

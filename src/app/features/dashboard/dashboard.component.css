@@ -27,7 +27,6 @@
     border-radius: 10px;
     padding-top: 30px !important;
     align-items: center;
-    
 }
 
 .sensor-box {
@@ -94,7 +93,7 @@
     background-color: #1ef10b;
     color: #FFFFFF;
     border-radius: 20px;
-    height:70%;
+    height: 70%;
 }
 
 .onoffswitch-inner:after {
@@ -104,7 +103,7 @@
     color: #999999;
     text-align: right;
     border-radius: 20px;
-    height:70%;
+    height: 70%;
 }
 
 .onoffswitch-switch {
@@ -129,4 +128,14 @@
 
 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
     right: 0px;
+}
+
+.btn-minmax {
+    float: right;
+    border: 1px solid;
+    padding: 0px 10px 0px 10px;
+    background: #323f58;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }

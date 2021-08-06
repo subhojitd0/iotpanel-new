@@ -28,104 +28,49 @@
                                 <div class="row">
                                     <div class="col-lg-5">
                                         <div class="col-lg-12 flex-column">
-                                            <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of topSensors">
-                                                <div class="row flex-grow">
-                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                        <div class="card bg-primary card-rounded" style="background: #323f58 !important; border-radius: 10px;">
-                                                            <div class="card-body pb-0" style="padding: 5px !important">
-                                                                <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">No Data Available</h4> -->
-                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} </h4>
-                                                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                                                    <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                        font-family: Arial, Helvetica, sans-serif;
-                                                                        color: white;">{{se.datext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                            <!-- thermostat -->{{se.daicon}}
-                                                                            </span></h2>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                        font-family: Arial, Helvetica, sans-serif;
-                                                                        color: white;">{{se.dbtext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                            {{se.dbicon}}
-                                                                            </span></h2>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                        font-family: Arial, Helvetica, sans-serif;
-                                                                        color: white;">{{se.dctext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                            {{se.dcicon}}
-                                                                            </span></h2>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
-                                                                        font-family: Arial, Helvetica, sans-serif;
-                                                                        color: white;">{{se.ddtext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
-                                                                            {{se.ddicon}}
-                                                                            </span></h2>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-lg-12 flex-column">
-
-                                            <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of bottomSensors">
+                                            <div class="col-md-12" style="margin-bottom: 15px;" *ngFor="let se of allSensors">
                                                 <div class="row flex-grow">
                                                     <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                                                         <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
                                                             <div class="card-body pb-0" style="padding: 5px !important">
                                                                 <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
                                                                 <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
-                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} </h4>
-                                                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} <span class="btn-minmax" *ngIf="visible[se.sl]" (click)="changevisible(se.sl)"> - </span> <span class="btn-minmax" *ngIf="!visible[se.sl]" (click)="changevisible(se.sl)"> + </span></h4>
+                                                                <div class="row" *ngIf="visible[se.sl]" style="padding-left: 15px; padding-right: 15px;">
                                                                     <div class="col-sm-3">
                                                                         <p class="status-summary-ight-white mb-1" style="font-size: 12px;
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         color: white;">{{se.datext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
                                                                             <!-- thermostat -->{{se.daicon}}
                                                                             </span></h2>
                                                                     </div>
                                                                     <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         color: white;">{{se.dbtext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
                                                                             {{se.dbicon}}
                                                                             </span></h2>
                                                                     </div>
                                                                     <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         color: white;">{{se.dctext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
                                                                             {{se.dcicon}}
                                                                             </span></h2>
                                                                     </div>
                                                                     <div class="col-sm-3">
-                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         color: white;">{{se.ddtext}}</p>
-                                                                        <h2 style="    font-size: 14px !IMPORTANT;
-                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 14px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
                                                                             {{se.ddicon}}
                                                                             </span></h2>
                                                                     </div>
@@ -143,8 +88,8 @@
                                                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                                                     <div class="card card-rounded" style="height: 430px !important; border-radius: 10px;">
                                                         <p style="padding-left: 20px; padding-top: 20px;">
-                                                            Filter Graph by :
-                                                            <mat-form-field style="margin-left: 20px;">
+                                                            Filter by :
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
                                                                 <mat-label>Date Filters : </mat-label>
                                                                 <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
                                                                     <mat-option value="0">
@@ -158,7 +103,7 @@
                                                                     </mat-option>
                                                                 </mat-select>
                                                             </mat-form-field>
-                                                            <mat-form-field style="margin-left: 20px;">
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
                                                                 <mat-label>Sensor Filters : </mat-label>
                                                                 <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
                                                                     <mat-option *ngFor="let row of sensornames" [value]="row">
@@ -166,8 +111,25 @@
                                                                     </mat-option>
                                                                 </mat-select>
                                                             </mat-form-field>
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                                                <mat-label>Data Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selecteddata">
+                                                                    <mat-option value="All">
+                                                                        All
+                                                                    </mat-option>
+                                                                    <mat-option value="Temparature">
+                                                                        Temparature
+                                                                    </mat-option>
+                                                                    <mat-option value="CO2">
+                                                                        CO2 / 10
+                                                                    </mat-option>
+                                                                    <mat-option value="Humidity">
+                                                                        Humidity
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
                                                         </p>
-                                                        <div class="card-body" style="font-size: 20px;
+                                                        <div class="card-body col-xs-6" style="font-size: 20px;
                                                         padding-top: 30px !important;
                                                         padding-left: 5px !important;">
 
