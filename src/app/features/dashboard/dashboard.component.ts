@@ -151,8 +151,12 @@ export class DashboardComponent implements OnInit {
               this.switchData = res.result;
               let i=0;
               this.switchData.forEach((el: any)=>{
-                el.name = "S"+(i+1);
+                if(!el.name)
+                  el.name = "S"+(i+1);
                 el.statusbool = el.status.toString() === "1" ? true: false;
+                el.functionname = this.staticFunctions.filter(x=>x.functionid === el.func)[0].functionname;
+                if(!el.statusbool)
+                  el.functionname = this.staticFunctions.filter(x=>x.functionid === "0")[0].functionname;
                 i=i+1;
               });
             });
@@ -192,7 +196,10 @@ export class DashboardComponent implements OnInit {
       "mode": 0,
       "hub": this.selectedHub
     };
-    this.apiService.post(SWITCH_API, json).then((res: any)=>{ 
+    this.apiService.post(SWITCH_API, json).then((res: any)=>{
+      this.multi = []; 
+      this.selectedsensor = "";
+      //this.selectedsensor = "";
       this.switchData = res.result;
       let i=0;
       this.switchData.forEach((el: any)=>{
@@ -200,6 +207,8 @@ export class DashboardComponent implements OnInit {
           el.name = "S"+(i+1);
         el.statusbool = el.status.toString() === "1" ? true: false;
         el.functionname = this.staticFunctions.filter(x=>x.functionid === el.func)[0].functionname;
+        if(!el.statusbool)
+          el.functionname = this.staticFunctions.filter(x=>x.functionid === "0")[0].functionname;
         i=i+1;
       });
       let json2 = {
@@ -308,6 +317,8 @@ export class DashboardComponent implements OnInit {
               x.ddicon = "share_location";
             }
             x.sl = i+1;
+            if(x.status === "NA")
+              this.visible[x.sl] = false;
             i = i + 1;
           })
           this.topSensors = this.allSensors.slice(0,3);
@@ -334,18 +345,38 @@ export class DashboardComponent implements OnInit {
             this.humidity = res.humidity;
             this.co2 = res.co2;
             this.multi = [];
-            this.multi.push({
-              name: "Temparature",
-              series: this.temps
-            });
-            this.multi.push({
-              name: "Humidity",
-              series: this.humidity
-            });
-            this.multi.push({
-              name: "CO2 / 10",
-              series: this.co2
-            });
+            if(this.selecteddata === "All"){
+              this.multi.push({
+                name: "Temparature",
+                series: this.temps
+              });
+              this.multi.push({
+                name: "Humidity",
+                series: this.humidity
+              });
+              this.multi.push({
+                name: "CO2 / 10",
+                series: this.co2
+              });
+            }
+            if(this.selecteddata === "Temparature"){
+              this.multi.push({
+                name: "Temparature",
+                series: this.temps
+              });
+            }
+            if(this.selecteddata === "CO2"){
+              this.multi.push({
+                name: "CO2 / 10",
+                series: this.co2
+              });
+            }
+            if(this.selecteddata === "Humidity"){
+              this.multi.push({
+                name: "Humidity",
+                series: this.humidity
+              });
+            }
           });
       }); 
     });
