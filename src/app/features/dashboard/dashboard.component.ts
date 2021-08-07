@@ -447,7 +447,7 @@ export class DashboardComponent implements OnInit {
     let timervariale = 7000;
     
     setInterval(() => {
-      //this.calldata(); 
+      this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
