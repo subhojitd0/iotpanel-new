@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataAddComponent } from 'src/app/features/data-add/data-add.component';
+/* import { UpdateComponent } from 'src/app/features/update-details/update.component'; */
 import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
 import { SENSOR_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
@@ -152,6 +153,16 @@ export class SideNavComponent implements OnInit {
         this.toastr.error(res.status);
       }
     });
+  }
+  update(){
+    /* const dialogRef = this.dialog.open(UpdateComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed`);
+    });
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    }); */
   }
   openDialog() {
     const dialogRef = this.dialog.open(DataAddComponent, {

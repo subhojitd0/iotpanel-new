@@ -179,9 +179,9 @@ export class DashboardComponent implements OnInit {
         hub: this.selectedHub,
         status: "0",
         mode: 2,
-        func: row.func,
-        highval: row.highval,
-        lowval: row.lowval
+        func: "0",
+        highval: "0",
+        lowval: "0"
       };
       this.apiService.post(SWITCH_API, json).then((res: any)=>{
         if(res.status === "Success"){

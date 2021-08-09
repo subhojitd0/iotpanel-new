@@ -1,0 +1,59 @@
+<div class="loading-screen-wrapper" *ngIf="loading">
+    <div class="loading-screen-icon">
+        Loading...
+    </div>
+</div>
+<div class="container row" style="min-width: 650px !important;">
+    <!-- <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="avatar-image-partyhead"></div>
+            <mat-card-title>Sens</mat-card-title>
+            <mat-card-subtitle>Add, Update, Delete and View the Party Heads Here.</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card> -->
+    <!-- <button *ngIf="partyrole === '1'" mat-stroked-button>Create New Party Head</button> -->
+
+    <!-- <mat-form-field class="mid">
+                <input matInput placeholder="Search Party Head">
+              </mat-form-field> -->
+    <!--  -->
+    <div class="row" style="width: 100%">
+        <form [formGroup]="firstFormGroup">
+            <mat-form-field *ngIf="showUser" style="margin-right: 40px;">
+                <mat-label>Select User</mat-label>
+                <input [disabled]="disabledUser" matInput placeholder="Enter the user here" [matAutocomplete]="autoreport" [(ngModel)]="aduser" formControlName="UserControl">
+                <mat-autocomplete #autoreport="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptionsUser | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field *ngIf="showZone" style="margin-right: 40px;">
+                <mat-label>Add New/Select Existing Zone</mat-label>
+                <input [disabled]="disabledZone" matInput placeholder="Enter the zone here" [matAutocomplete]="autoreport" [(ngModel)]="adzone" formControlName="ZoneControl">
+                <mat-autocomplete #autoreport="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptionsZone | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="showHub" style=" margin-right: 40px;">
+                <mat-label>Add New/Select Existing Hub</mat-label>
+                <input [disabled]="disabledHub" matInput placeholder="Enter the hub here" [matAutocomplete]="autohub" [(ngModel)]="adhub" formControlName="HubControl">
+                <mat-autocomplete #autohub="matAutocomplete" (optionSelected)="selectsensor()">
+                    <mat-option *ngFor="let option of filteredOptionsHub | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="showSensor">
+                <mat-label>Add Sensor</mat-label>
+                <input [disabled]="disabledSensor" formControlName="SensorControl" matInput placeholder="Enter the sensor here" [(ngModel)]="adsensor">
+            </mat-form-field> <br><br>
+            <button class="btn-first" mat-button (click)="save()">Save Data</button>
+        </form>
+    </div>
+
+</div>
