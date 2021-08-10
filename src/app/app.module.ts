@@ -38,6 +38,8 @@ import { UserAddComponent } from './features/user-add/user-add.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FunctionComponent } from './features/function-modal/function.component';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { UpdateComponent } from './features/update-details/update.component';
+import { DateRangeComponent } from './features/date-range/daterange.component';
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
@@ -57,7 +59,9 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     DataAddComponent,
     UserViewComponent,
     UserAddComponent,
-    FunctionComponent
+    FunctionComponent,
+    UpdateComponent,
+    DateRangeComponent
   ],
   imports: [
     BrowserModule,

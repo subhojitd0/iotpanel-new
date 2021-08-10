@@ -13,9 +13,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-data-add',
-  templateUrl: './data-add.component.html',
-  styleUrls: ['./data-add.component.css']
+  selector: 'app-update',
+  templateUrl: './update.component.html',
+  styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -77,14 +77,10 @@ export class UpdateComponent implements OnInit {
    }
    
 
-   ngOnInit() : void {
-    this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
-    this.pagerefrsh2 = JSON.parse(localStorage.getItem('pagerefresh2'));
-     if(this.pagerefrsh2 == "0"){
-        localStorage.setItem('pagerefresh2', "1");
-        location.reload();
-      }
-    
+   ngOnInit() {
+     this.phone = localStorage.getItem("loggedinphone");
+     this.username = localStorage.getItem("loggedinusername");
+    debugger;
     this.firstFormGroup = this._formBuilder.group({
       UserControl: []
      });
@@ -99,6 +95,7 @@ export class UpdateComponent implements OnInit {
       this.apiService.post(LOGIN_API, json).then((res: any)=>{
         if(res.status === "Success"){
           this.toastr.success("Your data was successfully added");
+          localStorage.setItem("loggedinphone", this.phone);
           location.reload();
         }
         else{

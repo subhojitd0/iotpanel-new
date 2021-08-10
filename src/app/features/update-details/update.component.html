@@ -3,7 +3,7 @@
         Loading...
     </div>
 </div>
-<div class="container row" style="min-width: 650px !important;">
+<div class="container row" style="padding-left: 30px !important;min-width: 200px !important;">
     <!-- <mat-card>
           <mat-card-header>
             <div mat-card-avatar class="avatar-image-partyhead"></div>
@@ -19,7 +19,7 @@
     <!--  -->
     <div class="row" style="width: 100%">
         <form [formGroup]="firstFormGroup">
-            <mat-form-field *ngIf="showUser" style="margin-right: 40px;">
+            <mat-form-field style="margin-right: 40px;">
                 <mat-label>Update Phone Number</mat-label>
                 <input matInput placeholder="Enter the user here" [(ngModel)]="phone" formControlName="UserControl">
             </mat-form-field>

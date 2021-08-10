@@ -13,9 +13,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-data-add',
-  templateUrl: './data-add.component.html',
-  styleUrls: ['./data-add.component.css']
+  selector: 'app-daterange',
+  templateUrl: './daterange.component.html',
+  styleUrls: ['./daterange.component.css']
 })
 export class DateRangeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;

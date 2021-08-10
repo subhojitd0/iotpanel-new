@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         debugger;
         localStorage.setItem("isAdmin", res.isAdmin);
         localStorage.setItem("loggedinusername", this.username);
+        localStorage.setItem("loggedinphone", res.phone);
         localStorage.setItem('loggedin', "1");
         localStorage.setItem('pagerefresh2', "0");
         window.location.reload();
