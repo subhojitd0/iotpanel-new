@@ -36,7 +36,11 @@
                                                             <div class="card-body pb-0" style="padding: 5px !important">
                                                                 <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
                                                                 <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
-                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} <span class="btn-minmax" *ngIf="visible[se.sl]" (click)="changevisible(se.sl)"> - </span> <span class="btn-minmax" *ngIf="!visible[se.sl]" (click)="changevisible(se.sl)"> + </span></h4>
+                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} <span (click)="export(se)" style="float: right;
+                                                                    margin-top: 3px;
+                                                                    margin-left: 10px;" class="material-icons">
+                                                                    file_download
+                                                                    </span><span class="btn-minmax" *ngIf="visible[se.sl]" (click)="changevisible(se.sl)"> - </span> <span class="btn-minmax" *ngIf="!visible[se.sl]" (click)="changevisible(se.sl)"> + </span></h4>
                                                                 <div class="row" *ngIf="visible[se.sl]" style="padding-left: 15px; padding-right: 15px;">
                                                                     <div class="col-sm-3">
                                                                         <p class="status-summary-ight-white mb-1" style="font-size: 12px;

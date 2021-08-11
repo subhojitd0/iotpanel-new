@@ -1,0 +1,39 @@
+<div class="loading-screen-wrapper" *ngIf="loading">
+    <div class="loading-screen-icon">
+        Loading...
+    </div>
+</div>
+<div class="container" style="max-width: 1500px; min-height: 2000px; max-height: 10000px;">
+    <!-- <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="avatar-image-partyhead"></div>
+            <mat-card-title>Sens</mat-card-title>
+            <mat-card-subtitle>Add, Update, Delete and View the Party Heads Here.</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card> -->
+    <!-- <button *ngIf="partyrole === '1'" mat-stroked-button>Create New Party Head</button> -->
+
+    <!-- <mat-form-field class="mid">
+                <input matInput placeholder="Search Party Head">
+              </mat-form-field> -->
+    <!--  -->
+    <div>
+        <button mat-stroked-button style="margin-left: 10px" (click)="export()"> Export To Excel</button>
+        <button mat-stroked-button style="margin-left: 10px" (click)="back()"> Back to dashboard</button>
+        <table #table>
+            <tr>
+                <th>Time Stamp</th>
+                <th>{{datext}}</th>
+                <th>{{dbtext}}</th>
+                <th>{{dctext}}</th>
+            </tr>
+            <tr *ngFor="let row of reportdata">
+                <td>{{row.time}}</td>
+                <td>{{row.da}}</td>
+                <td>{{row.db}}</td>
+                <td>{{row.dc}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

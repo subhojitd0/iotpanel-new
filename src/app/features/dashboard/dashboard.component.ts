@@ -6,6 +6,7 @@ import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
 import { GRAPH_API, SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
+import { DateRangeComponent } from '../date-range/daterange.component';
 import { FunctionComponent } from '../function-modal/function.component';
 
 export interface iSwitch{
@@ -441,6 +442,18 @@ export class DashboardComponent implements OnInit {
         });
       }
       
+    });
+  }
+  export(se){
+    localStorage.setItem("selectedsensor", se.sensor);
+    localStorage.setItem("selectedsensortype", se.type);
+    const dialogRef = this.dialog.open(DateRangeComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed`);
+    });
+    this.router.events.subscribe(() => {
+      dialogRef.close();
     });
   }
   ngOnInit(): void {

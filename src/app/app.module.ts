@@ -40,6 +40,7 @@ import { FunctionComponent } from './features/function-modal/function.component'
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { UpdateComponent } from './features/update-details/update.component';
 import { DateRangeComponent } from './features/date-range/daterange.component';
+import { ReportComponent } from './features/report/report.component';
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
@@ -61,7 +62,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     UserAddComponent,
     FunctionComponent,
     UpdateComponent,
-    DateRangeComponent
+    DateRangeComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
