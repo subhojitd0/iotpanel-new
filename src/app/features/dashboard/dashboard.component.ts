@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
   // options
   legend: boolean = true;
   showLabels: boolean = true;
-  animations: boolean = true;
+  animations: boolean = false;
   xAxis: boolean = true;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
@@ -102,6 +102,8 @@ export class DashboardComponent implements OnInit {
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
+
   constructor(private toastr: ToastrService, private dialog: MatDialog, private router: Router, private apiService: ApiService,private globalSrv: GlobalService) { 
     //Object.assign(this, { multi });
     globalSrv.itemValue.subscribe((nextValue) => {
