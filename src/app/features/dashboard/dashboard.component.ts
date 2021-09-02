@@ -201,7 +201,7 @@ export class DashboardComponent implements OnInit {
     };
     this.apiService.post(SWITCH_API, json).then((res: any)=>{
       this.multi = []; 
-      this.selectedsensor = "";
+      //this.selectedsensor = "";
       //this.selectedsensor = "";
       this.switchData = res.result;
       let i=0;
