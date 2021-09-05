@@ -98,10 +98,8 @@
 
 .onoffswitch-inner:after {
     content: "OFF";
-    padding-right: 10px;
     background-color: #EEEEEE;
     color: #999999;
-    text-align: right;
     border-radius: 20px;
     height: 70%;
 }
@@ -115,7 +113,7 @@
     position: absolute;
     top: -7px;
     bottom: 0;
-    right: 60px;
+    right: 70%;
     height: 35px;
     border-radius: 20px;
     border: 2px solid #999999;
@@ -138,4 +136,51 @@
     color: white;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 481px) and (max-width:768px) {
+    .onoffswitch-switch {
+        display: block;
+        width: 30px;
+        margin: 6px;
+        margin-right: 0px !important;
+        background: #FFFFFF;
+        position: absolute;
+        top: -7px;
+        bottom: 0;
+        right: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: 2px solid #999999;
+        transition: all 0.3s ease-in 0s;
+    }
+    .custom-dialog-container .mat-dialog-container {
+        width: 85% !important;
+        margin-left: 0px !important;
+    }
+}
+
+
+/*Mobile Query*/
+
+@media only screen and (max-width:480px) {
+    .onoffswitch-switch {
+        display: block;
+        width: 30px;
+        margin: 6px;
+        margin-right: 0px !important;
+        background: #FFFFFF;
+        position: absolute;
+        top: -7px;
+        bottom: 0;
+        right: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: 2px solid #999999;
+        transition: all 0.3s ease-in 0s;
+    }
+    .custom-dialog-container .mat-dialog-container {
+        width: 85% !important;
+        margin-left: 0px !important;
+    }
 }
