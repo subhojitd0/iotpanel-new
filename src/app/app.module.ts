@@ -4,7 +4,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -41,6 +41,7 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { UpdateComponent } from './features/update-details/update.component';
 import { DateRangeComponent } from './features/date-range/daterange.component';
 import { ReportComponent } from './features/report/report.component';
+import { SidenavService } from './common/sidenav/sidenav.service';
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
@@ -71,6 +72,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AppRoutingModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    NoopAnimationsModule,
     MatFormFieldModule,
     NgxChartsModule,
     MatInputModule,
@@ -96,7 +98,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     //MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     ToastrModule.forRoot() 
   ],
-  providers: [MatDialog,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [SidenavService, MatDialog,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

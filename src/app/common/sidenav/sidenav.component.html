@@ -18,7 +18,7 @@
 
 </mat-toolbar>
 <mat-sidenav-container [ngClass]="pagerefresh == '1' ? 'example-container-loggedin' : 'example-container'" autosize style="cursor: pointer !important;">
-    <mat-sidenav style="padding-top: 10px" *ngIf="pagerefresh == '1' && isAdmin == '0'" #sidenav class="example-sidenav" mode="side" opened="true">
+    <mat-sidenav style="padding-top: 10px" *ngIf="pagerefresh == '1' && isAdmin == '0' && isShowing" #sidenav class="example-sidenav" mode="over" opened="true">
         <!-- <div class="loading-screen-wrapper" *ngIf="loading">
 			<div class="loading-screen-icon">
 			  Loading...
