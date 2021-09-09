@@ -91,7 +91,6 @@ export class DashboardComponent implements OnInit {
   bottomSensors: any[] = [];
   sensornames: any[];
   visible: any[] = [true, true, true, true, true, true, true];
-  multi2: any[];
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
@@ -201,7 +200,7 @@ export class DashboardComponent implements OnInit {
       "hub": this.selectedHub
     };
     this.apiService.post(SWITCH_API, json).then((res: any)=>{
-      //this.multi = []; 
+      this.multi = []; 
       //this.selectedsensor = "";
       //this.selectedsensor = "";
       this.switchData = res.result;
@@ -348,40 +347,39 @@ export class DashboardComponent implements OnInit {
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
-            let multi2 = [];
+            this.multi = [];
             if(this.selecteddata === "All"){
-              multi2.push({
+              this.multi.push({
                 name: "Temparature",
                 series: this.temps
               });
-              multi2.push({
+              this.multi.push({
                 name: "Humidity",
                 series: this.humidity
               });
-              multi2.push({
+              this.multi.push({
                 name: "CO2 / 10",
                 series: this.co2
               });
             }
             if(this.selecteddata === "Temparature"){
-              multi2.push({
+              this.multi.push({
                 name: "Temparature",
                 series: this.temps
               });
             }
             if(this.selecteddata === "CO2"){
-              multi2.push({
+              this.multi.push({
                 name: "CO2 / 10",
                 series: this.co2
               });
             }
             if(this.selecteddata === "Humidity"){
-              multi2.push({
+              this.multi.push({
                 name: "Humidity",
                 series: this.humidity
               });
             }
-            this.multi = multi2;
           });
       }); 
     });
@@ -412,42 +410,39 @@ export class DashboardComponent implements OnInit {
       this.temps = res.temp;
       this.humidity = res.humidity;
       this.co2 = res.co2;
-      //this.multi = [];
-      let multi3 = [];
+      this.multi = [];
       if(this.selecteddata === "All"){
-        multi3.push({
+        this.multi.push({
           name: "Temparature",
           series: this.temps
         });
-        multi3.push({
+        this.multi.push({
           name: "Humidity",
           series: this.humidity
         });
-        multi3.push({
+        this.multi.push({
           name: "CO2 / 10",
           series: this.co2
         });
       }
       if(this.selecteddata === "Temparature"){
-        multi3.push({
+        this.multi.push({
           name: "Temparature",
           series: this.temps
         });
       }
       if(this.selecteddata === "CO2"){
-        multi3.push({
+        this.multi.push({
           name: "CO2 / 10",
           series: this.co2
         });
       }
       if(this.selecteddata === "Humidity"){
-        multi3.push({
+        this.multi.push({
           name: "Humidity",
           series: this.humidity
         });
       }
-
-      this.multi = multi3;
       
     });
   }

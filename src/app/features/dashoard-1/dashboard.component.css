@@ -1,0 +1,186 @@
+.switch-p {
+    font-size: 14px;
+    font-weight: 500;
+    background: #323f58;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 10px !important;
+    text-align: center;
+    color: white;
+    box-shadow: 3px 7px #888888;
+}
+
+.custom-dialog-container .mat-dialog-container {
+    width: 70% !important;
+}
+
+.sensor-p {
+    font-size: 14px;
+    font-weight: 500;
+    background: #91ccff;
+    padding: 20px;
+    height: 30%;
+    margin: 23px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 30px !important;
+    align-items: center;
+}
+
+.sensor-box {
+    background: #f1f1c2;
+    width: 35%;
+    border: 2px solid #f1f1c2;
+    margin-right: 10px;
+}
+
+.card-title {
+    background: white;
+    padding: 10px;
+    color: #323f58 !important;
+    font-weight: 700;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 90px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 20px;
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 0px;
+    background-color: #1ef10b;
+    color: #FFFFFF;
+    border-radius: 20px;
+    height: 70%;
+}
+
+.onoffswitch-inner:after {
+    content: "OFF";
+    background-color: #EEEEEE;
+    color: #999999;
+    border-radius: 20px;
+    height: 70%;
+}
+
+.onoffswitch-switch {
+    display: block;
+    width: 30px;
+    margin: 6px;
+    margin-right: 0px !important;
+    background: #FFFFFF;
+    position: absolute;
+    top: -7px;
+    bottom: 0;
+    right: 70%;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid #999999;
+    transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+.btn-minmax {
+    float: right;
+    border: 1px solid;
+    padding: 0px 10px 0px 10px;
+    background: #323f58;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 481px) and (max-width:768px) {
+    .onoffswitch-switch {
+        display: block;
+        width: 30px;
+        margin: 6px;
+        margin-right: 0px !important;
+        background: #FFFFFF;
+        position: absolute;
+        top: -7px;
+        bottom: 0;
+        right: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: 2px solid #999999;
+        transition: all 0.3s ease-in 0s;
+    }
+    .custom-dialog-container .mat-dialog-container {
+        width: 85% !important;
+        margin-left: 0px !important;
+    }
+}
+
+
+/*Mobile Query*/
+
+@media only screen and (max-width:480px) {
+    .onoffswitch-switch {
+        display: block;
+        width: 30px;
+        margin: 6px;
+        margin-right: 0px !important;
+        background: #FFFFFF;
+        position: absolute;
+        top: -7px;
+        bottom: 0;
+        right: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: 2px solid #999999;
+        transition: all 0.3s ease-in 0s;
+    }
+    .custom-dialog-container .mat-dialog-container {
+        width: 85% !important;
+        margin-left: 0px !important;
+    }
+}

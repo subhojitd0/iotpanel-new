@@ -42,6 +42,7 @@ import { UpdateComponent } from './features/update-details/update.component';
 import { DateRangeComponent } from './features/date-range/daterange.component';
 import { ReportComponent } from './features/report/report.component';
 import { SidenavService } from './common/sidenav/sidenav.service';
+
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
