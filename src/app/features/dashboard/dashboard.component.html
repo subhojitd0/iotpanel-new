@@ -133,15 +133,15 @@
                                                                 </mat-select>
                                                             </mat-form-field>
                                                         </p>
-                                                        <div class="card-body col-xs-6" style="font-size: 20px;
+                                                        <div #containerRef class="card-body col-xs-6" style="font-size: 20px;
                                                         padding-top: 30px !important;
                                                         padding-left: 5px !important;">
 
                                                             <!-- <canvas baseChart 
                                                             [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
                                                             </canvas> -->
-                                                            <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)"
-                                                                [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                                            <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+                                                                [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
                                                             </ngx-charts-line-chart>
 
                                                         </div>
@@ -172,6 +172,12 @@
                                                             <span class="onoffswitch-switch"></span>
                                                         </label>
                                                     </div>
+                                                    <span><span style="float:left;padding-left: 10px;">{{switch.lowval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
+                                                        south
+                                                        </span></span><span style="float: right;padding-right: 10px;">{{switch.highval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
+                                                            north
+                                                            </span></span>
+                                                    </span>
                                                     <span style="background: #d9e8f5;
                                                     border-radius: 10px;
                                                     color: black;  margin-top: 10px;">{{switch.functionname}}</span>

@@ -135,24 +135,32 @@ export class SideNavComponent implements OnInit {
     
   }
   unassign(){
-    this.toastr.info("Please wait while we are unassigning the hub");
-    var json = {
-      zone: "",
-      hub: this.selectedhub,
-      sensor: "",
-      username: this.user,
-      mode: 2,
-      choice: 1
-    };
-    this.apiService.post(SENSOR_API, json).then((res: any)=>{
-      if(res.status === "Success"){
-        this.toastr.success("Your hub was successfully unassigned");
-        location.reload();
-      }
-      else{
-        this.toastr.error(res.status);
-      }
-    });
+    if (confirm('Are you sure you want to un-assign the hub ?')) {
+      // Save it!
+      this.toastr.info("Please wait while we are unassigning the hub");
+      var json = {
+        zone: "",
+        hub: this.selectedhub,
+        sensor: "",
+        username: this.user,
+        mode: 2,
+        choice: 1
+      };
+      this.apiService.post(SENSOR_API, json).then((res: any)=>{
+        if(res.status === "Success"){
+          this.toastr.success("Your hub was successfully unassigned");
+          location.reload();
+        }
+        else{
+          this.toastr.error(res.status);
+        }
+      });
+    } else {
+      // Do nothing!
+      console.log('Thing was not saved to the database.');
+    }
+    
+    
   }
   update(){
     const dialogRef = this.dialog.open(UpdateComponent);

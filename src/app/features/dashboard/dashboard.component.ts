@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
   selectedsensor: any;
   multi: any[] = [];
   defaultSensor = {
-    sensor: "Sensor Unavailable",
+    sensor: "Unavailable",
     da: "0.00",
     db: "0.00",
     dc: "0.00",
@@ -232,7 +232,7 @@ export class DashboardComponent implements OnInit {
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
             this.allSensors.push({
-              sensor: "Sensor Unavailable",
+              sensor: "Unavailable",
               da: "0.00",
               db: "0.00",
               dc: "0.00",
@@ -464,7 +464,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    let timervariale = 7000;
+    let timervariale = 13000;
     
     setInterval(() => {
       this.calldata(); 
