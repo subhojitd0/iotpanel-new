@@ -71,46 +71,52 @@ export class UserViewComponent implements OnInit {
    setupdata(){
     let userData: UserTable[] = []; 
     let uniqueUsers = [...new Set(this.allData.map(x=>x.username))];
-    uniqueUsers.forEach((user: any)=>{
-        let distinctHubs = [...new Set(this.allData.filter(x=>x.username === user).map(y=>y.hub))];
-        if(distinctHubs.length > 0){
-            distinctHubs.forEach((hub: any)=>{
-                let eachUserData: UserTable = new UserTable();
-                eachUserData.username = user;
-                eachUserData.hub = hub;
-                let sensorRows = [...new Set(this.allData.filter(x=>x.username === user && x.hub === hub).map(y=>y.sensor))];
-                let count = 0;
-                sensorRows.forEach(sensor =>{
-                    if(count === 0){
-                        eachUserData.sensor1 = sensor;
-                    }
-                    if(count === 1){
-                        eachUserData.sensor2 = sensor;
-                    }
-                    if(count === 2){
-                        eachUserData.sensor3 = sensor;
-                    }
-                    if(count === 3){
-                        eachUserData.sensor4 = sensor;
-                    }
-                    if(count === 4){
-                        eachUserData.sensor5 = sensor;
-                    }
-                    if(count === 5){
-                        eachUserData.sensor6 = sensor;
-                    }
-                    count = count + 1;
-                });
-                userData.push(eachUserData);
-            });
-        }
-        else{
-            let eachUserData: UserTable;
-            eachUserData.username = user;
-            userData.push(eachUserData);
-        }
-    });
-    this.dataSource = new MatTableDataSource(userData);
+    if(uniqueUsers.length > 1 || ( uniqueUsers.length === 1 && uniqueUsers[0])){
+      uniqueUsers.forEach((user: any)=>{
+        debugger;
+          let distinctHubs = [...new Set(this.allData.filter(x=>x.username === user).map(y=>y.hub))];
+          if(distinctHubs.length > 0){
+              distinctHubs.forEach((hub: any)=>{
+                  let eachUserData: UserTable = new UserTable();
+                  eachUserData.username = user;
+                  eachUserData.hub = hub;
+                  let sensorRows = [...new Set(this.allData.filter(x=>x.username === user && x.hub === hub).map(y=>y.sensor))];
+                  let count = 0;
+                  sensorRows.forEach(sensor =>{
+                      if(count === 0){
+                          eachUserData.sensor1 = sensor;
+                      }
+                      if(count === 1){
+                          eachUserData.sensor2 = sensor;
+                      }
+                      if(count === 2){
+                          eachUserData.sensor3 = sensor;
+                      }
+                      if(count === 3){
+                          eachUserData.sensor4 = sensor;
+                      }
+                      if(count === 4){
+                          eachUserData.sensor5 = sensor;
+                      }
+                      if(count === 5){
+                          eachUserData.sensor6 = sensor;
+                      }
+                      count = count + 1;
+                  });
+                  userData.push(eachUserData);
+              });
+          }
+          else{
+              let eachUserData: UserTable;
+              eachUserData.username = user;
+              userData.push(eachUserData);
+          }
+      });
+    }
+    
+    if(userData.length > 0){
+      this.dataSource = new MatTableDataSource(userData);
+    }
    }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
