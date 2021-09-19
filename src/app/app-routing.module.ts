@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS, ROUTE_DATA_ADD, ROUTE_REPORT } from 'src/shared/constants/constant';
+import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS, ROUTE_DATA_ADD, ROUTE_REPORT, ROUTE_DASHBOARD_1 } from 'src/shared/constants/constant';
 import { UserComponent } from './features/create-user/user.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LoginComponent } from './features/login/login.component';
@@ -9,6 +9,7 @@ import { UserRightComponent } from './features/user-rights/user-right.component'
 import { DataAddComponent } from './features/data-add/data-add.component';
 import { UserViewComponent } from './features/user-view/user-view.component';
 import { ReportComponent } from './features/report/report.component';
+import { Dashboard1Component } from './features/dashoard-1/dashboard.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: ROUTE_DASHBOARD,
     component:DashboardComponent
+  },
+  {
+    path: ROUTE_DASHBOARD_1,
+    component:Dashboard1Component
   },
   {
     path: ROUTE_DATA_VIEW,

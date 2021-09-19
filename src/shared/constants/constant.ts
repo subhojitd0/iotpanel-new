@@ -9,3 +9,5 @@ export const ROUTE_NEW_USER = "create-user";
 export const ROUTE_USER_RIGHTS = "user-rights";
 export const ROUTE_DATA_ADD = "add-data";
 export const ROUTE_REPORT = "report";
+export const ROUTE_DASHBOARD_1 = "dashboard1";
+

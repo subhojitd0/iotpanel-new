@@ -30,11 +30,11 @@ export class Switch implements iSwitch{
   statusbool: boolean = false;
 }
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-dashboard1',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class Dashboard1Component implements OnInit {
   pagerefrsh: any;
   switchData: Switch[] = [];
   isAdmin: string;
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
   selectedsensor: any;
   multi: any[] = [];
   defaultSensor = {
-    sensor: "Sensor Unavailable",
+    sensor: "Unavailable",
     da: "0.00",
     db: "0.00",
     dc: "0.00",
@@ -91,6 +91,7 @@ export class DashboardComponent implements OnInit {
   bottomSensors: any[] = [];
   sensornames: any[];
   visible: any[] = [true, true, true, true, true, true, true];
+  multi2: any[];
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
@@ -200,7 +201,7 @@ export class DashboardComponent implements OnInit {
       "hub": this.selectedHub
     };
     this.apiService.post(SWITCH_API, json).then((res: any)=>{
-      this.multi = []; 
+      //this.multi = []; 
       //this.selectedsensor = "";
       //this.selectedsensor = "";
       this.switchData = res.result;
@@ -231,7 +232,7 @@ export class DashboardComponent implements OnInit {
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
             this.allSensors.push({
-              sensor: "Sensor Unavailable",
+              sensor: "Unavailable",
               da: "0.00",
               db: "0.00",
               dc: "0.00",
@@ -347,39 +348,40 @@ export class DashboardComponent implements OnInit {
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
-            this.multi = [];
+            let multi2 = [];
             if(this.selecteddata === "All"){
-              this.multi.push({
+              multi2.push({
                 name: "Temparature",
                 series: this.temps
               });
-              this.multi.push({
+              multi2.push({
                 name: "Humidity",
                 series: this.humidity
               });
-              this.multi.push({
+              multi2.push({
                 name: "CO2 / 10",
                 series: this.co2
               });
             }
             if(this.selecteddata === "Temparature"){
-              this.multi.push({
+              multi2.push({
                 name: "Temparature",
                 series: this.temps
               });
             }
             if(this.selecteddata === "CO2"){
-              this.multi.push({
+              multi2.push({
                 name: "CO2 / 10",
                 series: this.co2
               });
             }
             if(this.selecteddata === "Humidity"){
-              this.multi.push({
+              multi2.push({
                 name: "Humidity",
                 series: this.humidity
               });
             }
+            this.multi = multi2;
           });
       }); 
     });
@@ -410,39 +412,42 @@ export class DashboardComponent implements OnInit {
       this.temps = res.temp;
       this.humidity = res.humidity;
       this.co2 = res.co2;
-      this.multi = [];
+      //this.multi = [];
+      let multi3 = [];
       if(this.selecteddata === "All"){
-        this.multi.push({
+        multi3.push({
           name: "Temparature",
           series: this.temps
         });
-        this.multi.push({
+        multi3.push({
           name: "Humidity",
           series: this.humidity
         });
-        this.multi.push({
+        multi3.push({
           name: "CO2 / 10",
           series: this.co2
         });
       }
       if(this.selecteddata === "Temparature"){
-        this.multi.push({
+        multi3.push({
           name: "Temparature",
           series: this.temps
         });
       }
       if(this.selecteddata === "CO2"){
-        this.multi.push({
+        multi3.push({
           name: "CO2 / 10",
           series: this.co2
         });
       }
       if(this.selecteddata === "Humidity"){
-        this.multi.push({
+        multi3.push({
           name: "Humidity",
           series: this.humidity
         });
       }
+
+      this.multi = multi3;
       
     });
   }
@@ -459,10 +464,10 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    let timervariale = 7000;
+    let timervariale = 13000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");

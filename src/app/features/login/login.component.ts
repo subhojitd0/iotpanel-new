@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import {ApiService} from '../../../shared/services/service';
 import { ToastrService } from 'ngx-toastr';
 import {LOGIN_API} from '../../../shared/services/api.url-helper';
-import { ROUTE_BASIC, ROUTE_DASHBOARD } from 'src/shared/constants/constant';
+import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_DASHBOARD_1 } from 'src/shared/constants/constant';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
     
     let isLoggedIn = localStorage.getItem('loggedin'); 
     if(isLoggedIn && isLoggedIn == "1"){
-      this.router.navigateByUrl('/' + ROUTE_DASHBOARD);
+      //this.router.navigateByUrl('/' + ROUTE_DASHBOARD);
+      this.router.navigateByUrl('/' + ROUTE_DASHBOARD_1);
     }
   }
 

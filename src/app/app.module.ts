@@ -42,6 +42,7 @@ import { UpdateComponent } from './features/update-details/update.component';
 import { DateRangeComponent } from './features/date-range/daterange.component';
 import { ReportComponent } from './features/report/report.component';
 import { SidenavService } from './common/sidenav/sidenav.service';
+import { Dashboard1Component } from './features/dashoard-1/dashboard.component';
 
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -65,7 +66,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     FunctionComponent,
     UpdateComponent,
     DateRangeComponent,
-    ReportComponent
+    ReportComponent,
+    Dashboard1Component
   ],
   imports: [
     BrowserModule,
