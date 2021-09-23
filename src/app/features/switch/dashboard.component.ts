@@ -30,11 +30,11 @@ export class Switch implements iSwitch{
   statusbool: boolean = false;
 }
 @Component({
-  selector: 'app-dashboard1',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class Dashboard1Component implements OnInit {
+export class SwitchComponent implements OnInit {
   pagerefrsh: any;
   switchData: Switch[] = [];
   isAdmin: string;
@@ -111,16 +111,6 @@ export class Dashboard1Component implements OnInit {
       this.selectedHub = nextValue;
       if(nextValue){
         this.calldata(); 
-      }
-      
-       //alert(nextValue);  // this will happen on every change
-       //API call to refresh page with selected hub data
-
-    })
-    globalSrv.itemValueSensor.subscribe((nextValue) => {
-      this.selectedsensor = nextValue;
-      if(nextValue){
-        //this.calldata(); 
       }
       
        //alert(nextValue);  // this will happen on every change
@@ -477,7 +467,7 @@ export class Dashboard1Component implements OnInit {
     let timervariale = 13000;
     
     setInterval(() => {
-      //this.calldata(); 
+      this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");

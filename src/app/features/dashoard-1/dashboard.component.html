@@ -30,7 +30,7 @@
                                         <div class="row col-lg-12 flex-column">
 
                                             <div class="col-md-4" style="margin-bottom: 15px;" *ngFor="let se of allSensors">
-                                                <div class="row flex-grow">
+                                                <div *ngIf="selectedsensor === se.sensor" class="row flex-grow">
                                                     <div class="col-md-12 col-lg-12 grid-margin stretch-card">
                                                         <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
                                                             <div class="card-body pb-0" style="padding: 5px !important">
@@ -146,41 +146,6 @@
 
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 flex-column" *ngIf="selectedHub">
-                                            <div class="row" style="margin: 20px;">
-                                                <div class="col-sm-1 d-flex flex-column switch-p" *ngFor="let switch of switchData">
-                                                    <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 45%;background: #01ff01;
-                                                        width: 10%;height: 10px; border-radius: 20px;">&nbsp;</span>
-                                                    <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 45%;background:red;
-                                                            width: 10%;height: 10px; border-radius: 20px;">&nbsp;</span>
-                                                    <input type="text" style="background: none;
-                                                    border: none;
-                                                    text-align: center;
-                                                    color: white;
-                                                    font-family: Arial, Helvetica, sans-serif;
-                                                    margin-bottom: 10px;
-                                                    margin-top: 10px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                    <div class="onoffswitch" style="width: 70%;
-                                                    margin-left: 15%;">
-
-                                                        <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
-                                                        <label class="onoffswitch-label" [attr.for]="switch.switchid">
-                                                            <span class="onoffswitch-inner"></span>
-                                                            <span class="onoffswitch-switch"></span>
-                                                        </label>
-                                                    </div>
-                                                    <span><span style="float:left;padding-left: 10px;">{{switch.lowval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
-                                                        south
-                                                        </span></span><span style="float: right;padding-right: 10px;">{{switch.highval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
-                                                            north
-                                                            </span></span>
-                                                    </span>
-                                                    <span style="background: #d9e8f5;
-                                                    border-radius: 10px;
-                                                    color: black;  margin-top: 10px;">{{switch.functionname}}</span>
                                                 </div>
                                             </div>
                                         </div>

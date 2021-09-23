@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataAddComponent } from 'src/app/features/data-add/data-add.component';
 import { UpdateComponent } from 'src/app/features/update-details/update.component';
-import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS } from 'src/shared/constants/constant';
+import { ROUTE_BASIC, ROUTE_DASHBOARD, ROUTE_NEW_USER, ROUTE_DATA_VIEW, ROUTE_USER_RIGHTS, ROUTE_SWITCH, ROUTE_DASHBOARD_1 } from 'src/shared/constants/constant';
 import { SENSOR_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
@@ -53,10 +53,12 @@ export class SideNavComponent implements OnInit {
   isAdmin: string;
   count: any;
   selectedhub: any;
+  selectedsensor: any;
   constructor(private globalSrv: GlobalService, private toastr: ToastrService, private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.globalSrv.theItem = "";
+    this.globalSrv.itemSensor = "";
     this.isAdmin = localStorage.getItem("isAdmin");
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
@@ -133,6 +135,14 @@ export class SideNavComponent implements OnInit {
     this.globalSrv.theItem = hub;
     localStorage.setItem("selectedhub", hub);
     
+  }
+  selectsensor(hub: any, sensor: any){
+    this.selectedhub = hub;
+    this.selectedsensor =  sensor;
+    this.globalSrv.theItem = hub;
+    this.globalSrv.itemSensor = sensor;
+    localStorage.setItem("selectedhub", hub);
+    localStorage.setItem("selectedsensor", sensor);
   }
   unassign(){
     if (confirm('Are you sure you want to un-assign the hub ?')) {
@@ -217,5 +227,14 @@ export class SideNavComponent implements OnInit {
   onLogout(){
     localStorage.clear();
     this.router.navigateByUrl('/' + ROUTE_BASIC);
+  }
+  switch(){
+    localStorage.setItem("switchurl","1");
+    this.router.navigateByUrl('/' + ROUTE_SWITCH);
+  }
+  home(){
+    localStorage.setItem("switchurl","0");
+    this.router.navigateByUrl('/' + ROUTE_DASHBOARD_1);
+    
   }
 }
