@@ -2,6 +2,7 @@
 
 @import '~ngx-toastr/toastr.css';
 @import "~bootstrap/dist/css/bootstrap.css";
+@import url("../src/shared/css/sb-admin-2.min.css");
 html,
 body {
     height: 100%;

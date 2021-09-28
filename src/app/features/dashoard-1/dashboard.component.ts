@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
+import { ROUTE_DASHBOARD, ROUTE_DATA_ADD, ROUTE_SWITCH } from 'src/shared/constants/constant';
 import { GRAPH_API, SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
@@ -61,7 +61,7 @@ export class Dashboard1Component implements OnInit {
   yAxisLabel: string = 'Value';
   timeline: boolean = true;
   selectedfilter: any;
-  selecteddata: any;
+  selecteddata: any = "All";
   selectedsensor: any;
   multi: any[] = [];
   defaultSensor = {
@@ -92,6 +92,7 @@ export class Dashboard1Component implements OnInit {
   sensornames: any[];
   visible: any[] = [true, true, true, true, true, true, true];
   multi2: any[];
+  selectedsensordata: any;
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
@@ -127,6 +128,10 @@ export class Dashboard1Component implements OnInit {
        //API call to refresh page with selected hub data
 
     })
+  }
+  switch(){
+    localStorage.setItem("switchurl","1");
+    this.router.navigateByUrl('/' + ROUTE_SWITCH);
   }
   changevisible(index){
     this.visible[index] = !this.visible[index];
@@ -343,7 +348,7 @@ export class Dashboard1Component implements OnInit {
           this.sensors4 = res.filter(x=>x.type === "4");
           this.sensors5 = res.filter(x=>x.type === "5");
           this.sensors6 = res.filter(x=>x.type === "6"); */
-
+          this.selectedsensordata = this.allSensors.filter(x=>x.sensor === this.selectedsensor)[0];
           /* this.selectedsensor = "S001";
           this.selectedfilter = "weekly"; */
         /* } */
@@ -474,7 +479,7 @@ export class Dashboard1Component implements OnInit {
     });
   }
   ngOnInit(): void {
-    let timervariale = 13000;
+    let timervariale = 5000;
     
     setInterval(() => {
       //this.calldata(); 

@@ -195,9 +195,9 @@ export class SideNavComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed`);
     });
-    this.router.events.subscribe(() => {
+    /* this.router.events.subscribe(() => {
       dialogRef.close();
-    });
+    }); */
   }
   openzone(name: any){
     this.showZoneMenu[name] = !this.showZoneMenu[name];

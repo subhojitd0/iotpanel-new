@@ -1,0 +1,171 @@
+<!-- <div class="row" style="height: 400px;padding: 20px;">
+    <div class="sensor-box col-sm-5 row" *ngIf="selectedHub">
+        <p class="sensor-p col-sm-4">
+            SENSOR 1
+        </p>
+    </div>
+    <div style="border : 1px solid;" class="col-sm-6" *ngIf="selectedHub">
+    </div>
+</div>
+<div class="row" style="height: 200px;padding: 20px; padding-top: 0px !important;">
+    <p class="switch-p" *ngFor="let switch of switchData">
+        {{switch.name}}
+        <input type="checkbox" [(ngModel)]="switch.statusbool" (change)="changed(switch)" data-toggle="toggle" data-size="sm">
+    </p>
+
+
+</div> -->
+
+<div class="container-fluid page-body-wrapper">
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="home-tab">
+                        <div class="tab-content tab-content-basic">
+                            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                                <div class="row">
+                                    <div class="row col-lg-12" style="height: 500px;">
+                                        <div class="row col-lg-12 flex-column">
+
+                                            <div class="col-md-4" style="margin-bottom: 15px;" *ngFor="let se of allSensors">
+                                                <div *ngIf="selectedsensor === se.sensor" class="row flex-grow">
+                                                    <div class="col-md-12 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card bg-primary card-rounded" style="background: #323f58 !important ; border-radius: 10px;">
+                                                            <div class="card-body pb-0" style="padding: 5px !important">
+                                                                <!-- <h4 *ngIf="se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">No Data Available</h4>
+                                                                <h4 *ngIf="!se.hasOwnProperty('error')" class="card-title card-title-dash text-white mb-4">{{se.sensor}}</h4> -->
+                                                                <h4 class="card-title card-title-dash text-white mb-4" style="border-radius: 10px;">{{se.sensor}} - {{se.status}} <span (click)="export(se)" style="float: right;
+                                                                    margin-top: 3px;
+                                                                    margin-left: 10px;" class="material-icons">
+                                                                    file_download
+                                                                    </span><span class="btn-minmax" *ngIf="visible[se.sl]" (click)="changevisible(se.sl)"> - </span> <span class="btn-minmax" *ngIf="!visible[se.sl]" (click)="changevisible(se.sl)"> + </span></h4>
+                                                                <div class="row" *ngIf="visible[se.sl]" style="padding-left: 15px; padding-right: 15px;">
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 12px;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        color: white;">{{se.datext}}</p>
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.da}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            <!-- thermostat -->{{se.daicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        color: white;">{{se.dbtext}}</p>
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.db}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dbicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        color: white;">{{se.dctext}}</p>
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dc}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.dcicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <p class="status-summary-ight-white mb-1" style="font-size: 13px;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        color: white;">{{se.ddtext}}</p>
+                                                                        <h2 style="    font-size: 13px !IMPORTANT;
+                                                                        color: white !important;" class="text-info">{{se.dd}}<span style="font-size: 13px !IMPORTANT; margin-left: 10px;" class="material-icons">
+                                                                            {{se.ddicon}}
+                                                                            </span></h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-12 flex-column" *ngIf="selectedHub">
+                                            <div class="row flex-grow">
+                                                <div class="col-12 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded" style="height: 430px !important; border-radius: 10px;">
+                                                        <p style="padding-left: 20px; padding-top: 20px;">
+                                                            Filter by :
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                                                <mat-label>Date Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
+                                                                    <mat-option value="0">
+                                                                        Daily
+                                                                    </mat-option>
+                                                                    <mat-option value="7">
+                                                                        Weekly
+                                                                    </mat-option>
+                                                                    <mat-option value="30">
+                                                                        Monthly
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                                                <mat-label>Sensor Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
+                                                                    <mat-option *ngFor="let row of sensornames" [value]="row">
+                                                                        {{row}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                                                <mat-label>Data Filters : </mat-label>
+                                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selecteddata">
+                                                                    <mat-option value="All">
+                                                                        All
+                                                                    </mat-option>
+                                                                    <mat-option value="Temparature">
+                                                                        Temparature
+                                                                    </mat-option>
+                                                                    <mat-option value="CO2">
+                                                                        CO2 / 10
+                                                                    </mat-option>
+                                                                    <mat-option value="Humidity">
+                                                                        Humidity
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </p>
+                                                        <div #containerRef class="card-body col-xs-6" style="font-size: 20px;
+                                                        padding-top: 30px !important;
+                                                        padding-left: 5px !important;">
+
+                                                            <!-- <canvas baseChart 
+                                                            [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                                                            </canvas> -->
+                                                            <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+                                                                [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                                            </ngx-charts-line-chart>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <!-- <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
+            </div>
+        </footer> -->
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+</div>

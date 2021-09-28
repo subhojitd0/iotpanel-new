@@ -3,15 +3,14 @@
     <h1 (click)="home()" style="cursor: pointer;" class="example-app-name">IOT Web</h1>
 
     <span fxFlex></span>
-    <span *ngIf="isAdmin == '0'" style="cursor: pointer;font-size: 15px">
+    <!-- <span *ngIf="isAdmin == '0'" style="cursor: pointer;font-size: 15px">
         <span *ngIf="selectedhub" (click)="unassign()" style="margin-right: 30px;
         background: #4a4949;
         padding: 10px;
         border: 1px dotted blue;
-        cursor: pointer;">Un-Assign Hub</span>
+        cursor: pointer;">Un-Assign Hub</span> -->
     <img *ngIf="count" height="30" src="../../../assets/img/warning.png" style="margin-right: 5px;" />
     <span style="margin-right: 30px" *ngIf="count">{{count}} hubs unassigned</span>
-    <img (click)="openDialog()" height="30" src="http://ibcabs.com/bills/x_iot/assets/img/add.png" /></span>
     <button mat-icon-button *ngIf="pagerefresh == '1'" [matMenuTriggerFor]="dropdownMenu">
   	  <mat-icon>more_vert</mat-icon>
   	</button>
@@ -75,20 +74,16 @@
         <mat-icon>person_add</mat-icon>
         <span>Update Details</span>
     </a>
-    <a *ngIf="userrole === 'ibcabs'" mat-menu-item (click)="createuser()">
-        <mat-icon>person_add</mat-icon>
-        <span>Create New User</span>
-    </a>
-    <a *ngIf="userrole === 'ibcabs'" mat-menu-item (click)="userrights()">
-        <mat-icon>settings_applications</mat-icon>
-        <span>Give User RIghts</span>
-    </a>
     <a mat-menu-item href="" routerLink="/">
         <mat-icon>info_outline</mat-icon>
         <span>About</span>
     </a>
-    <a mat-menu-item href="" (click)="switch()">
-        <mat-icon>settings_applications</mat-icon>
-        <span>Switches</span>
+    <a *ngIf="isAdmin == '0'" mat-menu-item (click)="openDialog()">
+        <mat-icon>person_add</mat-icon>
+        <span>Add hub</span>
+    </a>
+    <a *ngIf="selectedhub && isAdmin == '0'" (click)="unassign()" mat-menu-item routerLink="/">
+        <mat-icon>info_outline</mat-icon>
+        <span>Un-Assign Hub</span>
     </a>
 </mat-menu>
