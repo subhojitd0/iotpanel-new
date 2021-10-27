@@ -1,4 +1,6 @@
-export const API_URL = "http://54.251.21.255/api/";
+/* export const API_URL = "http://54.251.21.255/api/"; */
+export const API_URL = "http://eaiot.online/api/";
+
 //export const MESSAGE_URL = " http://enterprise.smsgupshup.com/GatewayAPI/rest?";
 
 //Production Old

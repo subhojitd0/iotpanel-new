@@ -92,7 +92,23 @@ export class Dashboard1Component implements OnInit {
   sensornames: any[];
   visible: any[] = [true, true, true, true, true, true, true];
   multi2: any[];
-  selectedsensordata: any;
+  selectedsensordata: any = {
+    sensor: "Unavailable",
+    da: "0.00",
+    datext : "",
+    dbtext : "",
+    dctext : "",
+    ddtext : "",
+    daicon : "",
+    dbicon : "",
+    dcicon : "",
+    ddicon : "",
+    db: "0.00",
+    dc: "0.00",
+    dd: "0.00",
+    type: "1",
+    status: "NA"
+  };;
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
@@ -482,7 +498,7 @@ export class Dashboard1Component implements OnInit {
     let timervariale = 5000;
     
     setInterval(() => {
-      //this.calldata(); 
+      this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
