@@ -35,6 +35,45 @@ export class Switch implements iSwitch{
   styleUrls: ['./dashboard.component.css']
 })
 export class Dashboard1Component implements OnInit {
+  //Gauge
+  public canvasWidth = 250
+  public needleValue = 65
+  public centralLabel = '';
+  public name = ''
+
+  bottomLabel1 = '65'
+  options1 = {
+      hasNeedle: false,
+      needleColor: 'gray',
+      needleUpdateSpeed: 1000,
+      arcColors: ['rgb(44, 151, 222)', 'lightgray'],
+      arcDelimiters: [30],
+      rangeLabel: ['0', '100'],
+      needleStartValue: 50,
+  }
+
+  bottomLabel2 = '65'
+  options2 = {
+      hasNeedle: false,
+      needleColor: 'gray',
+      needleUpdateSpeed: 1000,
+      arcColors: ['yellow', 'lightgray'],
+      arcDelimiters: [30],
+      rangeLabel: ['0', '100'],
+      needleStartValue: 50,
+  }
+
+  bottomLabel3 = '65'
+  options3 = {
+      hasNeedle: false,
+      needleColor: 'gray',
+      needleUpdateSpeed: 1000,
+      arcColors: ['green', 'lightgray'],
+      arcDelimiters: [30],
+      rangeLabel: ['0', '100'],
+      needleStartValue: 50,
+  }
+
   pagerefrsh: any;
   switchData: Switch[] = [];
   isAdmin: string;
@@ -365,6 +404,15 @@ export class Dashboard1Component implements OnInit {
           this.sensors5 = res.filter(x=>x.type === "5");
           this.sensors6 = res.filter(x=>x.type === "6"); */
           this.selectedsensordata = this.allSensors.filter(x=>x.sensor === this.selectedsensor)[0];
+          this.bottomLabel1 = this.selectedsensordata.da;
+          this.bottomLabel2 = this.selectedsensordata.db;
+          this.bottomLabel3 = this.selectedsensordata.dc;
+          this.options1.rangeLabel = ['0','1000'];
+          this.options2.rangeLabel = ['0','200'];
+          this.options3.rangeLabel = ['0','1000'];
+          this.options1.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.da).toString())/1000)*100];
+          this.options2.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.db).toString())/200)*100];
+          this.options3.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dc).toString())/1000)*100];
           /* this.selectedsensor = "S001";
           this.selectedfilter = "weekly"; */
         /* } */

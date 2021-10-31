@@ -87,6 +87,19 @@
     box-sizing: border-box;
 }
 
+.text-primary {
+    color: black!important;
+}
+
+.max-min {
+    color: #908e8e!important;
+    font-size: 0.8rem !important;
+}
+
+.custom-card {
+    font-size: 1.4rem !important;
+}
+
 .onoffswitch-inner:before {
     content: "ON";
     padding-left: 0px;
@@ -184,3 +197,13 @@
         margin-left: 0px !important;
     }
 }
+
+.gauge-chart>div:first-child {
+    height: 125px !important;
+}
+
+.gauge-chart>span:first-child {
+    margin-top: -100px !important;
+}
+
+.gauge-chart__label {}

@@ -36,11 +36,30 @@
 
                     <!-- Page Heading -->
                     <div class="row">
-                        <div class="col-xl-6">
-                            <h1 class="h3 mb-0 text-gray-800">Sensor</h1>
+                        <div class="col-xl-11">
+                            <h1 class="h3 mb-0 text-gray-800">Sensor
+                                <span style="float: right; font-size: 20px !important;margin-top:-3px;" (click)="export(selectedsensordata)">Download Data</span>
+                                <span style="float: right;" class="material-icons">
+                                    download_for_offline
+                                </span>
+                                <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.status}}</span>
+                                <span *ngIf="selectedsensordata.status === 'Offline'" style="float: right;" class="material-icons">
+                                    hide_source
+                                </span>
+                                <span *ngIf="selectedsensordata.status !== 'Offline'" style="float: right;" class="material-icons">
+                                    fiber_manual_record
+                                </span>
+                                <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.sensor}}</span>
+
+                                <!-- <span style="float: right;; font-size: 20px !important;margin-right:10px">Online</span>
+                                <span style="float: right;" class="material-icons">
+                                    fiber_manual_record
+                                </span> -->
+                            </h1>
+
                         </div>
-                        <div class="col-xl-6">
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4" style="float:right;">
+                        <div class="col-xl-1">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4" style="float:left;">
 
                                 <a (click)="switch()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 										class="fas fa-download fa-sm text-white-50"></i> Relay Switch</a>
@@ -53,7 +72,7 @@
                         <div class="col-xl-6 card border-left-primary shadow h-100 py-2">
 
                             <div class="card-header">
-                                <h6 style="font-size: 20px;" class="m-0 font-weight-bold text-primary">{{selectedsensordata.sensor}}</h6>
+                                <h6 style="font-size: 20px;" class="m-0 font-weight-bold text-primary">Data Card</h6>
                             </div>
                             <div class="card-body">
                                 <br>
@@ -61,11 +80,16 @@
                                 <div class="col-xl-12 col-md-12 mb-12">
                                     <div class="card border-left-primary shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                        {{selectedsensordata.datext}}</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div>
+                                            <div class="row col-xs-12 no-gutters align-items-center">
+                                                <div class="row col-xs-12">
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
+                                                    <!-- <div class="col-xs-8 h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div> -->
+                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                        {{selectedsensordata.datext}}<br/><br/>
+                                                        <span class="max-min">Max</span><br/>
+                                                        <span class="max-min">Min</span>
+                                                    </div>
+
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -79,11 +103,14 @@
                                 <div class="col-xl-12 col-md-12 mb-12">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        {{selectedsensordata.dbtext}}</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.db}}</div>
+                                            <div class="row col-xs-12 no-gutters align-items-center">
+                                                <div class="row col-xs-12">
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
+                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                        {{selectedsensordata.dbtext}}<br/><br/>
+                                                        <span class="max-min">Max</span><br/>
+                                                        <span class="max-min">Min</span></div>
+                                                    <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.db}}</div> -->
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -96,11 +123,14 @@
                                 <div class="col-xl-12 col-md-12 mb-12">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        {{selectedsensordata.dctext}}</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.dc}}</div>
+                                            <div class="row col-xs-12 no-gutters align-items-center">
+                                                <div class="row col-xs-12">
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                        {{selectedsensordata.dctext}}<br/><br/>
+                                                        <span class="max-min">Max</span><br/>
+                                                        <span class="max-min">Min</span></div>
+                                                    <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.dc}}</div> -->
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
