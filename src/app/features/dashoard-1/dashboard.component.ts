@@ -37,11 +37,12 @@ export class Switch implements iSwitch{
 export class Dashboard1Component implements OnInit {
   //Gauge
   public canvasWidth = 250
-  public needleValue = 65
-  public centralLabel = '';
+  public needleValue = 2
+  public centralLabel = '200';
   public name = ''
 
-  bottomLabel1 = ''
+  bottomLabel1 = '';
+  centralLabel1 = '';
   options1 = {
       hasNeedle: false,
       needleColor: 'gray',
@@ -53,6 +54,7 @@ export class Dashboard1Component implements OnInit {
   }
 
   bottomLabel2 = ''
+  centralLabel2 = '';
   options2 = {
       hasNeedle: false,
       needleColor: 'gray',
@@ -64,6 +66,7 @@ export class Dashboard1Component implements OnInit {
   }
 
   bottomLabel3 = ''
+  centralLabel3 = '';
   options3 = {
       hasNeedle: false,
       needleColor: 'gray',
@@ -404,9 +407,9 @@ export class Dashboard1Component implements OnInit {
           this.sensors5 = res.filter(x=>x.type === "5");
           this.sensors6 = res.filter(x=>x.type === "6"); */
           this.selectedsensordata = this.allSensors.filter(x=>x.sensor === this.selectedsensor)[0];
-          this.bottomLabel1 = this.selectedsensordata.da;
-          this.bottomLabel2 = this.selectedsensordata.db;
-          this.bottomLabel3 = this.selectedsensordata.dc;
+          this.centralLabel1 = this.selectedsensordata.da;
+          this.centralLabel2 = this.selectedsensordata.db;
+          this.centralLabel3 = this.selectedsensordata.dc;
           this.options1.rangeLabel = ['0','1000'];
           this.options2.rangeLabel = ['0','200'];
           this.options3.rangeLabel = ['0','1000'];

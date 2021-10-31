@@ -77,15 +77,15 @@
                             <div class="card-body">
                                 <br>
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-12 col-md-12 mb-12">
+                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
                                     <div class="card border-left-primary shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row col-xs-12 no-gutters align-items-center">
                                                 <div class="row col-xs-12">
-                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
                                                     <!-- <div class="col-xs-8 h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div> -->
                                                     <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.datext}} <img style="margin-left: 40px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                        {{selectedsensordata.datext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
                                                         <span class="max-min">Max : 1000</span><br/>
                                                         <span class="max-min">Min : 0</span><br/><br/>
                                                         <img class="leaf" src="../../../assets/img/leaf.png" />
@@ -101,14 +101,14 @@
                                 </div>
                                 <br>
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-12 col-md-12 mb-12">
+                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
                                     <div style="border-left: 0.25rem solid #ffa500!important;" class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row col-xs-12 no-gutters align-items-center">
                                                 <div class="row col-xs-12">
-                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
                                                     <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.dbtext}} <img style="margin-left: 80px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                        {{selectedsensordata.dbtext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/humidity.png" /><br/><br/>
                                                         <span class="max-min">Max : 200</span><br/>
                                                         <span class="max-min">Min : 0</span><br/><br/>
                                                         <img class="leaf" src="../../../assets/img/leaf.png" /></div>
@@ -123,14 +123,14 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="col-xl-12 col-md-12 mb-12">
+                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row col-xs-12 no-gutters align-items-center">
                                                 <div class="row col-xs-12">
-                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                    <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
                                                     <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.dctext}} <img style="margin-left: 125px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                        {{selectedsensordata.dctext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/co2.jpg" /><br/><br/>
                                                         <span class="max-min">Max : 1000</span><br/>
                                                         <span class="max-min">Min : 0</span><br/><br/>
                                                         <img class="leaf" src="../../../assets/img/leaf.png" /></div>
@@ -220,11 +220,13 @@
                                                 </mat-select>
                                             </mat-form-field>
                                         </p>
+                                        <br/><br/>
                                         <div #containerRef class="chart-area">
                                             <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
                                                 [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
                                             </ngx-charts-line-chart>
                                         </div>
+                                        <br/>
                                     </div>
                                 </div>
                             </div>

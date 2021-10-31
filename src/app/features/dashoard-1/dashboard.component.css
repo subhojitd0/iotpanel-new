@@ -205,12 +205,10 @@
     }
 }
 
-.gauge-chart>div:first-child {
+.chart-custom .gauge-chart>div:first-child {
     height: 125px !important;
 }
 
-.gauge-chart>span:first-child {
+.rg-gauge-chart.chart-custom .gauge-chart>span:first-child {
     margin-top: -100px !important;
 }
-
-.gauge-chart__label {}
