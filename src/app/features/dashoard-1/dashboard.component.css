@@ -100,6 +100,13 @@
     font-size: 1.1rem !important;
 }
 
+.leaf {
+    margin-left: 150px;
+    margin-top: -80px;
+    height: 100px;
+    width: 80px;
+}
+
 .onoffswitch-inner:before {
     content: "ON";
     padding-left: 0px;
