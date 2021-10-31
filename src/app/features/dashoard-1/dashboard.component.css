@@ -97,7 +97,14 @@
 }
 
 .custom-card {
-    font-size: 1.4rem !important;
+    font-size: 1.1rem !important;
+}
+
+.leaf {
+    margin-left: 150px;
+    margin-top: -80px;
+    height: 100px;
+    width: 80px;
 }
 
 .onoffswitch-inner:before {

@@ -41,7 +41,7 @@ export class Dashboard1Component implements OnInit {
   public centralLabel = '';
   public name = ''
 
-  bottomLabel1 = '65'
+  bottomLabel1 = ''
   options1 = {
       hasNeedle: false,
       needleColor: 'gray',
@@ -52,18 +52,18 @@ export class Dashboard1Component implements OnInit {
       needleStartValue: 50,
   }
 
-  bottomLabel2 = '65'
+  bottomLabel2 = ''
   options2 = {
       hasNeedle: false,
       needleColor: 'gray',
       needleUpdateSpeed: 1000,
-      arcColors: ['yellow', 'lightgray'],
+      arcColors: ['orange', 'lightgray'],
       arcDelimiters: [30],
       rangeLabel: ['0', '100'],
       needleStartValue: 50,
   }
 
-  bottomLabel3 = '65'
+  bottomLabel3 = ''
   options3 = {
       hasNeedle: false,
       needleColor: 'gray',
