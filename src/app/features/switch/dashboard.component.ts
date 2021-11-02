@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ROUTE_DASHBOARD, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
+import { ROUTE_DASHBOARD, ROUTE_DASHBOARD_1, ROUTE_DATA_ADD } from 'src/shared/constants/constant';
 import { GRAPH_API, SENSOR_READ_API, SWITCH_API } from 'src/shared/services/api.url-helper';
 import { GlobalService } from 'src/shared/services/gloalservice';
 import { ApiService } from 'src/shared/services/service';
@@ -463,11 +463,15 @@ export class SwitchComponent implements OnInit {
       dialogRef.close();
     });
   }
+  goback(){
+    localStorage.setItem("switchurl","0");
+    this.router.navigateByUrl('/' + ROUTE_DASHBOARD_1);
+  }
   ngOnInit(): void {
     let timervariale = 13000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
