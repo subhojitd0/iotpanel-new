@@ -166,6 +166,8 @@ export class SwitchComponent implements OnInit {
             });
             break;
           }
+          case undefined: location.reload();
+          break;
           default: {
             let dirty = localStorage.getItem("dirty");
             if(dirty === "1"){

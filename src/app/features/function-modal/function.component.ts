@@ -61,6 +61,7 @@ export class FunctionComponent implements OnInit {
         lowval: this.text1
       };
       this.apiService.post(SWITCH_API, json).then((res: any)=>{
+        debugger;
         if(res.status === "Success"){
           this.toastr.success("Your function was successfully assigned");
           this.dialogRef.close('save');
