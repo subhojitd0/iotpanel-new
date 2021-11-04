@@ -24,12 +24,13 @@ export class FunctionComponent implements OnInit {
   text1: any;
   text2: any;
   name: any;
+  lowtext = "Low Value";
+  hightext = "High Value";
   staticFunctions = [
     { functionid: "0", functionname: "No Function"},
-    { functionid: "1", functionname: "Function 1" },
-    { functionid: "2", functionname: "Function 2" },
-    { functionid: "3", functionname: "Function 3" },
-    { functionid: "4", functionname: "Function 4" }
+    { functionid: "1", functionname: "Climate Control" },
+    { functionid: "2", functionname: "Delay Timer" },
+    { functionid: "3", functionname: "RTC" }
   ]
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<FunctionComponent> ,private router: Router, private _formBuilder: FormBuilder,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
     this.hub = data.hub;
@@ -48,9 +49,28 @@ export class FunctionComponent implements OnInit {
     localStorage.setItem("dirty", "1");
   }
 
- 
+  change(){
+    if(this.selectedfunction === "1"){
+      this.lowtext = "Hysterisis";
+      this.hightext = "Set Point";
+    }
+    else if(this.selectedfunction === "2"){
+      this.lowtext = "Off Time";
+      this.hightext = "On Time";
+    }
+    else if(this.selectedfunction === "3"){
+      this.lowtext = "Off Hour";
+      this.hightext = "On Hour";
+    }
+    else{
+      this.lowtext = "Low Value";
+      this.hightext = "High Value";
+      this.text1 = 0;
+      this.text2 = 0;
+    }
+  }
   save(){
-    if(this.selectedfunction && this.text1 && this.text2){
+    if(parseInt(this.selectedfunction) > -1 && parseInt(this.text1) > -1 && parseInt(this.text2) > -1 ){
       var json = {
         switchid: this.switch,
         hub: this.hub,
@@ -61,7 +81,7 @@ export class FunctionComponent implements OnInit {
         lowval: this.text1
       };
       this.apiService.post(SWITCH_API, json).then((res: any)=>{
-        debugger;
+        
         if(res.status === "Success"){
           this.toastr.success("Your function was successfully assigned");
           this.dialogRef.close('save');

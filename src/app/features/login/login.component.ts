@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('loggedinuser', res.username);
           this.router.navigateByUrl('/' + ROUTE_BASIC); 
         } */
-        debugger;
+        
         localStorage.setItem("isAdmin", res.isAdmin);
         localStorage.setItem("loggedinusername", this.username);
         localStorage.setItem("loggedinphone", res.phone);

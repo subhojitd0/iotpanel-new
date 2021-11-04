@@ -27,7 +27,7 @@
 
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper">
 
             <!-- Main Content -->
             <div id="content">
@@ -36,20 +36,20 @@
 
                     <!-- Page Heading -->
                     <div class="row">
-                        <div class="col-xl-11">
+                        <div class="col-xs-10 col-md-10 col-xl-10">
                             <h1 class="h3 mb-0 text-gray-800">Sensor
                                 <span style="float: right; font-size: 20px !important;margin-top:-3px;" (click)="export(selectedsensordata)">Download Data</span>
                                 <span style="float: right;" class="material-icons">
                                     download_for_offline
                                 </span>
                                 <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.status}}</span>
-                                <span *ngIf="selectedsensordata.status === 'Offline'" style="float: right; border-radius: 50%;height: 23px;color: red;width: 20px;border: 10px solid red;margin-right: 10px;">
+                                <span *ngIf="selectedsensordata.status === 'Offline'" style="float: right; border-radius: 50%;height: 20px;color: red;width: 20px;border: 10px solid red;margin-right: 5px;margin-top:3px">
                                     &nbsp;
                                 </span>
-                                <span *ngIf="selectedsensordata.status !== 'Offline'" style="float: right; border-radius: 50%;height: 23px;color: green;width: 20px;border: 10px solid green;margin-right: 10px;">
+                                <span *ngIf="selectedsensordata.status !== 'Offline'" style="float: right; border-radius: 50%;height: 25px;color: green;width: 20px;border: 10px solid green;margin-right: 30px;margin-top:5px">
                                     &nbsp;
                                 </span>
-                                <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.sensor}}</span>
+                                <span style="float: right;font-size: 20px !important;margin-right: 10px;margin-top: -3px;font-family: unset;padding: 0px 10px 0px 10px;">{{selectedsensordata.sensor}}</span>
 
                                 <!-- <span style="float: right;; font-size: 20px !important;margin-right:10px">Online</span>
                                 <span style="float: right;" class="material-icons">
@@ -58,7 +58,7 @@
                             </h1>
 
                         </div>
-                        <div class="col-xl-1">
+                        <div class="col-xs-2 col-md-2 col-xl-2">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4" style="float:left;">
 
                                 <a (click)="switch()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
@@ -69,7 +69,7 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="col-xl-5 card border-left-primary shadow h-100 py-2">
+                        <div class="col-xl-5  shadow h-100 py-2">
 
                             <div class="card-header">
                                 <h6 style="font-size: 20px;" class="m-0 font-weight-bold text-primary">Data Card</h6>
@@ -77,73 +77,80 @@
                             <div class="card-body">
                                 <br>
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
+                                <div class="col-xs-12">
                                     <div class="card border-left-primary shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row col-xs-12 no-gutters align-items-center">
-                                                <div class="row col-xs-12">
-                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
-                                                    <!-- <div class="col-xs-8 h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div> -->
-                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.datext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
-                                                        <span class="max-min">Max : 1000</span><br/>
-                                                        <span class="max-min">Min : 0</span><br/><br/>
-                                                        <img class="leaf" src="../../../assets/img/leaf.png" />
-                                                    </div>
+                                            <div class="row">
 
+                                                <div class="col-xs-4">
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
                                                 </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                <div class="col-xs-4">
+                                                    &nbsp;&nbsp;
                                                 </div>
+                                                <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                    {{selectedsensordata.datext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                    <p class="max-min">Max : 50</p>
+                                                    <p class="max-min">Min : 0</p>
+                                                </div>
+                                                <!-- <div class="col-xs-2 align-bottom">
+                                                    <img class="leaf" src="../../../assets/img/leaf.png" />
+                                                </div> -->
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
+
+
                                 <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
+                                <div class="col-xs-12">
                                     <div style="border-left: 0.25rem solid #ffa500!important;" class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row col-xs-12 no-gutters align-items-center">
-                                                <div class="row col-xs-12">
-                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
-                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.dbtext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/humidity.png" /><br/><br/>
-                                                        <span class="max-min">Max : 200</span><br/>
-                                                        <span class="max-min">Min : 0</span><br/><br/>
-                                                        <img class="leaf" src="../../../assets/img/leaf.png" /></div>
+                                            <div class="row">
 
-                                                    <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.db}}</div> -->
+                                                <div class="row col-xs-4">
+                                                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
                                                 </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                <div class="col-xs-4">
+                                                    &nbsp;&nbsp;
                                                 </div>
+                                                <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                    {{selectedsensordata.dbtext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                    <p class="max-min">Max : 100</p>
+                                                    <p class="max-min">Min : 0</p>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="col-xl-12 col-md-12 mb-12" style="height: 190px !important;">
+
+
+
+
+
+                                <div class="col-xs-12">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
-                                            <div class="row col-xs-12 no-gutters align-items-center">
-                                                <div class="row col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-4">
                                                     <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
-                                                    <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                        {{selectedsensordata.dctext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/co2.jpg" /><br/><br/>
-                                                        <span class="max-min">Max : 1000</span><br/>
-                                                        <span class="max-min">Min : 0</span><br/><br/>
-                                                        <img class="leaf" src="../../../assets/img/leaf.png" /></div>
-                                                    <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.dc}}</div> -->
                                                 </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                <div class="col-xs-4">
+                                                    &nbsp;&nbsp;
+                                                </div>
+                                                <div class="col-xs-4 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                    {{selectedsensordata.dctext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 60px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                    <p class="max-min">Max : 2000</p>
+                                                    <p class="max-min">Min : 0</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
+
 
 
                                 <!-- Pending Requests Card Example -->
@@ -158,29 +165,25 @@
                         <div class="col-xl-7">
 
                             <!-- Area Chart -->
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Graphical Representation</h6>
-                                        <div class="dropdown no-arrow">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                                <div class="dropdown-header">Dropdown Header:</div>
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
+
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Graphical Representation</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-12" style="padding-left: 5%;">
+                                            Filter By :
                                         </div>
                                     </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <p style="padding-left: 20px; padding-top: 20px;">
-                                            Filter by :
-                                            <mat-form-field style="margin-left: 20px;width:20%;">
+
+                                    <div class="row">
+
+                                        <div class="col-xs-2 col-md-2 col-xl-2" style="padding-left:5% !important;">
+                                            <mat-form-field>
                                                 <mat-label>Date Filters : </mat-label>
                                                 <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
                                                     <mat-option value="0">
@@ -194,7 +197,10 @@
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
-                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                        </div>
+
+                                        <div class="col-xs-2 col-md-2 col-xl-2" style="padding-left:15% !important;">
+                                            <mat-form-field>
                                                 <mat-label>Sensor Filters : </mat-label>
                                                 <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
                                                     <mat-option *ngFor="let row of sensornames" [value]="row">
@@ -202,7 +208,10 @@
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
-                                            <mat-form-field style="margin-left: 20px;width:20%;">
+                                        </div>
+
+                                        <div class="col-xs-2 col-md-2 col-xl-2" style="padding-left:30% !important;">
+                                            <mat-form-field>
                                                 <mat-label>Data Filters : </mat-label>
                                                 <mat-select (selectionChange)="callgraph()" [(ngModel)]="selecteddata">
                                                     <mat-option value="All">
@@ -219,17 +228,20 @@
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
-                                        </p>
-                                        <br/><br/>
-                                        <div #containerRef class="chart-area">
-                                            <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-                                                [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-                                            </ngx-charts-line-chart>
                                         </div>
-                                        <br/>
+
                                     </div>
+
+                                    <br/><br/>
+                                    <div #containerRef class="chart-area" style="margin-top: 10%;margin-bottom: 10%;">
+                                        <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+                                            [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                        </ngx-charts-line-chart>
+                                    </div>
+                                    <br/>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

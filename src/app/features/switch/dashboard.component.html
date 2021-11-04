@@ -1,21 +1,3 @@
-<!-- <div class="row" style="height: 400px;padding: 20px;">
-    <div class="sensor-box col-sm-5 row" *ngIf="selectedHub">
-        <p class="sensor-p col-sm-4">
-            SENSOR 1
-        </p>
-    </div>
-    <div style="border : 1px solid;" class="col-sm-6" *ngIf="selectedHub">
-    </div>
-</div>
-<div class="row" style="height: 200px;padding: 20px; padding-top: 0px !important;">
-    <p class="switch-p" *ngFor="let switch of switchData">
-        {{switch.name}}
-        <input type="checkbox" [(ngModel)]="switch.statusbool" (change)="changed(switch)" data-toggle="toggle" data-size="sm">
-    </p>
-
-
-</div> -->
-
 <div class="container-fluid page-body-wrapper">
     <!-- partial -->
     <div class="main-panel">
@@ -35,133 +17,96 @@
                                                     background: #eeeeee !important;
                                                     font-weight: 500 !important;
                                                     cursor: pointer !important;
-                                                    border-radius: 10px !important; font-size: 16px !important;">Go Back to Dashboard</span></h6>
+                                                    border-radius: 10px !important; font-size: 16px !important;">Back</span></h6>
 
                                         </div>
                                         <div class="row card-body">
                                             <br>
                                             <!-- Earnings (Monthly) Card Example -->
                                             <div class="col-xl-2 col-md-2 mb-2" *ngFor="let switch of switchData" style="height: 150px !important;">
+
+
                                                 <div *ngIf="switch.physicalstatus === '1'" style="border-left: 0.50rem solid green!important;" class="card border-left-primary shadow h-100 py-2">
                                                     <div class="card-body">
-                                                        <div class="row col-xs-12 no-gutters align-items-center">
-                                                            <div class="row col-xs-12">
-                                                                <!-- <div class="col-xs-8 h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div> -->
-                                                                <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                                    <input type="text" style="background: none;
-                                                    border: none;
-                                                    text-align: center;
-                                                    color: black;
-                                                    font-family: Arial, Helvetica, sans-serif;
-                                                    margin-bottom: 10px;
-                                                    margin-top: 10px;
-                                                    margin-left: 15px;
-                                                    font-size: 12px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                                    <div class="onoffswitch" style="width: 70%;
-                                                    margin-left: 15%;">
+                                                        <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                            <input type="text" style="background: none;opacity:100 !important;width: auto !important;
+                                                                        border: none;
+                                                                        text-align: center;
+                                                                        color: black;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        margin-bottom: 10px;
+                                                                        margin-top: 10px;
+                                                                        margin-left: 15px;
+                                                                        font-size: 14px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
 
-                                                                        <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
-                                                                        <label class="onoffswitch-label" [attr.for]="switch.switchid">
-                                                            <span class="onoffswitch-inner"></span>
-                                                            <span class="onoffswitch-switch"></span>
-                                                        </label>
-                                                                    </div>
-                                                                    <span><span style="font-size:10px;margin-right:10px;float:left;padding-left: 10px;">{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">
-                                                        south
-                                                        </span></span><span style="font-size:10px;margin-left:10px;float: right;padding-right: 10px;">{{switch.highval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">
-                                                            north
-                                                            </span></span>
-                                                                    </span>
-                                                                    <span style="color: black;  margin-top: 10px;font-size: 12px;margin-left:7px">{{switch.functionname}}</span>
+                                                            <div class="row">
+                                                                <div class="toggle normal">
+                                                                    <input class="input-switch normal" [attr.id]="switch.switchid" [(ngModel)]="switch.statusbool" (change)="changed(switch)" type="checkbox" />
+                                                                    <label class="toggle-item" [attr.for]="switch.switchid"></label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="padding-left:2%;">
+                                                                <div class="col-xs-6">
+                                                                    <p style="">{{switch.functionname}}</p>
                                                                 </div>
 
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                                <div class="col-xs-6" style="padding-left:15%;">
+                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">south</span> &nbsp;&nbsp; {{switch.highval}}
+                                                                        <span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">north</span></p>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
                                                 <div *ngIf="switch.physicalstatus === '0'" style="border-left: 0.50rem solid red!important;" class="card border-left-primary shadow h-100 py-2">
                                                     <div class="card-body">
-                                                        <div class="row col-xs-12 no-gutters align-items-center">
-                                                            <div class="row col-xs-12">
-                                                                <!-- <div class="col-xs-8 h5 mb-0 font-weight-bold text-gray-800">{{selectedsensordata.da}}</div> -->
-                                                                <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
-                                                                    <input type="text" style="background: none;
-                                                    border: none;
-                                                    text-align: center;
-                                                    color: black;
-                                                    font-family: Arial, Helvetica, sans-serif;
-                                                    margin-bottom: 10px;
-                                                    margin-top: 10px;
-                                                    margin-left: 15px;
-                                                    font-size: 12px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                                    <div class="onoffswitch" style="width: 70%;
-                                                    margin-left: 15%;">
+                                                        <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
+                                                            <input type="text" style="background: none; opacity:100 !important;width: auto !important;
+                                                                        border: none;
+                                                                        text-align: center;
+                                                                        color: black;
+                                                                        font-family: Arial, Helvetica, sans-serif;
+                                                                        margin-bottom: 10px;
+                                                                        margin-top: 10px;
+                                                                        margin-left: 15px;
+                                                                        font-size: 14px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
 
-                                                                        <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
-                                                                        <label class="onoffswitch-label" [attr.for]="switch.switchid">
-                                                            <span class="onoffswitch-inner"></span>
-                                                            <span class="onoffswitch-switch"></span>
-                                                        </label>
-                                                                    </div>
-                                                                    <span><span style="font-size:10px;margin-right:10px;float:left;padding-left: 10px;">{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">
-                                                        south
-                                                        </span></span><span style="font-size:10px;margin-left:10px;float: right;padding-right: 10px;">{{switch.highval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">
-                                                            north
-                                                            </span></span>
-                                                                    </span>
-                                                                    <span style="color: black;  margin-top: 10px;font-size: 12px;margin-left:7px">{{switch.functionname}}</span>
+                                                            <div class="row">
+
+                                                                <div class="toggle normal">
+                                                                    <input class="input-switch normal" [attr.id]="switch.switchid" [(ngModel)]="switch.statusbool" (change)="changed(switch)" type="checkbox" />
+                                                                    <label class="toggle-item" [attr.for]="switch.switchid"></label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-xs-6" >
+                                                                    <p>{{switch.functionname}}</p>
                                                                 </div>
 
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                                <div class="col-xs-6" style="padding-left:15%;">
+                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">south</span> &nbsp;&nbsp; {{switch.highval}}
+                                                                        <span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">north</span></p>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
+
+
                                             </div>
                                         </div>
                                     </div>
-                                    <!--  <div class="col-lg-12">
-                                        <div class="col-lg-12 flex-column" *ngIf="selectedHub">
-                                            <div class="row" style="margin: 20px;">
-                                                <div class="col-sm-2 d-flex flex-column switch-p" *ngFor="let switch of switchData">
-                                                    <span *ngIf="switch.physicalstatus === '1'" style="margin-left: 45%;background: #01ff01;
-                                                        width: 10%;height: 10px; border-radius: 20px;">&nbsp;</span>
-                                                    <span *ngIf="switch.physicalstatus === '0'" style="margin-left: 45%;background:red;
-                                                            width: 10%;height: 10px; border-radius: 20px;">&nbsp;</span>
-                                                    <input type="text" style="background: none;
-                                                    border: none;
-                                                    text-align: center;
-                                                    color: white;
-                                                    font-family: Arial, Helvetica, sans-serif;
-                                                    margin-bottom: 10px;
-                                                    margin-top: 10px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
-                                                    <div class="onoffswitch" style="width: 70%;
-                                                    margin-left: 15%;">
 
-                                                        <input [(ngModel)]="switch.statusbool" type="checkbox" name="onoffswitch" [attr.id]="switch.switchid" class="onoffswitch-checkbox" tabindex="0" (change)="changed(switch)">
-                                                        <label class="onoffswitch-label" [attr.for]="switch.switchid">
-                                                            <span class="onoffswitch-inner"></span>
-                                                            <span class="onoffswitch-switch"></span>
-                                                        </label>
-                                                    </div>
-                                                    <span><span style="float:left;padding-left: 10px;">{{switch.lowval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
-                                                        south
-                                                        </span></span><span style="float: right;padding-right: 10px;">{{switch.highval}}<span style="font-size: 13px !IMPORTANT; margin-left: 5px;" class="material-icons">
-                                                            north
-                                                            </span></span>
-                                                    </span>
-                                                    <span style="background: #d9e8f5;
-                                                    border-radius: 10px;
-                                                    color: black;  margin-top: 10px;">{{switch.functionname}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -169,15 +114,6 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <!-- <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-            </div>
-        </footer> -->
-        <!-- partial -->
     </div>
     <!-- main-panel ends -->
 </div>

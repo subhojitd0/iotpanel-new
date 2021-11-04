@@ -7,7 +7,7 @@ import {SENSOR_API} from '../../../shared/services/api.url-helper';
 import {MatDialog} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { ROUTE_DASHBOARD, ROUTE_DATA_VIEW } from 'src/shared/constants/constant';
+import { ROUTE_DASHBOARD, ROUTE_DASHBOARD_1, ROUTE_DATA_VIEW } from 'src/shared/constants/constant';
 import * as XLSX from 'xlsx';
 export interface PartyHead {
   name: string;
@@ -56,7 +56,7 @@ export class ReportComponent implements OnInit {
    }
 
    ngOnInit() : void {
-     debugger;
+     
      this.sensor = localStorage.getItem("selectedsensor");
      this.sensortype = localStorage.getItem("selectedsensortype");
     this.reportdata = JSON.parse(localStorage.getItem("reportdata"));
@@ -70,7 +70,7 @@ export class ReportComponent implements OnInit {
     });
    }
    back(){
-    this.router.navigate(['/' + ROUTE_DASHBOARD]);
+    this.router.navigate(['/' + ROUTE_DASHBOARD_1]);
    }
    export(){
     const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);

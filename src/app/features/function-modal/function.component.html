@@ -11,7 +11,7 @@
         <div class="col-sm-4">
             <mat-form-field>
                 <mat-label>Select Function</mat-label>
-                <mat-select [(ngModel)]="selectedfunction">
+                <mat-select [(ngModel)]="selectedfunction" (selectionChange)="change()">
                     <mat-option *ngFor="let option of staticFunctions" [(value)]="option.functionid">
                         {{option.functionname}}
                     </mat-option>
@@ -20,14 +20,14 @@
         </div>
         <div class="col-sm-4">
             <mat-form-field>
-                <mat-label>Enter Low Value</mat-label>
-                <input type="number" step="1" matInput placeholder="Enter the low value here" [(ngModel)]="text1">
+                <mat-label>{{lowtext}}</mat-label>
+                <input [disabled]="selectedfunction === '0'" type="number" step="1" matInput placeholder="Enter the value here" [(ngModel)]="text1">
             </mat-form-field>
         </div>
         <div class="col-sm-4">
             <mat-form-field>
-                <mat-label>Enter High Value</mat-label>
-                <input type="number" step="1" placeholder="Enter the high value here" matInput [(ngModel)]="text2">
+                <mat-label>{{hightext}}</mat-label>
+                <input [disabled]="selectedfunction === '0'" type="number" step="1" placeholder="Enter the value here" matInput [(ngModel)]="text2">
             </mat-form-field>
         </div>
     </div>

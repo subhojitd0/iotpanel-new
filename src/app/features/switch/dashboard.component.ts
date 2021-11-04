@@ -75,10 +75,9 @@ export class SwitchComponent implements OnInit {
   };
   staticFunctions = [
     { functionid: "0", functionname: "No Function"},
-    { functionid: "1", functionname: "Function 1" },
-    { functionid: "2", functionname: "Function 2" },
-    { functionid: "3", functionname: "Function 3" },
-    { functionid: "4", functionname: "Function 4" }
+    { functionid: "1", functionname: "Climate Cont." },
+    { functionid: "2", functionname: "Delay Timer" },
+    { functionid: "3", functionname: "RTC" }
   ]
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -229,7 +228,7 @@ export class SwitchComponent implements OnInit {
           this.allSensors.forEach(x=>{
             x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
           })
-          debugger;
+          
           this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
@@ -246,7 +245,7 @@ export class SwitchComponent implements OnInit {
           let i = 0;
 
           this.allSensors.forEach(x=>{
-            debugger;
+            
             if(x.hasOwnProperty('error')){
               x.sensor= "No Data Available";
               x.da= "0.00";
@@ -346,7 +345,7 @@ export class SwitchComponent implements OnInit {
           this.selectedsensor = this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "";
           this.selectedfilter = this.selectedfilter ? this.selectedfilter : "0";
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-            debugger;
+            
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
@@ -390,7 +389,7 @@ export class SwitchComponent implements OnInit {
     
   }
   saveswitchname(data: any){
-    debugger;
+    
     //alert("New name is : "  + data.name);
     var json = {
       switchid: data.switchid,
@@ -410,7 +409,7 @@ export class SwitchComponent implements OnInit {
       day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
     }
     this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-      debugger;
+      
       this.temps = res.temp;
       this.humidity = res.humidity;
       this.co2 = res.co2;

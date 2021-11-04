@@ -227,7 +227,7 @@ export class DashboardComponent implements OnInit {
           this.allSensors.forEach(x=>{
             x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
           })
-          debugger;
+          
           this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
@@ -244,7 +244,7 @@ export class DashboardComponent implements OnInit {
           let i = 0;
 
           this.allSensors.forEach(x=>{
-            debugger;
+            
             if(x.hasOwnProperty('error')){
               x.sensor= "No Data Available";
               x.da= "0.00";
@@ -344,7 +344,7 @@ export class DashboardComponent implements OnInit {
           this.selectedsensor = this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "";
           this.selectedfilter = this.selectedfilter ? this.selectedfilter : "0";
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-            debugger;
+            
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
@@ -388,7 +388,7 @@ export class DashboardComponent implements OnInit {
     
   }
   saveswitchname(data: any){
-    debugger;
+    
     //alert("New name is : "  + data.name);
     var json = {
       switchid: data.switchid,
@@ -408,7 +408,7 @@ export class DashboardComponent implements OnInit {
       day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
     }
     this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-      debugger;
+      
       this.temps = res.temp;
       this.humidity = res.humidity;
       this.co2 = res.co2;

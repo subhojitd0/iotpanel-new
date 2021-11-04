@@ -63,7 +63,7 @@ export class UserViewComponent implements OnInit {
       "username": "IOT-ALL-USER"
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-      debugger;
+      
       this.allData = res;
       this.setupdata();
     });
@@ -73,7 +73,7 @@ export class UserViewComponent implements OnInit {
     let uniqueUsers = [...new Set(this.allData.map(x=>x.username))];
     if(uniqueUsers.length > 1 || ( uniqueUsers.length === 1 && uniqueUsers[0])){
       uniqueUsers.forEach((user: any)=>{
-        debugger;
+        
           let distinctHubs = [...new Set(this.allData.filter(x=>x.username === user).map(y=>y.hub))];
           if(distinctHubs.length > 0){
               distinctHubs.forEach((hub: any)=>{
@@ -172,7 +172,7 @@ export class UserViewComponent implements OnInit {
   deleteusersensor(row: any, sensor: any){
     var r = confirm("Are you sure that you want to delete this sensor ?");
     if (r == true) {
-      debugger;
+      
       var json = 
       {
         "mode":2,
@@ -213,7 +213,7 @@ export class UserViewComponent implements OnInit {
   /* deleteDriver(id: any){
     var r = confirm("Are you sure that you want to delete this record ?");
     if (r == true) {
-      debugger;
+      
       var json = 
       {
         "mode":3,

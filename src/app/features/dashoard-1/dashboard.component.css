@@ -94,6 +94,7 @@
 .max-min {
     color: #908e8e!important;
     font-size: 0.8rem !important;
+    margin-left: 30%;
 }
 
 .custom-card {
@@ -101,8 +102,6 @@
 }
 
 .leaf {
-    margin-left: 100px;
-    margin-top: -80px;
     height: 100px;
     width: 80px;
 }
@@ -203,12 +202,4 @@
         width: 85% !important;
         margin-left: 0px !important;
     }
-}
-
-.chart-custom .gauge-chart>div:first-child {
-    height: 125px !important;
-}
-
-.rg-gauge-chart.chart-custom .gauge-chart>span:first-child {
-    margin-top: -100px !important;
 }

@@ -80,7 +80,7 @@ export class UpdateComponent implements OnInit {
    ngOnInit() {
      this.phone = localStorage.getItem("loggedinphone");
      this.username = localStorage.getItem("loggedinusername");
-    debugger;
+    
     this.firstFormGroup = this._formBuilder.group({
       UserControl: []
      });

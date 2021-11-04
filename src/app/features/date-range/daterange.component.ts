@@ -55,7 +55,7 @@ export class DateRangeComponent implements OnInit {
         to: this.to,
       };
       this.apiService.post(REPORT_API, json).then((res: any)=>{
-        debugger;
+        
           this.toastr.success("Your data was successfully added");
           localStorage.setItem("reportdata", JSON.stringify(res));
           this.router.navigate(['/' + ROUTE_REPORT]);

@@ -117,10 +117,9 @@ export class Dashboard1Component implements OnInit {
   };
   staticFunctions = [
     { functionid: "0", functionname: "No Function"},
-    { functionid: "1", functionname: "Function 1" },
-    { functionid: "2", functionname: "Function 2" },
-    { functionid: "3", functionname: "Function 3" },
-    { functionid: "4", functionname: "Function 4" }
+    { functionid: "1", functionname: "Climate Control" },
+    { functionid: "2", functionname: "Delay Timer" },
+    { functionid: "3", functionname: "RTC" }
   ]
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -300,7 +299,7 @@ export class Dashboard1Component implements OnInit {
           this.allSensors.forEach(x=>{
             x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
           })
-          debugger;
+          
           this.sensornames = this.allSensors.map(x=>x.sensor);
           let remct = 6 - res.length;
           for(let j=0; j<remct; j++){
@@ -317,7 +316,7 @@ export class Dashboard1Component implements OnInit {
           let i = 0;
 
           this.allSensors.forEach(x=>{
-            debugger;
+            
             if(x.hasOwnProperty('error')){
               x.sensor= "No Data Available";
               x.da= "0.00";
@@ -410,12 +409,12 @@ export class Dashboard1Component implements OnInit {
           this.centralLabel1 = this.selectedsensordata.da;
           this.centralLabel2 = this.selectedsensordata.db;
           this.centralLabel3 = this.selectedsensordata.dc;
-          this.options1.rangeLabel = ['0','1000'];
-          this.options2.rangeLabel = ['0','200'];
-          this.options3.rangeLabel = ['0','1000'];
-          this.options1.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.da).toString())/1000)*100];
-          this.options2.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.db).toString())/200)*100];
-          this.options3.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dc).toString())/1000)*100];
+          this.options1.rangeLabel = ['0','50'];
+          this.options2.rangeLabel = ['0','100'];
+          this.options3.rangeLabel = ['0','2000'];
+          this.options1.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.da).toString())/50)*100];
+          this.options2.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.db).toString())/100)*100];
+          this.options3.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dc).toString())/2000)*100];
           /* this.selectedsensor = "S001";
           this.selectedfilter = "weekly"; */
         /* } */
@@ -426,7 +425,7 @@ export class Dashboard1Component implements OnInit {
           this.selectedsensor = this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "";
           this.selectedfilter = this.selectedfilter ? this.selectedfilter : "0";
           this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-            debugger;
+            
             this.temps = res.temp;
             this.humidity = res.humidity;
             this.co2 = res.co2;
@@ -470,7 +469,7 @@ export class Dashboard1Component implements OnInit {
     
   }
   saveswitchname(data: any){
-    debugger;
+    
     //alert("New name is : "  + data.name);
     var json = {
       switchid: data.switchid,
@@ -490,7 +489,7 @@ export class Dashboard1Component implements OnInit {
       day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
     }
     this.apiService.post(GRAPH_API, json3).then((res: any)=>{
-      debugger;
+      
       this.temps = res.temp;
       this.humidity = res.humidity;
       this.co2 = res.co2;

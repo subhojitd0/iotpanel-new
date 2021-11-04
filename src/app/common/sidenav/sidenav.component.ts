@@ -43,11 +43,11 @@ export class SideNavComponent implements OnInit {
   selectedzone: string;
   step = 0;
 
-  isExpanded = true;
+  isExpanded = false;
   showZoneMenu: boolean[] = [];
   showHubMenu: boolean[] = [];
   showSensormenu: boolean[] = [];
-  isShowing = true;
+  isShowing = false;
   data: any[] = [];
   isAvailable: boolean = true;
   isAdmin: string;
@@ -57,8 +57,8 @@ export class SideNavComponent implements OnInit {
   constructor(private globalSrv: GlobalService, private toastr: ToastrService, private apiService: ApiService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.globalSrv.theItem = "";
-    this.globalSrv.itemSensor = "";
+    /* this.globalSrv.theItem = "";
+    this.globalSrv.itemSensor = ""; */
     this.isAdmin = localStorage.getItem("isAdmin");
     this.loggedin = JSON.parse(localStorage.getItem('loggedin'));
     this.pagerefresh = JSON.parse(localStorage.getItem('pagerefresh'));
@@ -78,7 +78,7 @@ export class SideNavComponent implements OnInit {
       "username": this.user
     };
     this.apiService.post(SENSOR_API, json).then((res: any)=>{ 
-      debugger;
+      
       if(res.zone){
         this.isAvailable = false;
       }
@@ -123,7 +123,19 @@ export class SideNavComponent implements OnInit {
           val.hubs.forEach(element => {
             this.showHubMenu[element.id] = false;
           });
-        })
+        });
+        if(this.zones && this.zones.length > 0 && this.zones[0].hubs && this.zones[0].hubs.length > 0){
+          if(!(this.globalSrv.theItem && this.globalSrv.itemSensor)){
+            this.selectedhub = this.zones[0].hubs[0].hub;
+            this.selectedsensor =  this.zones[0].hubs[0].sensors[0];
+            this.globalSrv.theItem = this.zones[0].hubs[0].hub;
+            this.globalSrv.itemSensor = this.zones[0].hubs[0].sensors[0];
+            localStorage.setItem("selectedhub", this.zones[0].hubs[0].hub);
+            localStorage.setItem("selectedsensor", this.zones[0].hubs[0].sensors[0]);
+            //this.close();
+          }
+        }
+        
       }
       }
       
@@ -159,6 +171,10 @@ export class SideNavComponent implements OnInit {
       this.apiService.post(SENSOR_API, json).then((res: any)=>{
         if(res.status === "Success"){
           this.toastr.success("Your hub was successfully unassigned");
+          this.globalSrv.theItem = "";
+          this.globalSrv.itemSensor = "";
+          localStorage.setItem("selectedhub", "");
+          localStorage.setItem("selectedsensor", "");
           location.reload();
         }
         else{

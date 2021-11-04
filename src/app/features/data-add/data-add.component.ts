@@ -88,7 +88,7 @@ export class DataAddComponent implements OnInit {
       UserControl: [],
       ZoneCOntrol: []
      });
-    debugger;
+    
     console.log(this.data);
     if(this.data){
       //if(this.data.type){
@@ -113,7 +113,7 @@ export class DataAddComponent implements OnInit {
   }
 
   setupaddhub(){
-    debugger;
+    
     this.showUser = true;
     this.showHub = true;
     this.showZone = false;
@@ -241,7 +241,7 @@ export class DataAddComponent implements OnInit {
     };
     this.aduser = this.user;
     this.apiService.post(SENSOR_API, json).then((res: any)=>{
-      debugger;
+      
       this.zones = res.zone;
       let hub = res.hub;
       this.onlyhubs = [...new Set(hub.map(z=>z.hub))];
