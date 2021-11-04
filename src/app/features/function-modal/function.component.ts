@@ -55,8 +55,8 @@ export class FunctionComponent implements OnInit {
       this.hightext = "Set Point";
     }
     else if(this.selectedfunction === "2"){
-      this.lowtext = "Off Time";
-      this.hightext = "On Time";
+      this.lowtext = "Off Time (in min)";
+      this.hightext = "On Time (in min)";
     }
     else if(this.selectedfunction === "3"){
       this.lowtext = "Off Hour";
