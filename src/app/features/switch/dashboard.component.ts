@@ -77,7 +77,7 @@ export class SwitchComponent implements OnInit {
     { functionid: "0", functionname: "No Function"},
     { functionid: "1", functionname: "Climate Cont." },
     { functionid: "2", functionname: "Delay Timer" },
-    { functionid: "3", functionname: "RTC" }
+    { functionid: "3", functionname: "RTC Control" }
   ]
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -472,7 +472,7 @@ export class SwitchComponent implements OnInit {
     let timervariale = 13000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");

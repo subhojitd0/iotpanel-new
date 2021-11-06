@@ -36,7 +36,7 @@ export class Switch implements iSwitch{
 })
 export class Dashboard1Component implements OnInit {
   //Gauge
-  public canvasWidth = 250
+  public canvasWidth = 175
   public needleValue = 2
   public centralLabel = '200';
   public name = ''
@@ -178,7 +178,7 @@ export class Dashboard1Component implements OnInit {
     globalSrv.itemValueSensor.subscribe((nextValue) => {
       this.selectedsensor = nextValue;
       if(nextValue){
-        //this.calldata(); 
+        this.calldata(); 
       }
       
        //alert(nextValue);  // this will happen on every change

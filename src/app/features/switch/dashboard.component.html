@@ -26,17 +26,18 @@
                                             <div class="col-xl-2 col-md-2 mb-2" *ngFor="let switch of switchData" style="height: 150px !important;">
 
 
-                                                <div *ngIf="switch.physicalstatus === '1'" style="border-left: 0.50rem solid green!important;" class="card border-left-primary shadow h-100 py-2">
+                                                <div *ngIf="switch.physicalstatus === '1'" style="border-left: 0.50rem solid green!important; align-items: center;" class="card border-left-primary shadow h-100 py-2">
                                                     <div class="card-body">
                                                         <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
                                                             <input type="text" style="background: none;opacity:100 !important;width: auto !important;
                                                                         border: none;
+                                                                        
                                                                         text-align: center;
                                                                         color: black;
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         margin-bottom: 10px;
                                                                         margin-top: 10px;
-                                                                        margin-left: 15px;
+                                                                        
                                                                         font-size: 14px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
 
                                                             <div class="row">
@@ -46,13 +47,13 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row" style="padding-left:2%;">
+                                                            <div class="row">
                                                                 <div class="col-xs-6">
-                                                                    <p style="">{{switch.functionname}}</p>
+                                                                    <p style="word-break: normal; width:75%; margin-left: 10px !important;">{{switch.functionname}}</p>
                                                                 </div>
 
-                                                                <div class="col-xs-6" style="padding-left:15%;">
-                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">south</span> &nbsp;&nbsp; {{switch.highval}}
+                                                                <div class="col-xs-6" style="padding-left:3%;">
+                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">south</span> <br/> {{switch.highval}}
                                                                         <span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">north</span></p>
                                                                 </div>
 
@@ -63,7 +64,7 @@
 
 
 
-                                                <div *ngIf="switch.physicalstatus === '0'" style="border-left: 0.50rem solid red!important;" class="card border-left-primary shadow h-100 py-2">
+                                                <div *ngIf="switch.physicalstatus === '0'" style="border-left: 0.50rem solid red!important; align-items: center;" class="card border-left-primary shadow h-100 py-2">
                                                     <div class="card-body">
                                                         <div class="col-xs-12 text-xs font-weight-bold text-primary text-uppercase mb-1 custom-card">
                                                             <input type="text" style="background: none; opacity:100 !important;width: auto !important;
@@ -73,7 +74,7 @@
                                                                         font-family: Arial, Helvetica, sans-serif;
                                                                         margin-bottom: 10px;
                                                                         margin-top: 10px;
-                                                                        margin-left: 15px;
+                                                                        
                                                                         font-size: 14px;" [(ngModel)]="switch.name" (blur)="saveswitchname(switch)" />
 
                                                             <div class="row">
@@ -85,12 +86,12 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-xs-6" >
-                                                                    <p>{{switch.functionname}}</p>
+                                                                <div class="col-xs-6">
+                                                                    <p style="word-break: normal; width:75%; margin-left: 10px !important;">{{switch.functionname}}</p>
                                                                 </div>
 
-                                                                <div class="col-xs-6" style="padding-left:15%;">
-                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">south</span> &nbsp;&nbsp; {{switch.highval}}
+                                                                <div class="col-xs-6" style="padding-left:4%;">
+                                                                    <p>{{switch.lowval}}<span style="font-size: 10px !IMPORTANT; margin-left: 10% !important" class="material-icons">south</span><br/>{{switch.highval}}
                                                                         <span style="font-size: 10px !IMPORTANT; margin-left: 2px;" class="material-icons">north</span></p>
                                                                 </div>
 

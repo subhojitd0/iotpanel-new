@@ -213,13 +213,12 @@ input {
 
 label.toggle-item {
     width: 9em;
-    
     height: 3em;
     display: inline-block;
     border-radius: 50px;
-    margin: 40px;
-    margin-bottom: 10px !important;
-    
+    margin: 15px;
+    margin-bottom: 5px !important;
+    margin-top: 20px !important;
     position: relative;
     transition: all 0.3s ease;
     transform-origin: 20% center;
