@@ -178,7 +178,7 @@ export class Dashboard1Component implements OnInit {
     globalSrv.itemValueSensor.subscribe((nextValue) => {
       this.selectedsensor = nextValue;
       if(nextValue){
-        this.calldata(); 
+        //this.calldata(); 
       }
       
        //alert(nextValue);  // this will happen on every change

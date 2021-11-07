@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
     globalSrv.itemValue.subscribe((nextValue) => {
       this.selectedHub = nextValue;
       if(nextValue){
-        this.calldata(); 
+        //this.calldata(); 
       }
       
        //alert(nextValue);  // this will happen on every change
