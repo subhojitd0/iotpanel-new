@@ -23,6 +23,8 @@ export class FunctionComponent implements OnInit {
   selectedfunction: any;
   text1: any;
   text2: any;
+  text11: any;
+  text21: any;
   name: any;
   lowtext = "Low Value";
   hightext = "High Value";
@@ -32,12 +34,24 @@ export class FunctionComponent implements OnInit {
     { functionid: "2", functionname: "Delay Timer" },
     { functionid: "3", functionname: "RTC" }
   ]
+  lowtext2: string = "";
+  hightex2: string = "";
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<FunctionComponent> ,private router: Router, private _formBuilder: FormBuilder,private apiService: ApiService, public dialog: MatDialog, private toastr: ToastrService) {
     this.hub = data.hub;
     this.switch = data.switch;
     this.selectedfunction = data.function;
-    this.text1 = data.text1;
-    this.text2 = data.text2;
+    if(data.function === "3") {
+      let stringst = (parseInt(data.text1)/60).toString();
+      let stringsthigh = (parseInt(data.text2)/60).toString();
+      this.text1 = stringst.substr(0, stringst.indexOf('.'));
+      this.text11 = parseInt(data.text1)%60;
+      this.text2 = stringsthigh.substr(0, stringsthigh.indexOf('.'));
+      this.text21 = parseInt(data.text2)%60;
+    }
+    else{
+      this.text1 = data.text1;
+      this.text2 = data.text2;
+    }
    }
    step = 0;
    getSensorDetail(index: any){
@@ -59,18 +73,26 @@ export class FunctionComponent implements OnInit {
       this.hightext = "On Time (in min)";
     }
     else if(this.selectedfunction === "3"){
-      this.lowtext = "Off Hour";
-      this.hightext = "On Hour";
+      this.lowtext = "Off Hour ( Min )";
+      this.hightext = "On Hour ( Min )";
+      this.lowtext2 = "Off Mins ( Min )";
+      this.hightex2 = "On Mins ( Min )";
     }
     else{
       this.lowtext = "Low Value";
       this.hightext = "High Value";
       this.text1 = 0;
       this.text2 = 0;
+      this.text11 = 0;
+      this.text21 = 0;
     }
   }
   save(){
     if(parseInt(this.selectedfunction) > -1 && parseInt(this.text1) > -1 && parseInt(this.text2) > -1 ){
+      if(this.selectedfunction === "3"){
+        this.text1 = parseInt(this.text1) * 60 + this.text11;
+        this.text2 = parseInt(this.text2) * 60 + this.text21;
+      }
       var json = {
         switchid: this.switch,
         hub: this.hub,

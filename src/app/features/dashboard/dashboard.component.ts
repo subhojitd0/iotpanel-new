@@ -75,10 +75,9 @@ export class DashboardComponent implements OnInit {
   };
   staticFunctions = [
     { functionid: "0", functionname: "No Function"},
-    { functionid: "1", functionname: "Function 1" },
-    { functionid: "2", functionname: "Function 2" },
-    { functionid: "3", functionname: "Function 3" },
-    { functionid: "4", functionname: "Function 4" }
+    { functionid: "1", functionname: "Climate Control" },
+    { functionid: "2", functionname: "Delay Timer" },
+    { functionid: "3", functionname: "RTC" }
   ]
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
