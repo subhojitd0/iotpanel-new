@@ -406,9 +406,9 @@ export class Dashboard1Component implements OnInit {
           this.sensors5 = res.filter(x=>x.type === "5");
           this.sensors6 = res.filter(x=>x.type === "6"); */
           this.selectedsensordata = this.allSensors.filter(x=>x.sensor === this.selectedsensor)[0];
-          this.centralLabel1 = this.selectedsensordata.da;
-          this.centralLabel2 = this.selectedsensordata.db;
-          this.centralLabel3 = this.selectedsensordata.dc;
+          this.centralLabel1 = this.selectedsensordata.da + " °C";
+          this.centralLabel2 = this.selectedsensordata.db + " %";
+          this.centralLabel3 = this.selectedsensordata.dc + " PPM";
           this.options1.rangeLabel = ['0','50'];
           this.options2.rangeLabel = ['0','100'];
           this.options3.rangeLabel = ['0','2000'];
