@@ -179,6 +179,10 @@
     }
 }
 
+.gauge-chart {
+    font-weight: bold !important;
+}
+
 
 /*Mobile Query*/
 
