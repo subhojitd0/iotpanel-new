@@ -47,8 +47,8 @@ export class FunctionComponent implements OnInit {
       this.text11 = parseInt(data.text1)%60;
       this.text2 = stringsthigh.substr(0, stringsthigh.indexOf('.'));
       this.text21 = parseInt(data.text2)%60;
-      this.hightext = "Off Hour ( Min )";
-      this.lowtext = "On Hour ( Min )";
+      this.hightext = "Off Hour ( HR )";
+      this.lowtext = "On Hour ( HR )";
       this.hightex2 = "Off Mins ( Min )";
       this.lowtext2 = "On Mins ( Min )";
     }
@@ -77,8 +77,8 @@ export class FunctionComponent implements OnInit {
       this.hightext = "On Time (in min)";
     }
     else if(this.selectedfunction === "3"){
-      this.hightext = "Off Hour ( Min )";
-      this.lowtext = "On Hour ( Min )";
+      this.hightext = "Off Hour ( HR )";
+      this.lowtext = "On Hour ( HR )";
       this.hightex2 = "Off Mins ( Min )";
       this.lowtext2 = "On Mins ( Min )";
     }

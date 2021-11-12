@@ -91,6 +91,10 @@
     color: black!important;
 }
 
+.mat-select-trigger .mat-select-arrow {
+    border-top: 0px !important;
+}
+
 .max-min {
     color: #908e8e!important;
     font-size: 0.9rem !important;

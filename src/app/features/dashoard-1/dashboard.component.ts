@@ -99,7 +99,7 @@ export class Dashboard1Component implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Day';
+  xAxisLabel: string = 'Hours';
   yAxisLabel: string = 'Value';
   timeline: boolean = true;
   selectedfilter: any;
@@ -529,7 +529,12 @@ export class Dashboard1Component implements OnInit {
       }
 
       this.multi = multi3;
-      
+      if(this.selectedfilter === "0"){
+        this.xAxisLabel = "Hours";
+      }
+      else{
+        this.xAxisLabel = "Day";
+      }
     });
   }
   export(se){
@@ -548,7 +553,7 @@ export class Dashboard1Component implements OnInit {
     let timervariale = 5000;
     
     setInterval(() => {
-      this.calldata(); 
+      //this.calldata(); 
     }, timervariale);
     this.pagerefrsh = JSON.parse(localStorage.getItem('pagerefresh'));
     this.isAdmin = localStorage.getItem("isAdmin");
