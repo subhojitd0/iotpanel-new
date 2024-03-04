@@ -3,7 +3,7 @@
     margin-top:10%;
 }
 .main-body{
-  background-image: url(http://ibcabs.com/bills/x_iot/assets/img/bg.jpg);
+  background-image: url(https://e0.pxfuel.com/wallpapers/259/322/desktop-wallpaper-technology-ultra-technology.jpg);
 }
 .login-form{
     padding:20px;
@@ -17,6 +17,8 @@
 .main-div{
     width: 95% !important;
 }
+
+
 
 body {
   font-family: "Karla", sans-serif;
@@ -41,6 +43,7 @@ body {
     -o-object-fit: cover;
        object-fit: cover; }
   .login-card .card-body {
+    
     padding: 85px 60px 60px; }
     @media (max-width: 422px) {
       .login-card .card-body {
