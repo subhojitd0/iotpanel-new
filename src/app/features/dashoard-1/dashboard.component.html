@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <!-- <link href="../../../shared/css/sb-admin-2.min.css" rel="stylesheet"> -->
-
-</head>
 
 <body id="page-top">
 
@@ -69,74 +50,120 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="col-lg-5 ">
+                        <div class="col-lg-12 ">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Data Card</h6>
                                 </div>
                                 <div class="card-body">
 
-                                    <div class="col-xs-12">
-                                        <div class="card border-left-primary ">
-                                            <div class="card-body">
-                                                <div class="row">
 
-                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
-                                                        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
+
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card border-left-primary ">
+                                                <div class="card-body display-card">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-md-6 col-lg-6">
+                                                            <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            {{selectedsensordata.datext}} <img class="display-card-icon" src="https://cdn-icons-png.flaticon.com/512/3601/3601002.png" /><br/><br/>
+                                                            <p class="max-min">Max : 50 &deg;C</p>
+                                                            <p class="max-min">Min : 0 &deg;C</p>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            <h1 class="display-card-reading">34.3</h1> 
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                        {{selectedsensordata.datext}} <img style="margin-left: 5px;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/temp.png" /><br/><br/>
-                                                        <p class="max-min">Max : 50 &deg;C</p>
-                                                        <p class="max-min">Min : 0 &deg;C</p>
+                                        <div class="col-md-6">
+                                            <div class="card border-left-warning shadow h-100 py-2">
+                                                <div class="card-body display-card">
+                                                    <div class="row">
+
+                                                        <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                            <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            {{selectedsensordata.dbtext}} <img class="display-card-icon" src="https://cdn-icons-png.freepik.com/512/3601/3601634.png" /><br/><br/>
+                                                            <p class="max-min">Max : 100 %</p>
+                                                            <p class="max-min">Min : 0 %</p>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            <h1 class="display-card-reading">19.0</h1> 
+                                                        </div>
+
+
                                                     </div>
-                                                    <!-- <div class="col-xs-2" style="padding-top: 10%;">
-                                                    <img class="leaf" src="../../../assets/img/leaf.png" />
-                                                </div> -->
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12">
-                                        <div style="border-left: 0.25rem solid #ffa500!important;" class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row">
+                                    <br><br>
 
-                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
-                                                        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card border-left-success shadow h-100 py-2">
+                                                <div class="card-body display-card">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                            <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg- text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
+                                                            {{selectedsensordata.dctext}} <img class="display-card-icon" src="https://cdn-icons-png.freepik.com/512/3601/3601637.png" /><br/><br/>
+                                                            <p class="max-min">Max : 2000 PPM</p>
+                                                            <p class="max-min">Min : 0 PPM</p>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            <h1 class="display-card-reading">70.83</h1> 
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                        {{selectedsensordata.dbtext}} <img style="margin-left: 15px !important;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/humidity.png" /><br/><br/>
-                                                        <p class="max-min">Max : 100 %</p>
-                                                        <p class="max-min">Min : 0 %</p>
+                                        <div class="col-md-6">
+                                            <div class="card border-left-danger shadow h-100 py-2">
+                                                <div class="card-body display-card">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                            <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
+                                                            {{selectedsensordata.dctext}} <img class="display-card-icon" src="https://cdn-icons-png.flaticon.com/512/3840/3840753.png" /><br/><br/>
+                                                            <p class="max-min">Max : 2000 PPM</p>
+                                                            <p class="max-min">Min : 0 PPM</p>
+                                                        </div>
+
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                            <h1 class="display-card-reading">105.23</h1> 
+                                                        </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12">
-                                        <div class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
-                                                        <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
-                                                    </div>
 
-                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
-                                                        {{selectedsensordata.dctext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/co.png" /><br/><br/>
-                                                        <p class="max-min">Max : 2000 PPM</p>
-                                                        <p class="max-min">Min : 0 PPM</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+
+
 
                                 </div>
                             </div>
@@ -145,87 +172,7 @@
 
                         <!-- Content Row -->
 
-                        <div class="col-lg-7">
-
-                            <!-- Area Chart -->
-
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Graphical Representation</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-xs-12" style="padding-left: 10px">
-                                            Filter By : <br/><br/>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-xs-4 col-md-4 col-lg-4">
-                                            <mat-form-field>
-                                                <mat-label>Date Filters : </mat-label>
-                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
-                                                    <mat-option value="0">
-                                                        Daily
-                                                    </mat-option>
-                                                    <mat-option value="7">
-                                                        Weekly
-                                                    </mat-option>
-                                                    <mat-option value="30">
-                                                        Monthly
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="col-xs-4 col-md-4 col-lg-4">
-                                            <mat-form-field>
-                                                <mat-label>Sensor Filters : </mat-label>
-                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
-                                                    <mat-option *ngFor="let row of sensornames" [value]="row">
-                                                        {{row}}
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="col-xs-4 col-md-4 col-lg-4">
-                                            <mat-form-field>
-                                                <mat-label>Data Filters : </mat-label>
-                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selecteddata">
-                                                    <mat-option value="All">
-                                                        All
-                                                    </mat-option>
-                                                    <mat-option value="Temparature">
-                                                        Temparature
-                                                    </mat-option>
-                                                    <mat-option value="CO2">
-                                                        CO2 / 10
-                                                    </mat-option>
-                                                    <mat-option value="Humidity">
-                                                        Humidity
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
-
-                                    </div>
-
-
-                                    <div #containerRef class="chart-area" style="margin-top: 4%;margin-bottom: 5%;">
-                                        <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-                                            [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-                                        </ngx-charts-line-chart>
-                                    </div>
-                                    <br/>
-                                </div>
-                            </div>
-
-                        </div>
+                        
                     </div>
 
                     <!-- Content Row -->
@@ -294,4 +241,3 @@
 
 </body>
 
-</html>

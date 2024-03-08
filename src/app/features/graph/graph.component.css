@@ -1,26 +1,3 @@
-.display-card{
-    height:250px;
-}
-
-.display-card-icon{
-    height:60px;
-    margin-top: 40px;
-}
-
-.display-card-reading{
-    margin-top: 85px;
-    font-size: 40px;
-    
-}
-
-
-
-
-
-
-
-
-
 .switch-p {
     font-size: 14px;
     font-weight: 500;
@@ -66,10 +43,6 @@
     font-weight: 700;
 }
 
-.onoffswitch {
-    position: relative;
-    width: 90px;
-}
 
 .onoffswitch-checkbox {
     position: absolute;

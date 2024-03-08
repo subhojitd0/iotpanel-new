@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <!-- <link href="../../../shared/css/sb-admin-2.min.css" rel="stylesheet"> -->
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201015/pngtree-abstract-low-poly-silver-background-image_419419.jpg');">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10 col-lg-10">
+                            <h1 class="h3 mb-0 text-gray-800">Sensor
+                                <span style="float: right; font-size: 20px !important;margin-top:-3px;" (click)="export(selectedsensordata)">Download Data</span>
+                                <span style="float: right;" class="material-icons">
+                                    download_for_offline
+                                </span>
+                                <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.status}}</span>
+                                <span *ngIf="selectedsensordata.status === 'Offline'" style="float: right; border-radius: 50%;height: 20px;color: red;width: 20px;border: 10px solid red;margin-right: 5px;margin-top:3px">
+                                    &nbsp;
+                                </span>
+                                <span *ngIf="selectedsensordata.status !== 'Offline'" style="float: right; border-radius: 50%;height: 25px;color: green;width: 20px;border: 10px solid green;margin-right: 30px;margin-top:5px">
+                                    &nbsp;
+                                </span>
+                                <span style="float: right;font-size: 20px !important;margin-right: 10px;margin-top: -3px;font-family: unset;padding: 0px 10px 0px 10px;">{{selectedsensordata.sensor}}</span>
+
+                                <!-- <span style="float: right;; font-size: 20px !important;margin-right:10px">Online</span>
+                                <span style="float: right;" class="material-icons">
+                                    fiber_manual_record
+                                </span> -->
+                            </h1>
+
+                        </div>
+                        <div class="col-xs-2 col-md-2 col-lg-2">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4" style="float:left;">
+
+                                <a (click)="switch()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+										class="fas fa-download fa-sm text-white-50"></i> Relay Switch</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-lg-5 ">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Data Card</h6>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="col-xs-12">
+                                        <div class="card border-left-primary ">
+                                            <div class="card-body">
+                                                <div class="row">
+
+                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
+                                                    </div>
+
+                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                        {{selectedsensordata.datext}} <img style="margin-left: 5px;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/temp.png" /><br/><br/>
+                                                        <p class="max-min">Max : 50 &deg;C</p>
+                                                        <p class="max-min">Min : 0 &deg;C</p>
+                                                    </div>
+                                                    <!-- <div class="col-xs-2" style="padding-top: 10%;">
+                                                    <img class="leaf" src="../../../assets/img/leaf.png" />
+                                                </div> -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <div style="border-left: 0.25rem solid #ffa500!important;" class="card border-left-success shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row">
+
+                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
+                                                    </div>
+
+                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                        {{selectedsensordata.dbtext}} <img style="margin-left: 15px !important;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/humidity.png" /><br/><br/>
+                                                        <p class="max-min">Max : 100 %</p>
+                                                        <p class="max-min">Min : 0 %</p>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <div class="card border-left-success shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
+                                                        <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                    </div>
+
+                                                    <div class="col-xs-6 col-md-6 col-lg-6 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
+                                                        {{selectedsensordata.dctext}} <img style="margin-left: 10px;margin-top: -10px;height: 40px;width: 40px;" src="../../../assets/img/co.png" /><br/><br/>
+                                                        <p class="max-min">Max : 2000 PPM</p>
+                                                        <p class="max-min">Min : 0 PPM</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Content Row -->
+
+                        <div class="col-lg-7">
+
+                            <!-- Area Chart -->
+
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Graphical Representation</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-12" style="padding-left: 10px">
+                                            Filter By : <br/><br/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-xs-4 col-md-4 col-lg-4">
+                                            <mat-form-field>
+                                                <mat-label>Date Filters : </mat-label>
+                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedfilter">
+                                                    <mat-option value="0">
+                                                        Daily
+                                                    </mat-option>
+                                                    <mat-option value="7">
+                                                        Weekly
+                                                    </mat-option>
+                                                    <mat-option value="30">
+                                                        Monthly
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-xs-4 col-md-4 col-lg-4">
+                                            <mat-form-field>
+                                                <mat-label>Sensor Filters : </mat-label>
+                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selectedsensor">
+                                                    <mat-option *ngFor="let row of sensornames" [value]="row">
+                                                        {{row}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-xs-4 col-md-4 col-lg-4">
+                                            <mat-form-field>
+                                                <mat-label>Data Filters : </mat-label>
+                                                <mat-select (selectionChange)="callgraph()" [(ngModel)]="selecteddata">
+                                                    <mat-option value="All">
+                                                        All
+                                                    </mat-option>
+                                                    <mat-option value="Temparature">
+                                                        Temparature
+                                                    </mat-option>
+                                                    <mat-option value="CO2">
+                                                        CO2 / 10
+                                                    </mat-option>
+                                                    <mat-option value="Humidity">
+                                                        Humidity
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div #containerRef class="chart-area" style="margin-top: 4%;margin-bottom: 5%;">
+                                        <ngx-charts-line-chart [view]="[containerRef.offsetWidth, containerRef.offsetHeight]" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+                                            [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" [animations]="animations" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                                        </ngx-charts-line-chart>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <!-- <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer> -->
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

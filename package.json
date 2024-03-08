@@ -4,8 +4,8 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve --proxy-config proxy.conf.json",
+        "test":"set NODE_OPTIONS=--openssl-legacy-provider && npm run start",
         "build": "ng build --watch",
-        "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },

@@ -36,7 +36,7 @@ export class Switch implements iSwitch{
 })
 export class Dashboard1Component implements OnInit {
   //Gauge
-  public canvasWidth = 175
+  public canvasWidth = 300
   public needleValue = 2
   public centralLabel = '200';
   public name = ''

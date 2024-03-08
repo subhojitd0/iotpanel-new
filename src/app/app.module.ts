@@ -45,6 +45,7 @@ import { SidenavService } from './common/sidenav/sidenav.service';
 import { Dashboard1Component } from './features/dashoard-1/dashboard.component';
 import { SwitchComponent } from './features/switch/dashboard.component';
 import { GaugeChartModule } from 'angular-gauge-chart';
+import { GraphComponent } from './features/graph/graph.component';
 /* import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '54.251.21.255',
@@ -69,7 +70,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     DateRangeComponent,
     ReportComponent,
     Dashboard1Component,
-    SwitchComponent
+    SwitchComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
