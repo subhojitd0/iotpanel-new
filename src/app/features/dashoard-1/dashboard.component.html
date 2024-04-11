@@ -14,31 +14,34 @@
             <div id="content">
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    
                     <!-- Page Heading -->
                     <div class="row">
-                        <div class="col-xs-10 col-md-10 col-lg-10">
-                            <h1 class="h3 mb-0 text-gray-800">Sensor
-                                <span style="float: right; font-size: 20px !important;margin-top:-3px;" (click)="export(selectedsensordata)">Download Data</span>
-                                <span style="float: right;" class="material-icons">
-                                    download_for_offline
-                                </span>
-                                <span style="float: right;; font-size: 20px !important;margin-right:10px;margin-top:-3px;">{{selectedsensordata.status}}</span>
-                                <span *ngIf="selectedsensordata.status === 'Offline'" style="float: right; border-radius: 50%;height: 20px;color: red;width: 20px;border: 10px solid red;margin-right: 5px;margin-top:3px">
-                                    &nbsp;
-                                </span>
-                                <span *ngIf="selectedsensordata.status !== 'Offline'" style="float: right; border-radius: 50%;height: 25px;color: green;width: 20px;border: 10px solid green;margin-right: 30px;margin-top:5px">
-                                    &nbsp;
-                                </span>
-                                <span style="float: right;font-size: 20px !important;margin-right: 10px;margin-top: -3px;font-family: unset;padding: 0px 10px 0px 10px;">{{selectedsensordata.sensor}}</span>
+                        
 
-                                <!-- <span style="float: right;; font-size: 20px !important;margin-right:10px">Online</span>
-                                <span style="float: right;" class="material-icons">
-                                    fiber_manual_record
-                                </span> -->
-                            </h1>
-
+                        <div class="col-xs-5 col-md-5 col-lg-5">
+                            <!-- <span *ngIf="selectedsensordata.status === 'Offline'" style=" height:20px; width:20px; background-color: #bbb; border-radius: 50%; display:inline-block; margin-right: 5px;">
+                                &nbsp;
+                            </span>
+                            <span *ngIf="selectedsensordata.status !== 'Offline'" style=" height:20px; width:20px; background-color: green; border-radius: 50%; display:inline-block; margin-right: 5px;">
+                                &nbsp;
+                            </span> -->
+                            <span style="font-size: 16px !important;padding-top:23px;">{{selectedsensordata.status|date:'medium'}}</span>
                         </div>
+
+                        <div class="col-xs-5 col-md-5 col-lg-5">
+                            <span class="material-icons">
+                                download_for_offline
+                            </span>
+                            
+                            <p style="margin-top: -30px;margin-left: 30px;font-size: 18px;" (click)="export(selectedsensordata)">
+                                
+                                Download Data
+                            </p>
+                                
+                        </div>
+
+
                         <div class="col-xs-2 col-md-2 col-lg-2">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4" style="float:left;">
 
@@ -48,12 +51,14 @@
                         </div>
                     </div>
 
+                    <br>
+
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-lg-12 ">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Data Card</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary" style="font-size: 20px !important;">Sensor Dashboard for {{selectedsensor}}</h6>
                                 </div>
                                 <div class="card-body">
 
@@ -72,14 +77,22 @@
                                                             <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel1" [options]="options1" [name]="name" [bottomLabel]="bottomLabel1"></rg-gauge-chart>
                                                         </div>
 
-                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                            {{selectedsensordata.datext}} <img class="display-card-icon" src="https://cdn-icons-png.flaticon.com/512/3601/3601002.png" /><br/><br/>
-                                                            <p class="max-min">Max : 50 &deg;C</p>
-                                                            <p class="max-min">Min : 0 &deg;C</p>
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card text-center" style="font-size: 16px !important;">
+                                                            <img class="display-card-icon" src="https://cdn-icons-png.flaticon.com/512/3601/3601002.png" /><br/><br/>
+                                                            <br><p class="max-min">Unit</p>
+                                                            <select #unit1 class="form-select" aria-label=".form-select-lg example" (change)="onSelectUnit(1,unit1.value)">
+                                                                <option value="" [attr.selected]="c1==''?true:null"></option>
+                                                                <option value="c" [attr.selected]="c1=='c'?true:null">&deg;C</option>
+                                                                <option value="cm" [attr.selected]="c1=='cm'?true:null">cm</option>
+                                                                <option value="kv" [attr.selected]="c1=='kv'?true:null">KV</option>
+                                                            </select>
+                                                            
+                                                            <!-- <p class="max-min">Max : 50 &deg;C</p>
+                                                            <p class="max-min">Min : 0 &deg;C</p> -->
                                                         </div>
 
-                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                            <h1 class="display-card-reading">34.3</h1> 
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card text-center" style="font-size: 16px !important;">
+                                                            <h1 class="display-card-reading">{{selectedsensordata.datext}}{{cv1}}</h1> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,14 +108,19 @@
                                                             <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel2" [options]="options2" [name]="name" [bottomLabel]="bottomLabel2"></rg-gauge-chart>
                                                         </div>
 
-                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card text-center" style="font-size: 16px !important;">
                                                             {{selectedsensordata.dbtext}} <img class="display-card-icon" src="https://cdn-icons-png.freepik.com/512/3601/3601634.png" /><br/><br/>
-                                                            <p class="max-min">Max : 100 %</p>
-                                                            <p class="max-min">Min : 0 %</p>
+                                                            <br><p class="max-min">Unit</p>
+                                                            <select #unit2 class="form-select" aria-label=".form-select-lg example" (change)="onSelectUnit(2,unit2.value)">
+                                                                <option value="" [attr.selected]="c2==''?true:null"></option>
+                                                                <option value="c" [attr.selected]="c2=='c'?true:null">&deg;C</option>
+                                                                <option value="cm" [attr.selected]="c2=='cm'?true:null">cm</option>
+                                                                <option value="kv" [attr.selected]="c2=='kv'?true:null">KV</option>
+                                                            </select>
                                                         </div>
 
                                                         <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                            <h1 class="display-card-reading">19.0</h1> 
+                                                            <h1 class="display-card-reading">{{cv2}}</h1> 
                                                         </div>
 
 
@@ -113,6 +131,7 @@
                                     </div>
 
                                     <br><br>
+                                    
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -123,14 +142,19 @@
                                                             <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
                                                         </div>
 
-                                                        <div class="col-xs-3 col-md-3 col-lg- text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
+                                                        <div class="col-xs-3 col-md-3 col-lg- text-xs font-weight-bold text-primary text-uppercase custom-card  text-center" style="font-size: 17px !important;">
                                                             {{selectedsensordata.dctext}} <img class="display-card-icon" src="https://cdn-icons-png.freepik.com/512/3601/3601637.png" /><br/><br/>
-                                                            <p class="max-min">Max : 2000 PPM</p>
-                                                            <p class="max-min">Min : 0 PPM</p>
+                                                            <br><p class="max-min">Unit</p>
+                                                            <select #unit3 class="form-select" aria-label=".form-select-lg example" (change)="onSelectUnit(3,unit3.value)">
+                                                                <option value="" [attr.selected]="c3==''?true:null"></option>
+                                                                <option value="c" [attr.selected]="c3=='c'?true:null">&deg;C</option>
+                                                                <option value="cm" [attr.selected]="c3=='cm'?true:null">cm</option>
+                                                                <option value="kv" [attr.selected]="c3=='kv'?true:null">KV</option>
+                                                            </select>
                                                         </div>
 
                                                         <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                            <h1 class="display-card-reading">70.83</h1> 
+                                                            <h1 class="display-card-reading">{{cv3}}</h1> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,17 +166,22 @@
                                                 <div class="card-body display-card">
                                                     <div class="row">
                                                         <div class="col-xs-6 col-md-6 col-lg-6" style="font-weight: bold;">
-                                                            <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel3" [options]="options3" [name]="name" [bottomLabel]="bottomLabel3"></rg-gauge-chart>
+                                                            <rg-gauge-chart class="chart-custom" [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel4" [options]="options4" [name]="name" [bottomLabel]="bottomLabel4"></rg-gauge-chart>
                                                         </div>
 
-                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 17px !important;">
+                                                        <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card text-center" style="font-size: 17px !important;">
                                                             {{selectedsensordata.dctext}} <img class="display-card-icon" src="https://cdn-icons-png.flaticon.com/512/3840/3840753.png" /><br/><br/>
-                                                            <p class="max-min">Max : 2000 PPM</p>
-                                                            <p class="max-min">Min : 0 PPM</p>
+                                                            <br><p class="max-min">Unit</p>
+                                                            <select #unit4 class="form-select" aria-label=".form-select-lg example" (change)="onSelectUnit(4,unit4.value)">
+                                                                <option value="" [attr.selected]="c4==''?true:null"></option>
+                                                                <option value="c" [attr.selected]="c4=='c'?true:null">&deg;C</option>
+                                                                <option value="cm" [attr.selected]="c4=='cm'?true:null">cm</option>
+                                                                <option value="kv" [attr.selected]="c4=='kv'?true:null">KV</option>
+                                                            </select>
                                                         </div>
 
                                                         <div class="col-xs-3 col-md-3 col-lg-3 text-xs font-weight-bold text-primary text-uppercase custom-card" style="font-size: 16px !important;">
-                                                            <h1 class="display-card-reading">105.23</h1> 
+                                                            <h1 class="display-card-reading">{{cv4}}</h1> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,7 +189,7 @@
                                         </div>
                                     </div>
 
-
+                                    <br><br>
 
 
 

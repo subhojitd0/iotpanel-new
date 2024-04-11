@@ -116,13 +116,19 @@ export class Dashboard1Component implements OnInit {
   c2:any;
   c3:any;
   c4:any;
-  cv1:any;
-  cv2:any;
-  cv3:any;
-  cv4:any;
 
   // options
-  
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = false;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Hours';
+  yAxisLabel: string = 'Value';
+  timeline: boolean = true;
+  selectedfilter: any;
   selecteddata: any = "All";
   selectedsensor: any;
   multi: any[] = [];
@@ -348,6 +354,9 @@ onSelectUnit(ch:any,val:any){
       "hub": this.selectedHub
     };
     this.apiService.post(SWITCH_API, json).then((res: any)=>{
+      //this.multi = []; 
+      //this.selectedsensor = "";
+      //this.selectedsensor = "";
       
       //----------------------------------------switch Data----------------------------------------
       this.switchData = res.result;
@@ -372,8 +381,7 @@ onSelectUnit(ch:any,val:any){
           this.allSensors = res;
           //-----------------------------status of sensor------------------------------
           this.allSensors.forEach(x=>{
-            //x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
-            x.status=x.time*1000;
+            x.status = Math.abs((new Date().getTime() - new Date(x.time*1000).getTime())/1000) > 10 ? "Offline" : "Online";
           })
           
           this.sensornames = this.allSensors.map(x=>x.sensor);
@@ -411,23 +419,67 @@ onSelectUnit(ch:any,val:any){
           this.bottomSensors = this.allSensors.slice(3,6);
           
           this.selectedsensordata = this.allSensors.filter(x=>x.sensor === this.selectedsensor)[0];
-          this.centralLabel1 = parseFloat(this.selectedsensordata.da).toFixed(1).toString();
-          this.cv1 = parseFloat(this.selectedsensordata.da).toFixed(1).toString();
-          this.centralLabel2 = Math.round(this.selectedsensordata.db).toString();
-          this.cv2 = Math.round(this.selectedsensordata.db).toString();
-          this.centralLabel3 = Math.round(this.selectedsensordata.dc).toString();
-          this.cv3 = Math.round(this.selectedsensordata.dc).toString();
-          this.centralLabel4 = Math.round(this.selectedsensordata.dd).toString();
-          this.cv4 = Math.round(this.selectedsensordata.dd).toString();
+          this.centralLabel1 = parseFloat(this.selectedsensordata.da).toFixed(1).toString() + "°C";
+          this.centralLabel2 = Math.round(this.selectedsensordata.db).toString() + " %";
+          this.centralLabel3 = Math.round(this.selectedsensordata.dc).toString() + " PPM";
+          this.centralLabel4 = Math.round(this.selectedsensordata.dd).toString() + " PPM";
           this.options1.rangeLabel = ['0','50'];
           this.options2.rangeLabel = ['0','100'];
           this.options3.rangeLabel = ['0','2000'];
-          this.options4.rangeLabel = ['0','101'];
+          this.options4.rangeLabel = ['0','2000'];
           this.options1.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.da).toString())/50)*100];
           this.options2.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.db).toString())/100)*100];
           this.options3.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dc).toString())/2000)*100];
-          this.options4.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dd).toString())/101)*100];
-      
+          this.options4.arcDelimiters = [(parseInt(Math.round(this.selectedsensordata.dc).toString())/2000)*100];
+          /* this.selectedsensor = "S001";
+          this.selectedfilter = "weekly"; */
+        /* } */
+          // let json3 = {
+          //   sensor: this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "",
+          //   day: this.selectedfilter ? parseInt(this.selectedfilter) : 0
+          // }
+          // this.selectedsensor = this.selectedsensor ? this.selectedsensor : this.sensornames.length > 0 ? this.sensornames[0] : "";
+          // this.selectedfilter = this.selectedfilter ? this.selectedfilter : "0";
+          // this.apiService.post(GRAPH_API, json3).then((res: any)=>{
+            
+          //   this.temps = res.temp;
+          //   this.humidity = res.humidity;
+          //   this.co2 = res.co2;
+          //   let multi2 = [];
+          //   if(this.selecteddata === "All"){
+          //     multi2.push({
+          //       name: "Temparature",
+          //       series: this.temps
+          //     });
+          //     multi2.push({
+          //       name: "Humidity",
+          //       series: this.humidity
+          //     });
+          //     multi2.push({
+          //       name: "CO2 / 10",
+          //       series: this.co2
+          //     });
+          //   }
+          //   if(this.selecteddata === "Temparature"){
+          //     multi2.push({
+          //       name: "Temparature",
+          //       series: this.temps
+          //     });
+          //   }
+          //   if(this.selecteddata === "CO2"){
+          //     multi2.push({
+          //       name: "CO2 / 10",
+          //       series: this.co2
+          //     });
+          //   }
+          //   if(this.selecteddata === "Humidity"){
+          //     multi2.push({
+          //       name: "Humidity",
+          //       series: this.humidity
+          //     });
+          //   }
+          //   this.multi = multi2;
+          // });
       }); 
     });
     

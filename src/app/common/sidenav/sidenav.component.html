@@ -8,7 +8,7 @@
         background: #4a4949;
         padding: 10px;
         border: 1px dotted blue;
-        cursor: pointer;">Un-Assign Hub</span> -->
+        cursor: pointer;">Un-Assign Hub</span></span> -->
     <img *ngIf="count" height="30" src="../../../assets/img/warning.png" style="margin-right: 5px;" />
     <span style="margin-right: 30px" *ngIf="count">{{count}} hubs unassigned</span>
     <button mat-icon-button *ngIf="pagerefresh == '1'" [matMenuTriggerFor]="dropdownMenu">
@@ -16,6 +16,8 @@
   	</button>
 
 </mat-toolbar>
+
+
 <mat-sidenav-container [ngClass]="pagerefresh == '1' ? 'example-container-loggedin' : 'example-container'" autosize style="cursor: pointer !important;">
     <mat-sidenav style="padding-top: 10px" *ngIf="pagerefresh == '1' && isAdmin == '0' && isShowing" #sidenav class="example-sidenav" mode="over" opened="true">
         <!-- <div class="loading-screen-wrapper" *ngIf="loading">

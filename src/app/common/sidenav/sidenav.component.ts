@@ -155,6 +155,8 @@ export class SideNavComponent implements OnInit {
     this.globalSrv.itemSensor = sensor;
     localStorage.setItem("selectedhub", hub);
     localStorage.setItem("selectedsensor", sensor);
+    window.location.reload();
+    
   }
   unassign(){
     if (confirm('Are you sure you want to un-assign the hub ?')) {
